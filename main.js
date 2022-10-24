@@ -1,2 +1,6 @@
 var output = document.getElementById("output");
-output.innerHTML = "394834";
+
+let content = readFileSync("file", 'utf-8').split('\n')
+console.log(content);
+
+output.innerHTML = content;
