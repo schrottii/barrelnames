@@ -1,5 +1,3 @@
-const { readFileSync, promises: fsPromises } = require('fs');
-
 var names1 = names.split("\n");
 var output = "";
 
