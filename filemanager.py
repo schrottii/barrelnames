@@ -10,3 +10,5 @@ thefile.close()
 htmli = open('index.html', 'w')
 htmli.write(names1)
 htmli.close()
+
+return "hoo"
