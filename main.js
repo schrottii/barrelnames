@@ -1,3 +1,5 @@
+const { readFileSync, promises: fsPromises } = require('fs');
+
 var output = document.getElementById("output");
 
 let content = readFileSync("file", 'utf-8').split('\n')
