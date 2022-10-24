@@ -1,8 +1,11 @@
 const { readFileSync, promises: fsPromises } = require('fs');
 
-var output = document.getElementById("output");
+var names1 = names.split("\n");
+var output = "";
 
-let content = readFileSync("file", 'utf-8').split('\n')
-console.log(content);
+for (n in names1){
+    names1[n].replace(/^[^_]*: /, "")
+    output = output + names1[n];
+}
 
-output.innerHTML = content;
+output.innerHTML = output;

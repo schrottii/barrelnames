@@ -1,4 +1,5 @@
-﻿1: Circle Blue
+﻿const names = `
+1: Circle Blue
 2: Square Pink 
 3: Trash Can 
 4: Billboard 
@@ -774,3 +775,4 @@ x1Se
 592: The Cave of the Barrels
 593: Power Your Scrap
 594: You just got Macaroon'd!
+`
