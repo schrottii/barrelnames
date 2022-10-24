@@ -1,8 +1,2 @@
-htmli = document.getElementById("disp");
-
-$.ajax({
-    type: "POST",
-    url: "/filemanager.py",
-    data: { param: "none" },
-    success: htmli.innerHTML = response
-});
+var output = document.getElementById("output");
+output.innerHTML = "394834";
