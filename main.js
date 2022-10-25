@@ -6,6 +6,8 @@ var Names = names.split("\n");
 var output = "";
 
 var putout = document.getElementById("output");
+var barrel1 = document.getElementById("barrel1");
+var barrel2 = document.getElementById("barrel2");
 
 // Remove the numbers (multis have to be removed manually)
 for (n = 0; n < Names.length; n++){
@@ -25,6 +27,7 @@ function generateFrontName() {
         if (Math.random() > 0.25) name = name + " " + splittedName[i];
         else return name;
     }
+    barrel1.innerHTML = name;
     return name;
 }
 
@@ -37,6 +40,7 @@ function generateBackName() {
         if (Math.random() > 0.25) name = splittedName[i] + " " + name;
         else return name;
     }
+    barrel2.innerHTML = name;
     return name;
 }
 

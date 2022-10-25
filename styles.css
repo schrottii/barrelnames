@@ -1,3 +1,7 @@
+body {
+    background-color: sandybrown;
+}
+
 .buttonStyle{
     outline-color: saddlebrown;
     background-color: darkorange;
@@ -17,8 +21,8 @@
 }
 
 .resultStyle {
-    background-color: rosybrown;
+    background-color: saddlebrown;
     width: 100%;
-    color: yellow;
+    color: white;
     font-size: 36px;
 }
