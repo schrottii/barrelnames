@@ -10,9 +10,16 @@ var barrel1 = document.getElementById("barrel1");
 var barrel2 = document.getElementById("barrel2");
 var favoritesList = document.getElementById("favoritesList");
 var pic1 = document.getElementById("pic1");
+var pic2 = document.getElementById("pic2");
 
 var name1 = "";
 var name2 = "";
+
+var fullname1 = "";
+var fullname2 = "";
+
+var id1 = 0;
+var id2 = 0;
 
 var favorites = [];
 
@@ -21,13 +28,17 @@ for (n = 0; n < Names.length; n++){
     Names[n] = Names[n].replace(/^[^_]*: /, "")
 }
 
-function pickAName() {
-    return Names[Math.floor(Math.random() * Names.length)];
+function pickAName(number=0) {
+    let num = Math.floor(Math.random() * Names.length);
+    if (number == 1) id1 = num;
+    if (number == 2) id2 = num;
+    return Names[num];
 }
 
 // Name 1
 function generateFrontName() {
-    let name = pickAName();
+    let name = pickAName(1);
+    fullname1 = name;
     let splittedName = name.split(" ");
     name = splittedName[0];
     for (i = 1; i < splittedName.length; i++) {
@@ -39,7 +50,8 @@ function generateFrontName() {
 
 // Name 2
 function generateBackName() {
-    let name = pickAName();
+    let name = pickAName(2);
+    fullname2 = name;
     let splittedName = name.split(" ");
     name = splittedName[splittedName.length - 1];
     for (i = splittedName.length - 2; i > -1; i--) {
@@ -76,8 +88,8 @@ function removeFavorite() {
 function updateUI() {
     putout.innerHTML = output;
 
-    barrel1.innerHTML = name1 + "  -->";
-    barrel2.innerHTML = "<--  " + name2;
+    barrel1.innerHTML = fullname1 + "  -->";
+    barrel2.innerHTML = "<--  " + fullname2;
 
     favoritesList.innerHTML = "<ul>";
     for (f in favorites) {
@@ -86,7 +98,8 @@ function updateUI() {
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 
 
-    pic1.src = "/barrels/barrel_5.png";
+    pic1.src = "/barrels/barrel_" + id1 + ".png";
+    pic2.src = "/barrels/barrel_" + id2 + ".png";
 }
 
 loadSave();
