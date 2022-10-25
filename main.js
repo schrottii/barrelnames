@@ -56,11 +56,11 @@ function generateCombination() {
 }
 
 function loadSave() {
-    favorites = localStorage.getItem("NameMixer");
+    favorites = JSON.parse(localStorage.getItem("NameMixer"));
 }
 
 function saveSave() {
-    localStorage.setItem("NameMixer", favorites);
+    localStorage.setItem("NameMixer", JSON.stringify(favorites));
 }
 
 function addFavorite() {
@@ -84,3 +84,4 @@ function updateUI() {
 }
 
 loadSave();
+updateUI();
