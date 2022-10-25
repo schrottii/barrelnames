@@ -29,16 +29,20 @@ function generateBackName() {
     let name = pickAName();
     let splittedName = name.split(" ");
     name = splittedName[splittedName.length - 1]
-    for (i = splittedName.length - 1; i > 0; i--) {
+    for (i = splittedName.length - 1; i > 1; i--) {
         if (Math.random() > 0.25) name = splittedName[i] + " " + name;
         else return name;
     }
     return name;
 }
 
-var name1 = generateFrontName();
-var name2 = generateBackName();
+function generateCombination() {
+    let name1 = generateFrontName();
+    let name2 = generateBackName();
 
-output = name1 + " " + name2;
+    output = name1 + " " + name2;
+}
 
-putout.innerHTML = output;
+function updateUI() {
+    putout.innerHTML = output;
+}
