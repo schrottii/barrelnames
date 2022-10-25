@@ -70,6 +70,7 @@ function generateCombination() {
 
 function loadSave() {
     favorites = JSON.parse(localStorage.getItem("NameMixer"));
+    if (favorites == null) favorites = [];
 }
 
 function saveSave() {
