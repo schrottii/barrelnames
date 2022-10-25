@@ -8,9 +8,12 @@ var output = "";
 var putout = document.getElementById("output");
 var barrel1 = document.getElementById("barrel1");
 var barrel2 = document.getElementById("barrel2");
+var favoritesList = document.getElementById("favoritesList");
 
 var name1 = "";
 var name2 = "";
+
+var favorites = [];
 
 // Remove the numbers (multis have to be removed manually)
 for (n = 0; n < Names.length; n++){
@@ -52,9 +55,26 @@ function generateCombination() {
     output = name1 + " " + name2;
 }
 
+function loadSave() {
+    favorites = localStorage.getItem("NameMixer");
+}
+
+function saveSave() {
+    localStorage.setItem("NameMixer", favorites);
+}
+
+function addFavorite() {
+    favorites.push(output);
+}
+
 function updateUI() {
     putout.innerHTML = output;
 
     barrel1.innerHTML = name1 + "  -->";
     barrel2.innerHTML = "<--  " + name2;
+
+    favoritesList.innerHTML = "";
+    for (f in favorites) {
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br />" + favorites[f];
+    }
 }
