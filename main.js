@@ -9,6 +9,7 @@ var putout = document.getElementById("output");
 var barrel1 = document.getElementById("barrel1");
 var barrel2 = document.getElementById("barrel2");
 var favoritesList = document.getElementById("favoritesList");
+var pic1 = document.getElementById("pic1");
 
 var name1 = "";
 var name2 = "";
@@ -83,6 +84,9 @@ function updateUI() {
         favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f] + "</ul>";
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
+
+
+    pic1.src = "barrels\barrel_5.png";
 }
 
 loadSave();
