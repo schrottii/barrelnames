@@ -60,7 +60,8 @@ function loadSave() {
 }
 
 function saveSave() {
-    localStorage.setItem("NameMixer", JSON.stringify(favorites));
+    let strn = JSON.stringify(favorites);
+    localStorage.setItem("NameMixer", strn);
 }
 
 function addFavorite() {
