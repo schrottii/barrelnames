@@ -12,7 +12,7 @@ body {
 
 .creditsBox {
     position: absolute;
-    width: 35%;
+    width: 50%;
     right: 12px;
     outline-style: dashed;
     font-family: 'DejaVu Sans Mono';
