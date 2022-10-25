@@ -78,10 +78,11 @@ function updateUI() {
     barrel1.innerHTML = name1 + "  -->";
     barrel2.innerHTML = "<--  " + name2;
 
-    favoritesList.innerHTML = "";
+    favoritesList.innerHTML = "<ul>";
     for (f in favorites) {
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br />" + favorites[f];
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f] + "</ul>";
     }
+    favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 }
 
 loadSave();
