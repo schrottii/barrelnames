@@ -55,6 +55,6 @@ function generateCombination() {
 function updateUI() {
     putout.innerHTML = output;
 
-    barrel1.innerHTML = name1;
-    barrel2.innerHTML = name2;
+    barrel1.innerHTML = name1 + "-->";
+    barrel2.innerHTML = "<--" + name2;
 }
