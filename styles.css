@@ -13,6 +13,7 @@
     font-family: 'DejaVu Sans Mono';
     outline-color: orangered;
     background-color: orange;
+    text-align: right;
 }
 
 .resultStyle {
