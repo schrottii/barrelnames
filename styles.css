@@ -20,6 +20,16 @@ body {
     text-align: right;
 }
 
+.barrelleft {
+    position: absolute;
+    left: 125px;
+}
+
+.barrelright {
+    position: absolute;
+    right: 125px;
+}
+
 .resultStyle {
     background-color: saddlebrown;
     width: 100%;
