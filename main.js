@@ -1,3 +1,7 @@
+//
+// This work is copyrighted. Copying, cloning or stealing is prohibited.
+//
+
 var Names = names.split("\n");
 var output = "";
 
