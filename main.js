@@ -28,7 +28,7 @@ function generateFrontName() {
 function generateBackName() {
     let name = pickAName();
     let splittedName = name.split(" ");
-    name = splittedName[0]
+    name = splittedName[splittedName.length]
     for (i = splittedName.length - 1; i > 0; i--) {
         if (Math.random() > 0.25) name = splittedName[i] + " " + name;
         else return name;
