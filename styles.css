@@ -5,3 +5,12 @@
     font-family: 'DejaVu Sans Mono';
     font-size: 24px;
 }
+
+.creditsBox {
+    position: absolute;
+    right: 25px;
+    outline-style: dashed;
+    font-family: 'DejaVu Sans Mono';
+    outline-color: orangered;
+    color: orange;
+}
