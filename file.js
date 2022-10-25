@@ -1,127 +1,127 @@
 ﻿const names = `
 1: Circle Blue
-2: Square Pink 
-3: Trash Can 
-4: Billboard 
-5: Post Box 
-6: Blue Cuboid 
-7: Look Up 
-8: Helter Skelter 
-9: Rubbish Bin 
-10: Watermelon 
-11: I Love You 
-12: Blue Swirl 
-13: Good Night 
-14: I See You 
-15: No Entry 
-16: Tree Doctor 
-17: Layer Cake 
-18: Twinkle Twinkle 
-19: Lurid Layered 
-20: Neon Trash 
-21: Tie Your Laces 
-22: Banana Hole 
-23: The Pink Hex of Doom 
+2: Square Pink
+3: Trash Can
+4: Billboard
+5: Post Box
+6: Blue Cuboid
+7: Look Up
+8: Helter Skelter
+9: Rubbish Bin
+10: Watermelon
+11: I Love You
+12: Blue Swirl
+13: Good Night
+14: I See You
+15: No Entry
+16: Tree Doctor
+17: Layer Cake
+18: Twinkle Twinkle
+19: Lurid Layered
+20: Neon Trash
+21: Tie Your Laces
+22: Banana Hole
+23: The Pink Hex of Doom
 24: Sign o' The Times
-25: Trash Bin 
-26: Shades of Grey 
-27: Wrong Direction 
-28: Which Direction? 
-29: Open Wide 
-30: I C U 2 
-31: Illuminati 
-32: No Parcels 
-33: Rhapsody in Green 
-34: Double Jump 
-35: Spin the Lime 
-36: The Box 
-37: Visor 
-38: Walking on Sunshine 
-39: Fast Forward 
-40: Hexbox 
-41: Firecracker 
-42: Hedge Trimmer 
-43: Not Too Fat 
-44: Rubbish Can 
-45: Straight Down 
-46: Rewind 
-47: Two At Once 
-48: The End of The Beginning 
-49: Purple Whirlpool 
-50: I Can't Hear You 
-51: Deja Vu 
-52: The Shapes Game 
-53: Coconut 
-54: The Blob 
-55: Talkie Toaster 
-56: Lucky For Some 
-57: How Many Shades? 
-58: Better Buy Brown 
-59: Raspberry Jam 
-60: DO NOT OPEN 
-61: Cherry Bomb 
-62: Medical Use Only 
-63: Neopolitan 
-64: 32 million 
-65: Read It? 
-66: Giza in Grey 
-67: Coal 
-68: Handle With Care 
-69: Dollhouse WC 
-70: Not Black 
-71: Tsunami 
-72: Not Too Fresh 
-73: Hypnosis 
-74: Danger Zone 
-75: Inception 
-76: 8 Ball 
-77: It's Alive! 
-78: Fire Ink'd 
-79: Flip Top 
-80: Melting Pot 
-81: Mr. Brownstone 
-82: AAAARGH!!! 
-83: Pixelated 
-84: The Watcher 
-85: Out Of Focus 
-86: Let Me Out 
-87: Triple Trouble 
-88: Asimov 
-89: I Didn't Do It 
-90: Emptiness 
-91: Out of Place 
-92: Quarter Slice 
-93: Normandy 
-94: Endte 
-95: Outtatime 
-96: Prim And Proper 
-97: Chrome 
-98: Glory 
-99: Pollock 
-100: P-Nut 
-101: Number Two 
-102: Thor 
-103: Swiss 
-104: The Cage 
-105: Mobile Delivery 
-106: The Hangover 
-107: Christmas 
-108: Hot Stuff 
-109: Somewhere... 
-110: HP 
+25: Trash Bin
+26: Shades of Grey
+27: Wrong Direction
+28: Which Direction?
+29: Open Wide
+30: I C U 2
+31: Illuminati
+32: No Parcels
+33: Rhapsody in Green
+34: Double Jump
+35: Spin the Lime
+36: The Box
+37: Visor
+38: Walking on Sunshine
+39: Fast Forward
+40: Hexbox
+41: Firecracker
+42: Hedge Trimmer
+43: Not Too Fat
+44: Rubbish Can
+45: Straight Down
+46: Rewind
+47: Two At Once
+48: The End of The Beginning
+49: Purple Whirlpool
+50: I Can't Hear You
+51: Deja Vu
+52: The Shapes Game
+53: Coconut
+54: The Blob
+55: Talkie Toaster
+56: Lucky For Some
+57: How Many Shades?
+58: Better Buy Brown
+59: Raspberry Jam
+60: DO NOT OPEN
+61: Cherry Bomb
+62: Medical Use Only
+63: Neopolitan
+64: 32 million
+65: Read It?
+66: Giza in Grey
+67: Coal
+68: Handle With Care
+69: Dollhouse WC
+70: Not Black
+71: Tsunami
+72: Not Too Fresh
+73: Hypnosis
+74: Danger Zone
+75: Inception
+76: 8 Ball
+77: It's Alive!
+78: Fire Ink'd
+79: Flip Top
+80: Melting Pot
+81: Mr. Brownstone
+82: AAAARGH!!!
+83: Pixelated
+84: The Watcher
+85: Out Of Focus
+86: Let Me Out
+87: Triple Trouble
+88: Asimov
+89: I Didn't Do It
+90: Emptiness
+91: Out of Place
+92: Quarter Slice
+93: Normandy
+94: Endte
+95: Outtatime
+96: Prim And Proper
+97: Chrome
+98: Glory
+99: Pollock
+100: P-Nut
+101: Number Two
+102: Thor
+103: Swiss
+104: The Cage
+105: Mobile Delivery
+106: The Hangover
+107: Christmas
+108: Hot Stuff
+109: Somewhere...
+110: HP
 111: Slade
-112: Around the World 
-113: Sushi Roll 
+112: Around the World
+113: Sushi Roll
 114: Be My Honey
 115: Trash can on wheels
-116: LaCroc 
+116: LaCroc
 117: Vampire Coffee
 118: Plug n Play
 119: Borgasm
-120: Santa's Door 
-121: Where's the Toast? 
+120: Santa's Door
+121: Where's the Toast?
 122: Drunk
-123: Floyd 
+123: Floyd
 124: We wish you a...
 125: ...Merry Christmas
 126: Sign here
@@ -140,7 +140,7 @@
 139: Charged
 140: Lego Lookout
 141: Quack
-142: Intergalactic 
+142: Intergalactic
 143: Green water tank
 144: Great Balls o' Fire
 145: Happy Juice II
