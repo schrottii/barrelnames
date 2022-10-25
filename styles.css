@@ -1,9 +1,9 @@
 .buttonStyle{
     outline-color: saddlebrown;
-    color: darkorange;
+    background-color: darkorange;
     text-align: center;
     font-family: 'DejaVu Sans Mono';
-    font-size: 24px;
+    font-size: 48px;
 }
 
 .creditsBox {
@@ -12,5 +12,12 @@
     outline-style: dashed;
     font-family: 'DejaVu Sans Mono';
     outline-color: orangered;
-    color: orange;
+    background-color: orange;
+}
+
+.resultStyle {
+    background-color: rosybrown;
+    width: 100%;
+    color: yellow;
+    font-size: 36px;
 }
