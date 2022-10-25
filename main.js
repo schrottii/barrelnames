@@ -9,6 +9,9 @@ var putout = document.getElementById("output");
 var barrel1 = document.getElementById("barrel1");
 var barrel2 = document.getElementById("barrel2");
 
+var name1 = "";
+var name2 = "";
+
 // Remove the numbers (multis have to be removed manually)
 for (n = 0; n < Names.length; n++){
     Names[n] = Names[n].replace(/^[^_]*: /, "")
@@ -27,7 +30,6 @@ function generateFrontName() {
         if (Math.random() > 0.25) name = name + " " + splittedName[i];
         else return name;
     }
-    barrel1.innerHTML = name;
     return name;
 }
 
@@ -40,17 +42,19 @@ function generateBackName() {
         if (Math.random() > 0.25) name = splittedName[i] + " " + name;
         else return name;
     }
-    barrel2.innerHTML = name;
     return name;
 }
 
 function generateCombination() {
-    let name1 = generateFrontName();
-    let name2 = generateBackName();
+    name1 = generateFrontName();
+    name2 = generateBackName();
 
     output = name1 + " " + name2;
 }
 
 function updateUI() {
     putout.innerHTML = output;
+
+    barrel1.innerHTML = name1;
+    barrel2.innerHTML = name2;
 }
