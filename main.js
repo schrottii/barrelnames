@@ -9,7 +9,7 @@ for (n = 0; n < Names.length; n++){
 }
 
 // Name 1
-var name1 = names1[Math.floor(Math.random() * names1.length)];
+var name1 = Names[Math.floor(Math.random() * Names.length)];
 var splittedName = name1.split(" ");
 name1 = splittedName[0]
 for (i = 1; i < splittedName.length; i++) {
@@ -17,7 +17,7 @@ for (i = 1; i < splittedName.length; i++) {
 }
 
 // Name 1
-var name2 = names2[Math.floor(Math.random() * names2.length)];
+var name2 = Names[Math.floor(Math.random() * Names.length)];
 var splittedName = name2.split(" ");
 name2 = splittedName[0]
 for (i = splittedName.length - 1; i > -1; i--) {
