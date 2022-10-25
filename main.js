@@ -99,8 +99,8 @@ function updateUI() {
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 
 
-    pic1.src = "/barrels/" + (id1 > 177 ? "B" : "b") + "arrel_" + id1 + ".png";
-    pic2.src = "/barrels/" + (id2 > 177 ? "B" : "b") + "arrel_" + id2 + ".png";
+    pic1.src = "barrels/" + (id1 > 177 ? "B" : "b") + "arrel_" + Math.max(1, id1) + ".png";
+    pic2.src = "barrels/" + (id2 > 177 ? "B" : "b") + "arrel_" + Math.max(1, id2) + ".png";
 }
 
 loadSave();
