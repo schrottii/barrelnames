@@ -67,6 +67,10 @@ function addFavorite() {
     favorites.push(output);
 }
 
+function addFavorite() {
+    favorites.pop();
+}
+
 function updateUI() {
     putout.innerHTML = output;
 
