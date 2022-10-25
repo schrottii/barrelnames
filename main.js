@@ -82,3 +82,5 @@ function updateUI() {
         favoritesList.innerHTML = favoritesList.innerHTML + "<br />" + favorites[f];
     }
 }
+
+loadSave();
