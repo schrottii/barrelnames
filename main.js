@@ -67,7 +67,7 @@ function addFavorite() {
     favorites.push(output);
 }
 
-function addFavorite() {
+function removeFavorite() {
     favorites.pop();
 }
 
