@@ -66,7 +66,7 @@ function saveSave() {
 }
 
 function addFavorite() {
-    favorites.push(output);
+    if(output != "") favorites.push(output);
 }
 
 function removeFavorite() {
