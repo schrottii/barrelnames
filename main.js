@@ -86,7 +86,7 @@ function updateUI() {
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 
 
-    pic1.src = "barrels\barrel_5.png";
+    pic1.src = "/barrels/barrel_5.png";
 }
 
 loadSave();
