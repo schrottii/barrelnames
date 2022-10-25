@@ -8,24 +8,30 @@ for (n = 0; n < Names.length; n++){
     Names[n] = Names[n].replace(/^[^_]*: /, "")
 }
 
+function pickAName() {
+    return Names[Math.floor(Math.random() * Names.length)];
+}
+
 // Name 1
 function generateFrontName() {
-    let name = Names[Math.floor(Math.random() * Names.length)];
+    let name = pickAName();
     let splittedName = name.split(" ");
     name = splittedName[0]
     for (i = 1; i < splittedName.length; i++) {
         if (Math.random() > 0.25) name = name + " " + splittedName[i];
+        else return name;
     }
     return name;
 }
 
 // Name 2
 function generateBackName() {
-    let name = Names[Math.floor(Math.random() * Names.length)];
+    let name = pickAName();
     let splittedName = name.split(" ");
     name = splittedName[0]
     for (i = splittedName.length - 1; i > 0; i--) {
-        if (Math.random() > 0.25) name = name + " " + splittedName[i];
+        if (Math.random() > 0.25) name = splittedName[i] + " " + name;
+        else return name;
     }
     return name;
 }
