@@ -3,8 +3,6 @@
 //
 
 var Names = names.split("\n");
-Names.shift();
-
 var output = "";
 
 var putout = document.getElementById("output");
@@ -31,7 +29,7 @@ for (n = 0; n < Names.length; n++){
 }
 
 function pickAName(number=0) {
-    let num = Math.floor(Math.random() * Names.length);
+    let num = Math.floor(Math.random() * (Names.length - 1)) + 1;
     if (number == 1) id1 = num;
     if (number == 2) id2 = num;
     return Names[num];
