@@ -81,7 +81,7 @@ function loadSave() {
                     let splittedName = names[b].split(" ");
                     if (splittedName[0] == thisName[0]) b1 = names.indexOf(b);
 
-                    let splittedName = names[b].split(" ");
+                    splittedName = names[b].split(" ");
                     if (splittedName[splittedName.length - 1] == thisName[thisName.length - 1]) b2 = names.indexOf(b);
                 }
                 temp[t] = [temp[t], b1, b2];
