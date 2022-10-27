@@ -77,11 +77,11 @@ function loadSave() {
                 let thisName = temp[t].split(" ");
                 let b1;
                 let b2;
-                for (b = 0; b < names.length; b++) {
-                    let splittedName = names[b].split(" ");
+                for (b = 0; b < Names.length; b++) {
+                    let splittedName = Names[b].split(" ");
                     if (splittedName[0] == thisName[0]) b1 = b;
 
-                    splittedName = names[b].split(" ");
+                    splittedName = Names[b].split(" ");
                     if (splittedName[splittedName.length - 1] == thisName[thisName.length - 1]) b2 = b;
                 }
                 temp[t] = [temp[t], b1, b2];
