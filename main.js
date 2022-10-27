@@ -3,6 +3,8 @@
 //
 
 var Names = names.split("\n");
+Names.shift();
+
 var output = "";
 
 var putout = document.getElementById("output");
