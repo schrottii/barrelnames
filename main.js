@@ -69,8 +69,26 @@ function generateCombination() {
 }
 
 function loadSave() {
-    favorites = JSON.parse(localStorage.getItem("NameMixer"));
-    if (favorites == null) favorites = [];
+    let temp = JSON.parse(localStorage.getItem("NameMixer"));
+
+    if (temp != null) {
+        if (typeof (temp[0]) != "object") {
+            for (t in temp) {
+                let thisName = temp[t].split(" ");
+                let b1;
+                let b2;
+                for (b in names) {
+                    let splittedName = names[b].split(" ");
+                    if (splittedName[0] == thisName[0]) b1 = names.indexOf(b);
+
+                    let splittedName = names[b].split(" ");
+                    if (splittedName[splittedName.length - 1] == thisName[thisName.length - 1]) b2 = names.indexOf(b);
+                }
+                temp[t] = [temp[t], b1, b2];
+            }
+        }
+        favorites = temp;
+        }
 }
 
 function saveSave() {
@@ -79,7 +97,7 @@ function saveSave() {
 }
 
 function addFavorite() {
-    if(output != "") favorites.push(output);
+    if(output != "") favorites.push([output, id1, id2]);
 }
 
 function removeFavorite() {
@@ -94,7 +112,7 @@ function updateUI() {
 
     favoritesList.innerHTML = "<ul>";
     for (f in favorites) {
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f] + "</ul>";
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f][0] + "</ul>";
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 
