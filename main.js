@@ -110,6 +110,14 @@ function removeFavorite() {
     favorites.pop();
 }
 
+function viewFavorite(f) {
+    let fav = favorites[f];
+    output = fav[0];
+    id1 = fav[1];
+    id2 = fav[2];
+    updateUI();
+}
+
 function patchNotes() {
     if (showPatchNotes) {
         showPatchNotes = false;
@@ -131,7 +139,7 @@ function updateUI() {
 
     favoritesList.innerHTML = "<ul>";
     for (f in favorites) {
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f][0] + "</ul>";
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button></ul>';
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 
