@@ -2,6 +2,8 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
+const notes = "New in Update 1.1:<br>-Added patch notes";
+
 var Names = names.split("\n");
 var output = "";
 
@@ -11,6 +13,8 @@ var barrel2 = document.getElementById("barrel2");
 var favoritesList = document.getElementById("favoritesList");
 var pic1 = document.getElementById("pic1");
 var pic2 = document.getElementById("pic2");
+var patchNotesText = document.getElementById("patchNotesText");
+var notesButton = document.getElementById("notesButton");
 
 var name1 = "";
 var name2 = "";
@@ -20,6 +24,8 @@ var fullname2 = "";
 
 var id1 = 0;
 var id2 = 0;
+
+var showPatchNotes = false;
 
 var favorites = [];
 
@@ -102,6 +108,19 @@ function addFavorite() {
 
 function removeFavorite() {
     favorites.pop();
+}
+
+function patchNotes() {
+    if (showPatchNotes) {
+        showPatchNotes = false;
+        patchNotesText.innerHTML = "";
+        notesButton.innerHTML = "Show patch notes";
+    }
+    else {
+        showPatchNotes = true;
+        patchNotesText.innerHTML = '<br /> <div class="resultStyle"> ' + notes + ' </div>';
+        notesButton.innerHTML = "Hide";
+    }
 }
 
 function updateUI() {
