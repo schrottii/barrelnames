@@ -118,7 +118,7 @@ function patchNotes() {
     }
     else {
         showPatchNotes = true;
-        patchNotesText.innerHTML = '<br /> <div class="resultStyle"> ' + notes + ' </div>';
+        patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px"> ' + notes + ' </div>';
         notesButton.innerHTML = "Hide";
     }
 }
