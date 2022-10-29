@@ -2,7 +2,7 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = "New in Update 1.1:<br>-Added patch notes";
+const notes = 'New in Update 1.1:<br>-Added patch notes<br>-Added "View" and "Remove" buttons for favorites!<br>-Removed "Remove latest favorite" button<br>-Added "Go back" button (to load the previous combination)';
 
 var Names = names.split("\n");
 var output = "";
@@ -29,6 +29,7 @@ var showPatchNotes = false;
 
 var favorites = [];
 var prev = [];
+var prefull = [0, 0];
 
 // Remove the numbers (multis have to be removed manually)
 for (n = 0; n < Names.length; n++){
@@ -45,6 +46,7 @@ function pickAName(number=0) {
 // Name 1
 function generateFrontName() {
     let name = pickAName(1);
+    prefull[0] = fullname1;
     fullname1 = name;
     let splittedName = name.split(" ");
     name = splittedName[0];
@@ -58,6 +60,7 @@ function generateFrontName() {
 // Name 2
 function generateBackName() {
     let name = pickAName(2);
+    prefull[1] = fullname2;
     fullname2 = name;
     let splittedName = name.split(" ");
     name = splittedName[splittedName.length - 1];
@@ -70,6 +73,7 @@ function generateBackName() {
 
 function generateCombination() {
     prev = [name1, name2, output];
+    console.log(prev);
     name1 = generateFrontName();
     name2 = generateBackName();
 
