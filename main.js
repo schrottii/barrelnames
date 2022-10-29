@@ -28,6 +28,7 @@ var id2 = 0;
 var showPatchNotes = false;
 
 var favorites = [];
+var prev = [];
 
 // Remove the numbers (multis have to be removed manually)
 for (n = 0; n < Names.length; n++){
@@ -68,10 +69,24 @@ function generateBackName() {
 }
 
 function generateCombination() {
+    prev = [name1, name2, output];
     name1 = generateFrontName();
     name2 = generateBackName();
 
     output = name1 + " " + name2;
+}
+
+function goBack() {
+    name1 = prev[0];
+    name2 = prev[1];
+    output = prev[2];
+
+    for (b = 0; b < Names.length; b++) {
+        let splittedName = Names[b].split(" ");
+        if (splittedName[0][0] == prev[0].split(" ")[0]) id1 = b;
+        if (splittedName[0][splittedName.length - 1] == prev[1].split(" ")[prev[1].length - 1]) id2 = b;
+    }
+    updateUI();
 }
 
 function loadSave() {
@@ -106,8 +121,9 @@ function addFavorite() {
     if(output != "") favorites.push([output, id1, id2]);
 }
 
-function removeFavorite() {
-    favorites.pop();
+function removeFavorite(f) {
+    favorites.splice(f, 1);
+    updateUI();
 }
 
 function viewFavorite(f) {
@@ -139,7 +155,7 @@ function updateUI() {
 
     favoritesList.innerHTML = "<ul>";
     for (f in favorites) {
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button></ul>';
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 
