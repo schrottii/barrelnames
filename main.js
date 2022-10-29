@@ -2,6 +2,8 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
+const notes = 'New in Update 1.1:<br>- Added patch notes<br>- Added "View" and "Remove" buttons for favorites<br>- Removed "Remove latest favorite" button<br>- Added "Go back" button (to load the previous combination)<br>- Reduced space between favorites<br>- Fixed barrel 343 not loading';
+
 var Names = names.split("\n");
 var output = "";
 
@@ -11,6 +13,8 @@ var barrel2 = document.getElementById("barrel2");
 var favoritesList = document.getElementById("favoritesList");
 var pic1 = document.getElementById("pic1");
 var pic2 = document.getElementById("pic2");
+var patchNotesText = document.getElementById("patchNotesText");
+var notesButton = document.getElementById("notesButton");
 
 var name1 = "";
 var name2 = "";
@@ -21,7 +25,11 @@ var fullname2 = "";
 var id1 = 0;
 var id2 = 0;
 
+var showPatchNotes = false;
+
 var favorites = [];
+var prev = [];
+var prefull = [0, 0];
 
 // Remove the numbers (multis have to be removed manually)
 for (n = 0; n < Names.length; n++){
@@ -38,6 +46,7 @@ function pickAName(number=0) {
 // Name 1
 function generateFrontName() {
     let name = pickAName(1);
+    prefull[0] = fullname1;
     fullname1 = name;
     let splittedName = name.split(" ");
     name = splittedName[0];
@@ -51,6 +60,7 @@ function generateFrontName() {
 // Name 2
 function generateBackName() {
     let name = pickAName(2);
+    prefull[1] = fullname2;
     fullname2 = name;
     let splittedName = name.split(" ");
     name = splittedName[splittedName.length - 1];
@@ -62,10 +72,27 @@ function generateBackName() {
 }
 
 function generateCombination() {
+    prev = [name1, name2, output];
+
     name1 = generateFrontName();
     name2 = generateBackName();
 
     output = name1 + " " + name2;
+}
+
+function goBack() {
+    name1 = prev[0];
+    name2 = prev[1];
+    output = prev[2];
+
+    fullname1 = prefull[0];
+    fullname2 = prefull[1];
+
+    for (b = 0; b < Names.length; b++) {
+        if (Names[b] == prefull[0]) id1 = b;
+        if (Names[b] == prefull[1]) id2 = b;
+    }
+    updateUI();
 }
 
 function loadSave() {
@@ -100,8 +127,38 @@ function addFavorite() {
     if(output != "") favorites.push([output, id1, id2]);
 }
 
-function removeFavorite() {
-    favorites.pop();
+function removeFavorite(f) {
+    favorites.splice(f, 1);
+    updateUI();
+}
+
+function viewFavorite(f) {
+    let fav = favorites[f];
+
+    prev = [name1, name2, output];
+    prefull = [Names[id1], Names[id2]];
+
+    output = fav[0];
+    id1 = fav[1];
+    id2 = fav[2];
+
+    fullname1 = Names[id1];
+    fullname2 = Names[id2];
+
+    updateUI();
+}
+
+function patchNotes() {
+    if (showPatchNotes) {
+        showPatchNotes = false;
+        patchNotesText.innerHTML = "";
+        notesButton.innerHTML = "Show patch notes";
+    }
+    else {
+        showPatchNotes = true;
+        patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px; text-align: left;"> ' + notes + ' </div>';
+        notesButton.innerHTML = "Hide";
+    }
 }
 
 function updateUI() {
@@ -112,7 +169,7 @@ function updateUI() {
 
     favoritesList.innerHTML = "<ul>";
     for (f in favorites) {
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f][0] + "</ul>";
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 

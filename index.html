@@ -25,7 +25,7 @@
 
         <button onclick="generateCombination(); updateUI();" class="buttonStyle">Mix!</button><br />
         <button onclick="addFavorite(); saveSave(); updateUI();" class="buttonStyle" style="font-size: 32px">Favorite</button><br />
-        <button onclick="removeFavorite(); saveSave(); updateUI();" class="buttonStyle" style="font-size: 32px">Remove latest favorite</button>
+        <button onclick="goBack(); saveSave(); updateUI();" class="buttonStyle" style="font-size: 32px">Go back</button>
 
     </div>
 
@@ -37,14 +37,15 @@
     <div class="creditsBox">
         Made by Schrottii ©2022
         <br />Based on Schrott Games' Scrap Clicker 2 ©2017
-        <br />Idea from 11/09/22
-        <br />Developed since 24/10/22
-        <br />Version 1.0 (27/10/22)
+        <br />Idea from 09/11/22, developed since 10/24/22
+        <br />Version 1.1 (10/29/22)
+        <button onclick="patchNotes();" class="buttonStyle" style="font-size: 24px" id="notesButton">Show patch notes</button>
+        <span id="patchNotesText"></span>
         <br />Barrel images from <a href="https://official-scrap-2.fandom.com/wiki/Barrels">the English Scrap Wiki</a>
         <br />I do not save or have access to any of your personal data, only your favorite mixed names.
         <br /><b>HOW TO USE:</b>
         <br />Just click "Mix!" It's that simple!
-        <br />Click "Favorite" to add a mixed name to your favorites, "Remove latest favorite" to remove the latest favorite.
+        <br />Click "Favorite" to add a mixed name to your favorites, "Go back" to return to the previous combination.
         <br />Use it to find funny name combinations or get inspired for new barrels!
     </div>
     <script src="file.js"></script>

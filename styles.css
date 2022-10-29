@@ -2,6 +2,10 @@ body {
     background-color: sandybrown;
 }
 
+ul {
+    margin: 0;
+}
+
 .buttonStyle{
     outline-color: saddlebrown;
     background-color: darkorange;
