@@ -141,6 +141,10 @@ function viewFavorite(f) {
     output = fav[0];
     id1 = fav[1];
     id2 = fav[2];
+
+    fullname1 = Names[id1];
+    fullname2 = Names[id2];
+
     updateUI();
 }
 
