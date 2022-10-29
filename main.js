@@ -73,7 +73,7 @@ function generateBackName() {
 
 function generateCombination() {
     prev = [name1, name2, output];
-    console.log(prev);
+
     name1 = generateFrontName();
     name2 = generateBackName();
 
@@ -89,10 +89,8 @@ function goBack() {
     fullname2 = prefull[1];
 
     for (b = 0; b < Names.length; b++) {
-        let splittedName = Names[b].split(" ");
-        if (splittedName[0][0] == prev[0].split(" ")[0]) id1 = b;
-        if (splittedName[0][splittedName.length - 1] == prev[1].split(" ")[prev[1].length - 1]) id2 = b;
-        console.log("Nr: " + b + " III " + id1 + " I " + id2);
+        if (Names[b] == prefull[0]) id1 = b;
+        if (Names[b] == prefull[1]) id2 = b;
     }
     updateUI();
 }
@@ -150,7 +148,7 @@ function patchNotes() {
     }
     else {
         showPatchNotes = true;
-        patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px"> ' + notes + ' </div>';
+        patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px text-align: left;"> ' + notes + ' </div>';
         notesButton.innerHTML = "Hide";
     }
 }
