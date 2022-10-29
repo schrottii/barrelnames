@@ -2,7 +2,7 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.1:<br>-Added patch notes<br>-Added "View" and "Remove" buttons for favorites!<br>-Removed "Remove latest favorite" button<br>-Added "Go back" button (to load the previous combination)';
+const notes = 'New in Update 1.1:<br>- Added patch notes<br>- Added "View" and "Remove" buttons for favorites<br>- Removed "Remove latest favorite" button<br>- Added "Go back" button (to load the previous combination)<br>- Reduced space between favorites<br>- Fixed barrel 343 not loading';
 
 var Names = names.split("\n");
 var output = "";
@@ -134,6 +134,10 @@ function removeFavorite(f) {
 
 function viewFavorite(f) {
     let fav = favorites[f];
+
+    prev = [name1, name2, output];
+    prefull = [Names[id1], Names[id2]];
+
     output = fav[0];
     id1 = fav[1];
     id2 = fav[2];
@@ -148,7 +152,7 @@ function patchNotes() {
     }
     else {
         showPatchNotes = true;
-        patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px text-align: left;"> ' + notes + ' </div>';
+        patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px; text-align: left;"> ' + notes + ' </div>';
         notesButton.innerHTML = "Hide";
     }
 }
