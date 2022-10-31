@@ -166,6 +166,16 @@ function patchNotes() {
 function changePage(p) {
     if (p == 0) favoritesPage = 0;
     else favoritesPage = Math.max(0, favoritesPage + p);
+    updateFavorites();
+}
+
+function updateFavorites() {
+    favoritesList.innerHTML = "<ul>";
+    for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
+        if (f > favorites.length - 1) continue;
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + f + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
+    }
+    favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 }
 
 function updateUI() {
@@ -174,13 +184,7 @@ function updateUI() {
     barrel1.innerHTML = fullname1 + "  -->";
     barrel2.innerHTML = "<--  " + fullname2;
 
-    favoritesList.innerHTML = "<ul>";
-    for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
-        if (f > favorites.length - 1) continue;
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + f + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
-    }
-    favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
-
+    updateFavorites();
 
     pic1.src = "barrels/" + (id1 > 177 ? "B" : "b") + "arrel_" + Math.max(1, id1) + ".png";
     pic2.src = "barrels/" + (id2 > 177 ? "B" : "b") + "arrel_" + Math.max(1, id2) + ".png";
