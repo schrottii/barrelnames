@@ -26,6 +26,11 @@ ul {
     text-align: right;
 }
 
+.favoritesBox {
+    text-align: center;
+    background-color: burlywood;
+}
+
 .barrelleft {
     position: absolute;
     left: 25px;

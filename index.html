@@ -28,24 +28,26 @@
         <button onclick="goBack(); saveSave(); updateUI();" class="buttonStyle" style="font-size: 32px">Go back</button>
 
     </div>
-
-    <h4>Favorites</h4>
+    
+    <div class="favoritesBox">
+    <h3>Favorites</h3><span id="favoritesCurrentPage"></span>
     <span id="favoritesList">0</span>
 
-    <button onclick="changePage(0);" class="buttonStyle" style="font-size: 20px">First Page</button><br />
+    <button onclick="changePage(0);" class="buttonStyle" style="font-size: 20px">First Page</button>
     <button onclick="changePage(-1);" class="buttonStyle" style="font-size: 24px">Previous Page</button>
-    <button onclick="changePage(1);" class="buttonStyle" style="font-size: 24px">Next Page</button><br />
+    <button onclick="changePage(1);" class="buttonStyle" style="font-size: 24px">Next Page</button>
     <button onclick="changePage(999);" class="buttonStyle" style="font-size: 20px">Last Page</button>
+        </div>
     <br /><br /><br /><br />
 
     <div class="creditsBox">
         Made by Schrottii ©2022
         <br />Based on Schrott Games' Scrap Clicker 2 ©2017
         <br />Idea from 09/11/22, developed since 10/24/22
-        <br />Version 1.1 (10/29/22)
+        <br />Version 1.2 (10/31/22)
         <button onclick="patchNotes();" class="buttonStyle" style="font-size: 24px" id="notesButton">Show patch notes</button>
         <span id="patchNotesText"></span>
-        <br />Barrel images from <a href="https://official-scrap-2.fandom.com/wiki/Barrels">the English Scrap Wiki</a>
+        <br />Barrel images from <a href="https://official-scrap-2.fandom.com/wiki/Barrels">the English Scrap Wiki</a>, flags from Wikipedia
         <br />I do not save or have access to any of your personal data, only your favorite mixed names.
         <br /><b>HOW TO USE:</b>
         <br />Just click "Mix!" It's that simple!

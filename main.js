@@ -2,7 +2,7 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.2:<br>- Added pages for favorites!<br>- Added buttons to go to the next, previous, first or last page<br>- Reduced size of the view and remove buttons';
+const notes = 'New in Update 1.2:<br>- Added pages for favorites!<br>- Added buttons to go to the next, previous, first or last page<br>- Made favorites section prettier';
 
 var Names = names_en.split("\n");
 var output = "";
@@ -15,6 +15,7 @@ var pic1 = document.getElementById("pic1");
 var pic2 = document.getElementById("pic2");
 var patchNotesText = document.getElementById("patchNotesText");
 var notesButton = document.getElementById("notesButton");
+var favoritesCurrentPage = document.getElementById("favoritesCurrentPage");
 
 var name1 = "";
 var name2 = "";
@@ -177,6 +178,7 @@ function updateFavorites() {
         favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 16px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
+    favoritesCurrentPage.innerHTML = "(Page " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
 }
 
 function updateUI() {
