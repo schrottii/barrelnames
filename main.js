@@ -2,9 +2,10 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.2:<br>- Added pages for favorites!<br>- Added buttons to go to the next, previous, first or last page<br>- Made favorites section prettier';
+const notes = 'New in Update 1.2:<br>- Added pages for favorites!<br>- Added buttons to go to the next, previous, first or last page<br>- Made favorites section prettier<br>- Added support for barrel names in different languages!<br>- Added flags to change the language<br>- Added Ukrainian, Italian and Russian';
 
-var Names = names_en.split("\n");
+var Names;
+var lang = "en";
 var output = "";
 
 var putout = document.getElementById("output");
@@ -16,6 +17,7 @@ var pic2 = document.getElementById("pic2");
 var patchNotesText = document.getElementById("patchNotesText");
 var notesButton = document.getElementById("notesButton");
 var favoritesCurrentPage = document.getElementById("favoritesCurrentPage");
+var currentLanguage = document.getElementById("currentLanguage");
 
 var name1 = "";
 var name2 = "";
@@ -33,11 +35,6 @@ var showPatchNotes = false;
 var favorites = [];
 var prev = [];
 var prefull = [0, 0];
-
-// Remove the numbers (multis have to be removed manually)
-for (n = 0; n < Names.length; n++){
-    Names[n] = Names[n].replace(/^[^_]*: /, "")
-}
 
 function pickAName(number=0) {
     let num = Math.floor(Math.random() * (Names.length - 1)) + 1;
@@ -164,6 +161,38 @@ function patchNotes() {
     }
 }
 
+function changeLanguage(langTo) {
+    lang = langTo;
+    preloadNames();
+}
+
+function preloadNames() {
+    switch (lang) {
+        case "en":
+            Names = names_en.split("\n");
+            currentLanguage.innerHTML = "Current Language: English";
+            break;
+        case "uk":
+            Names = names_uk.split("\n");
+            currentLanguage.innerHTML = "Current Language: Ukrainian";
+            break
+        case "it":
+            Names = names_it.split("\n");
+            currentLanguage.innerHTML = "Current Language: Italian";
+            break;
+        case "ru":
+            Names = names_ru.split("\n");
+            currentLanguage.innerHTML = "Current Language: Russian";
+            break
+    }
+
+    // Remove the numbers (multis have to be removed manually)
+    for (n = 0; n < Names.length; n++) {
+        Names[n] = Names[n].replace(/^[^_]*: /, "")
+    }
+    
+}
+
 function changePage(p) {
     if (p == 0) favoritesPage = 0;
     if (p == 999) favoritesPage = Math.floor((favorites.length - 1) / 25);
@@ -193,5 +222,6 @@ function updateUI() {
     pic2.src = "barrels/" + (id2 > 177 ? "B" : "b") + "arrel_" + Math.max(1, id2) + ".png";
 }
 
+preloadNames();
 loadSave();
 updateUI();

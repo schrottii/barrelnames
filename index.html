@@ -37,7 +37,7 @@
     <button onclick="changePage(-1);" class="buttonStyle" style="font-size: 24px">Previous Page</button>
     <button onclick="changePage(1);" class="buttonStyle" style="font-size: 24px">Next Page</button>
     <button onclick="changePage(999);" class="buttonStyle" style="font-size: 20px">Last Page</button>
-        </div>
+    </div>
     <br /><br /><br /><br />
 
     <div class="creditsBox">
@@ -53,8 +53,18 @@
         <br />Just click "Mix!" It's that simple!
         <br />Click "Favorite" to add a mixed name to your favorites, "Go back" to return to the previous combination.
         <br />Use it to find funny name combinations or get inspired for new barrels!
-    </div>
+    </div><br />
+          <div class="favoritesBox" style="width: 50%">
+              <span id="currentLanguage"></span><br />
+              <img src="us.png" onclick="changeLanguage('en')" class="flag" />
+              <img src="uk.png" onclick="changeLanguage('uk')" class="flag" /><br />
+              <img src="it.png" onclick="changeLanguage('it')" class="flag" />
+              <img src="ru.png" onclick="changeLanguage('ru')" class="flag" />
+          </div>
     <script type="text/javascript" src="lang\en.js"></script>
+    <script type="text/javascript" src="lang\uk.js"></script>
+    <script type="text/javascript" src="lang\it.js"></script>
+    <script type="text/javascript" src="lang\ru.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
