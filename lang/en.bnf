@@ -2,7 +2,7 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const names = `
+const names_en = `
 1: Circle Blue
 2: Square Pink
 3: Trash Can

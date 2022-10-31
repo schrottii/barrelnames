@@ -4,7 +4,7 @@
 
 const notes = 'New in Update 1.1:<br>- Added patch notes<br>- Added "View" and "Remove" buttons for favorites<br>- Removed "Remove latest favorite" button<br>- Added "Go back" button (to load the previous combination)<br>- Reduced space between favorites<br>- Fixed barrel 343 not loading';
 
-var Names = names.split("\n");
+var Names = names_it.split("\n");
 var output = "";
 
 var putout = document.getElementById("output");
