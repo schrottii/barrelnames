@@ -2,8 +2,14 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.1:<br>- Added patch notes<br>- Added "View" and "Remove" buttons for favorites<br>- Removed "Remove latest favorite" button<br>- Added "Go back" button (to load the previous combination)<br>- Reduced space between favorites<br>- Fixed barrel 343 not loading';
+const notes = 'New in Update 1.2:<br>- Added pages for favorites!<br>- Added buttons to go to the next, previous, first or last page<br>- Reduced size of the view and remove buttons';
+$.getScript("en.bnf", function () {
 
+
+    alert("Script loaded and executed.");
+    // here you can use anything you defined in the loaded script
+
+});
 var Names = names_en.split("\n");
 var output = "";
 
@@ -174,7 +180,7 @@ function updateFavorites() {
     favoritesList.innerHTML = "<ul>";
     for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
         if (f > favorites.length - 1) continue;
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 16px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 }
