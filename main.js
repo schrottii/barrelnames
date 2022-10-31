@@ -4,7 +4,7 @@
 
 const notes = 'New in Update 1.1:<br>- Added patch notes<br>- Added "View" and "Remove" buttons for favorites<br>- Removed "Remove latest favorite" button<br>- Added "Go back" button (to load the previous combination)<br>- Reduced space between favorites<br>- Fixed barrel 343 not loading';
 
-var Names = names_it.split("\n");
+var Names = names_en.split("\n");
 var output = "";
 
 var putout = document.getElementById("output");
@@ -24,6 +24,8 @@ var fullname2 = "";
 
 var id1 = 0;
 var id2 = 0;
+
+var favoritesPage = 0;
 
 var showPatchNotes = false;
 
@@ -161,6 +163,11 @@ function patchNotes() {
     }
 }
 
+function changePage(p) {
+    if (p == 0) favoritesPage = 0;
+    else favoritesPage = Math.max(0, favoritesPage + p);
+}
+
 function updateUI() {
     putout.innerHTML = output;
 
@@ -168,7 +175,8 @@ function updateUI() {
     barrel2.innerHTML = "<--  " + fullname2;
 
     favoritesList.innerHTML = "<ul>";
-    for (f in favorites) {
+    for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
+        if (f > favoritesList.length - 1) continue;
         favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
