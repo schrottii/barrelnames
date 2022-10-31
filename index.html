@@ -10,16 +10,16 @@
         <h3>Schrottii's</h3><h1>Barrel Name Mixer</h1>
         <!-- This work is copyrighted. Copying, cloning or stealing is prohibited. -->
         <br /><br />
-              <div class="resultStyle">
-                  <span id="barrel1" class="barrelleft">0</span>
-                  <span id="barrel2" class="barrelright">0</span>
-                  <br />
-                  <span id="output" style="text-align: center">0</span>
-                  <br />
-                  <img src="barrels\barrel_1.png" id="pic1" class="barrelleft" width="128">
-                  <img src="barrels\barrel_1.png" id="pic2" class="barrelright" width="128">
-                  <br />
-              </div>
+        <div class="resultStyle">
+            <span id="barrel1" class="barrelleft">0</span>
+            <span id="barrel2" class="barrelright">0</span>
+            <br />
+            <span id="output" style="text-align: center">0</span>
+            <br />
+            <img src="barrels\barrel_1.png" id="pic1" class="barrelleft" width="128">
+            <img src="barrels\barrel_1.png" id="pic2" class="barrelright" width="128">
+            <br />
+        </div>
 
         <hr style="margin-top: 172px" /><hr />
 
@@ -28,27 +28,43 @@
         <button onclick="goBack(); saveSave(); updateUI();" class="buttonStyle" style="font-size: 32px">Go back</button>
 
     </div>
-
-    <h4>Favorites</h4>
+    
+    <div class="favoritesBox">
+    <h3>Favorites</h3><span id="favoritesCurrentPage"></span>
     <span id="favoritesList">0</span>
 
+    <button onclick="changePage(0);" class="buttonStyle" style="font-size: 20px">First Page</button>
+    <button onclick="changePage(-1);" class="buttonStyle" style="font-size: 24px">Previous Page</button>
+    <button onclick="changePage(1);" class="buttonStyle" style="font-size: 24px">Next Page</button>
+    <button onclick="changePage(999);" class="buttonStyle" style="font-size: 20px">Last Page</button>
+    </div>
     <br /><br /><br /><br />
 
     <div class="creditsBox">
         Made by Schrottii ©2022
         <br />Based on Schrott Games' Scrap Clicker 2 ©2017
         <br />Idea from 09/11/22, developed since 10/24/22
-        <br />Version 1.1 (10/29/22)
+        <br />Version 1.2 (10/31/22)
         <button onclick="patchNotes();" class="buttonStyle" style="font-size: 24px" id="notesButton">Show patch notes</button>
         <span id="patchNotesText"></span>
-        <br />Barrel images from <a href="https://official-scrap-2.fandom.com/wiki/Barrels">the English Scrap Wiki</a>
+        <br />Barrel images from <a href="https://official-scrap-2.fandom.com/wiki/Barrels">the English Scrap Wiki</a>, flags from Wikipedia
         <br />I do not save or have access to any of your personal data, only your favorite mixed names.
         <br /><b>HOW TO USE:</b>
         <br />Just click "Mix!" It's that simple!
         <br />Click "Favorite" to add a mixed name to your favorites, "Go back" to return to the previous combination.
         <br />Use it to find funny name combinations or get inspired for new barrels!
-    </div>
-    <script src="file.js"></script>
+    </div><br />
+          <div class="favoritesBox" style="width: 50%">
+              <span id="currentLanguage"></span><br />
+              <img src="us.png" onclick="changeLanguage('en')" class="flag" />
+              <img src="uk.png" onclick="changeLanguage('uk')" class="flag" /><br />
+              <img src="it.png" onclick="changeLanguage('it')" class="flag" />
+              <img src="ru.png" onclick="changeLanguage('ru')" class="flag" />
+          </div>
+    <script type="text/javascript" src="lang\en.js"></script>
+    <script type="text/javascript" src="lang\uk.js"></script>
+    <script type="text/javascript" src="lang\it.js"></script>
+    <script type="text/javascript" src="lang\ru.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

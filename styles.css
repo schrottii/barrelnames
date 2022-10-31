@@ -26,6 +26,16 @@ ul {
     text-align: right;
 }
 
+.favoritesBox {
+    text-align: center;
+    background-color: burlywood;
+}
+
+.flag{
+    width: 50%;
+    max-width: 192px;
+}
+
 .barrelleft {
     position: absolute;
     left: 25px;

@@ -2,9 +2,10 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.1:<br>- Added patch notes<br>- Added "View" and "Remove" buttons for favorites<br>- Removed "Remove latest favorite" button<br>- Added "Go back" button (to load the previous combination)<br>- Reduced space between favorites<br>- Fixed barrel 343 not loading';
+const notes = 'New in Update 1.2:<br>- Added pages for favorites!<br>- Added buttons to go to the next, previous, first or last page<br>- Made favorites section prettier<br>- Added support for barrel names in different languages!<br>- Added flags to change the language<br>- Added Ukrainian, Italian and Russian';
 
-var Names = names.split("\n");
+var Names;
+var lang = "en";
 var output = "";
 
 var putout = document.getElementById("output");
@@ -15,6 +16,8 @@ var pic1 = document.getElementById("pic1");
 var pic2 = document.getElementById("pic2");
 var patchNotesText = document.getElementById("patchNotesText");
 var notesButton = document.getElementById("notesButton");
+var favoritesCurrentPage = document.getElementById("favoritesCurrentPage");
+var currentLanguage = document.getElementById("currentLanguage");
 
 var name1 = "";
 var name2 = "";
@@ -25,16 +28,13 @@ var fullname2 = "";
 var id1 = 0;
 var id2 = 0;
 
+var favoritesPage = 0;
+
 var showPatchNotes = false;
 
 var favorites = [];
 var prev = [];
 var prefull = [0, 0];
-
-// Remove the numbers (multis have to be removed manually)
-for (n = 0; n < Names.length; n++){
-    Names[n] = Names[n].replace(/^[^_]*: /, "")
-}
 
 function pickAName(number=0) {
     let num = Math.floor(Math.random() * (Names.length - 1)) + 1;
@@ -161,22 +161,67 @@ function patchNotes() {
     }
 }
 
+function changeLanguage(langTo) {
+    lang = langTo;
+    preloadNames();
+}
+
+function preloadNames() {
+    switch (lang) {
+        case "en":
+            Names = names_en.split("\n");
+            currentLanguage.innerHTML = "Current Language: English";
+            break;
+        case "uk":
+            Names = names_uk.split("\n");
+            currentLanguage.innerHTML = "Current Language: Ukrainian";
+            break
+        case "it":
+            Names = names_it.split("\n");
+            currentLanguage.innerHTML = "Current Language: Italian";
+            break;
+        case "ru":
+            Names = names_ru.split("\n");
+            currentLanguage.innerHTML = "Current Language: Russian";
+            break
+    }
+
+    // Remove the numbers (multis have to be removed manually)
+    for (n = 0; n < Names.length; n++) {
+        Names[n] = Names[n].replace(/^[^_]*: /, "")
+    }
+    
+}
+
+function changePage(p) {
+    if (p == 0) favoritesPage = 0;
+    if (p == 999) favoritesPage = Math.floor((favorites.length - 1) / 25);
+    else favoritesPage = Math.min(Math.max(0, favoritesPage + p), Math.floor((favorites.length - 1) / 25));
+    updateFavorites();
+}
+
+function updateFavorites() {
+    favoritesList.innerHTML = "<ul>";
+    for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
+        if (f > favorites.length - 1) continue;
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 16px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
+    }
+    favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
+    favoritesCurrentPage.innerHTML = "(Page " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
+}
+
 function updateUI() {
     putout.innerHTML = output;
 
     barrel1.innerHTML = fullname1 + "  -->";
     barrel2.innerHTML = "<--  " + fullname2;
 
-    favoritesList.innerHTML = "<ul>";
-    for (f in favorites) {
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
-    }
-    favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
-
+    updateFavorites();
 
     pic1.src = "barrels/" + (id1 > 177 ? "B" : "b") + "arrel_" + Math.max(1, id1) + ".png";
     pic2.src = "barrels/" + (id2 > 177 ? "B" : "b") + "arrel_" + Math.max(1, id2) + ".png";
 }
 
+preloadNames();
 loadSave();
 updateUI();
