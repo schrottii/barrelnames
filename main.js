@@ -3,13 +3,7 @@
 //
 
 const notes = 'New in Update 1.2:<br>- Added pages for favorites!<br>- Added buttons to go to the next, previous, first or last page<br>- Reduced size of the view and remove buttons';
-$.getScript("en.bnf", function () {
 
-
-    alert("Script loaded and executed.");
-    // here you can use anything you defined in the loaded script
-
-});
 var Names = names_en.split("\n");
 var output = "";
 
