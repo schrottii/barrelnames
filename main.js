@@ -176,8 +176,8 @@ function updateUI() {
 
     favoritesList.innerHTML = "<ul>";
     for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
-        if (f > favoritesList.length - 1) continue;
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul>" + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
+        if (f > favorites.length - 1) continue;
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + f + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
 
