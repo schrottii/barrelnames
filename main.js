@@ -292,6 +292,7 @@ for (let image in images) {
     images[image] = img;
     img.onload = () => {
         loadedImages += 1;
+        output.innerHTML = "Loading images, please wait... " + loadedImages + "/594";
         if (loadedImages == 594) {
             // All images loaded
             updateUI();
