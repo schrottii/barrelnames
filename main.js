@@ -2,10 +2,15 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.2:<br>- Added pages for favorites!<br>- Added buttons to go to the next, previous, first or last page<br>- Made favorites section prettier<br>- Added support for barrel names in different languages!<br>- Added flags to change the language<br>- Added Ukrainian, Italian and Russian';
+const notes = 'New in Update 1.3:<br>- Added mixed images!<br>- Turned on by default, can be turned off in the settings<br>- Added four mix types: Left / Right, Top / Bottom, Fusion and Random!<br>- Mix type can be changed in the settings<br>- On PC, the mixed images can be saved with right click<br>- The selected language is now kept after closing the name mixer';
+
+var canvas = document.getElementById("canvie");
+var ctx = canvas.getContext("2d");
+
+const SX = 256;
+const SY = 256;
 
 var Names;
-var lang = "en";
 var output = "";
 
 var putout = document.getElementById("output");
@@ -18,6 +23,9 @@ var patchNotesText = document.getElementById("patchNotesText");
 var notesButton = document.getElementById("notesButton");
 var favoritesCurrentPage = document.getElementById("favoritesCurrentPage");
 var currentLanguage = document.getElementById("currentLanguage");
+
+var setb1 = document.getElementById("setb1");
+var setb2 = document.getElementById("setb2");
 
 var name1 = "";
 var name2 = "";
@@ -33,6 +41,14 @@ var favoritesPage = 0;
 var showPatchNotes = false;
 
 var favorites = [];
+
+var settings = {
+    lang: "en",
+    miximg: true,
+    mixtype: 0,
+}
+
+var images = [];
 var prev = [];
 var prefull = [0, 0];
 
@@ -99,9 +115,20 @@ function loadSave() {
     let temp = JSON.parse(localStorage.getItem("NameMixer"));
 
     if (temp != null) {
-        if (typeof (temp[0]) != "object") {
-            for (t in temp) {
-                let thisName = temp[t].split(" ");
+        let loadFavs;
+
+        if (temp[0] == undefined) {
+            loadFavs = temp.fav;
+            for (s in temp.set) {
+                settings[s] = temp.set[s];
+            }
+        }
+        else {
+            loadFavs = temp;
+        }
+        if (typeof (loadFavs[0]) != "object") {
+            for (t in loadFavs) {
+                let thisName = loadFavs[t].split(" ");
                 let b1;
                 let b2;
                 for (b = 0; b < Names.length; b++) {
@@ -111,15 +138,18 @@ function loadSave() {
                     splittedName = Names[b].split(" ");
                     if (splittedName[splittedName.length - 1] == thisName[thisName.length - 1]) b2 = b;
                 }
-                temp[t] = [temp[t], b1, b2];
+                loadFavs[t] = [loadFavs[t], b1, b2];
             }
         }
-        favorites = temp;
+        favorites = loadFavs;
         }
 }
 
 function saveSave() {
-    let strn = JSON.stringify(favorites);
+    let strn = JSON.stringify({
+        "fav": favorites,
+        "set": settings
+    });
     localStorage.setItem("NameMixer", strn);
 }
 
@@ -162,12 +192,13 @@ function patchNotes() {
 }
 
 function changeLanguage(langTo) {
-    lang = langTo;
+    settings.lang = langTo;
     preloadNames();
+    saveSave();
 }
 
 function preloadNames() {
-    switch (lang) {
+    switch (settings.lang) {
         case "en":
             Names = names_en.split("\n");
             currentLanguage.innerHTML = "Current Language: English";
@@ -210,18 +241,129 @@ function updateFavorites() {
     favoritesCurrentPage.innerHTML = "(Page " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
 }
 
+function toggleCanvas() {
+    if (settings.miximg == true) {
+        settings.miximg = false;
+        setb1.innerHTML = "Mixed images: OFF";
+    }
+    else {
+        settings.miximg = true;
+        setb1.innerHTML = "Mixed images: ON";
+    }
+    saveSave();
+}
+
+function toggleMixType() {
+    switch (settings.mixtype) {
+        case 0:
+            settings.mixtype = 1;
+            setb2.innerHTML = "Mix Type: Top / Bottom";
+            break;
+        case 1:
+            settings.mixtype = 2;
+            setb2.innerHTML = "Mix Type: Fusion";
+            break;
+        case 2:
+            settings.mixtype = 3;
+            setb2.innerHTML = "Mix Type: Random";
+            break;
+        case 3:
+            settings.mixtype = 0;
+            setb2.innerHTML = "Mix Type: Left / Right";
+            break;
+    }
+    saveSave();
+}
+
+function getFile(num) {
+    return "barrels/" + (num > 177 ? "B" : "b") + "arrel_" + Math.max(1, num) + ".png";
+}
+
+// Canvas stuff
+for (i = 1; i < 595; i++) {
+    images["barrel" + i] = getFile(i);
+}
+
+let loadedImages = 0;
+
+for (let image in images) {
+    let img = new Image();
+    img.src = images[image];
+    images[image] = img;
+    img.onload = () => {
+        loadedImages += 1;
+        if (loadedImages == 594) {
+            // All images loaded
+            updateUI();
+            updateFavorites();
+        }
+    }
+}
+
+function clearCanvas() {
+    ctx.clearRect(0, 0, SX, SY);
+}
+
+function drawSides(b1, b2) {
+    let p1 = images["barrel" + b1];
+    let p2 = images["barrel" + b2];
+
+    ctx.drawImage(p1, 0, 0, p1.width / 2, SY, 128 - p1.width / 2, 0, p1.width / 2, SY);
+    ctx.drawImage(p2, p2.width / 2, 0, p1.width / 2, SY, 128, 0, p2.width / 2, SY);
+    //ctx.fillRect(128, 0, 1, 256);
+}
+
+function drawStacked(b1, b2) {
+    let p1 = images["barrel" + b1];
+    let p2 = images["barrel" + b2];
+
+    ctx.drawImage(p1, 0, 0, SX, p1.height / 2, 128 - p1.width / 2, 128 - p1.height / 2, SX, p1.height / 2);
+    ctx.drawImage(p2, 0, p2.height / 2, SX, p1.height / 2, 128 - p2.width / 2, 128, SX, p2.height / 2);
+}
+
+function drawBlend(b1, b2) {
+    let p1 = images["barrel" + b1];
+    let p2 = images["barrel" + b2];
+
+    ctx.globalAlpha = 1;
+    ctx.drawImage(p1, 0, 0, p1.width, p1.height, 128 - p1.width / 2, 0, p1.width, SY);
+    ctx.globalAlpha = 0.5;
+    ctx.drawImage(p2, 0, 0, p2.width, p2.height, 128 - p2.width / 2, 0, p2.width, SY);
+    ctx.globalAlpha = 1;
+}
+
+// Update UI
+
 function updateUI() {
     putout.innerHTML = output;
 
     barrel1.innerHTML = fullname1 + "  -->";
     barrel2.innerHTML = "<--  " + fullname2;
 
-    updateFavorites();
+    clearCanvas();
+    if (id1 > 0 && id2 > 0 && settings.miximg) {
+        switch (settings.mixtype) {
+            case 0:
+                drawSides(id1, id2);
+                break;
+            case 1:
+                drawStacked(id1, id2);
+                break;
+            case 2:
+                drawBlend(id1, id2);
+                break;
+            case 3:
+                let rand = Math.random() * 100;
+                if (rand > 66) drawSides(id1, id2);
+                else if (rand > 33) drawStacked(id1, id2);
+                else drawBlend(id1, id2);
+                break;
+        }
+    }
 
-    pic1.src = "barrels/" + (id1 > 177 ? "B" : "b") + "arrel_" + Math.max(1, id1) + ".png";
-    pic2.src = "barrels/" + (id2 > 177 ? "B" : "b") + "arrel_" + Math.max(1, id2) + ".png";
+    pic1.src = getFile(id1);
+    pic2.src = getFile(id2);
 }
 
-preloadNames();
 loadSave();
-updateUI();
+preloadNames();
