@@ -235,7 +235,7 @@ function updateFavorites() {
     favoritesList.innerHTML = "<ul>";
     for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
         if (f > favorites.length - 1) continue;
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 16px">View</button>                   <button onclick="removeFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
+        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 16px">View</button>                   <button onclick="removeFavorite(' + f + '); updateFavorites();" class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
     favoritesCurrentPage.innerHTML = "(Page " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
