@@ -292,32 +292,37 @@ for (i = 1; i < 595; i++) {
 let imgC = [];
 let loadedImages = 0;
 
-for (let image in images) {
-    imgC.push(new Image());
-    let img = imgC[imgC.length - 1];
-    img.src = images[image];
-    images[image] = img;
-    img.onload = () => {
-        console.log("loaded")
-        loadedImages += 1;
-        putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
-        if (loadedImages == BARRELS) {
-            // All images loaded
-            console.log(imgC)
-            updateUI();
-            updateFavorites();
-        }
-    }
-}
-
+console.log("time to load this");
 
 caches
     .open("v1")
     .then((cache) =>
         cache.addAll([
             images
-        ])
-)
+        ]),
+        console.log("loaded", cache, images);
+    )
+
+console.log("over");
+
+for (let image in images) {
+    imgC.push(new Image());
+    let img = imgC[imgC.length - 1];
+    img.src = images[image];
+    images[image] = img;
+    img.onload = () => {
+        console.log("loaded");
+        loadedImages += 1;
+        putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
+        if (loadedImages == BARRELS) {
+            // All images loaded
+            console.log(imgC);
+            updateUI();
+            updateFavorites();
+        }
+    }
+}
+
 
 function clearCanvas() {
     ctx.clearRect(0, 0, SX, SY);
