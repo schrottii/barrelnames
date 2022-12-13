@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/barrels/Barrel_555.png",
+      "source": "/barrels/*.png",
       "headers": [
         {
           "key": "Cache-Control",
