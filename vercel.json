@@ -1,0 +1,22 @@
+{
+  "headers": [
+    {
+      "source": "/barrels/b.+",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=9999"
+        }
+      ]
+    },
+    {
+      "source": "/barrels/B.+",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=9999"
+        }
+      ]
+    }
+  ]
+}
