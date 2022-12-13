@@ -56,7 +56,7 @@ var prefull = [0, 0];
 
 const myHeaders = new Headers(); // Currently empty
 
-myHeaders.append('Cache-Control', 's-maxage=2592000');
+myHeaders.append('cache-control', 'public, max-age=2592000');
 
 
 function pickAName(number = 0) {
