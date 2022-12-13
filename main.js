@@ -54,6 +54,11 @@ var images = [];
 var prev = [];
 var prefull = [0, 0];
 
+const myHeaders = new Headers(); // Currently empty
+
+myHeaders.append('Cache-Control', 's-maxage=N');
+
+
 function pickAName(number = 0) {
     let num = Math.floor(Math.random() * (Names.length - 1)) + 1;
     if (number == 1) id1 = num;
