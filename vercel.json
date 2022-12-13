@@ -1,19 +1,13 @@
 {
   "headers": [
     {
-      "source": "/barrels/barrel_35.png",
+      "source": "/barrels/b.+",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=2592000, must-revalidate"
+          "value": "public, max-age=0"
         }
       ]
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/test",
-      "destination": "/index.html"
     }
   ]
 }
