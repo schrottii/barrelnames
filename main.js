@@ -300,7 +300,7 @@ caches
         cache.addAll([
             images
         ]),
-        console.log("loaded", cache, images);
+        console.log("loaded", cache, images)
     )
 
 console.log("over");
