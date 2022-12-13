@@ -285,8 +285,10 @@ for (i = 1; i < 595; i++) {
 }
 
 let loadedImages = 0;
-
+let iodhg = 0;
 for (let image in images) {
+    iodhg++;
+    if (iodhg > 299) return false;
     let img = new Image();
     img.src = images[image];
     images[image] = img;
