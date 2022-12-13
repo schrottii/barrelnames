@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/barrels/(*)",
+      "source": "/barrels/b.+",
       "headers": [
         {
           "key": "Cache-Control",
