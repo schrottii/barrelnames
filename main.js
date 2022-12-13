@@ -287,16 +287,17 @@ for (i = 1; i < 595; i++) {
 }
 
 let loadedImages = 0;
+let loadedIDs = [];
 
 for (let image in images) {
     let img = new Image();
     img.onload = () => {
         images[image] = img;
         loadedImages += 1;
-        putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
+        loadedIDs.push(image);
+        //putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
         if (loadedImages == BARRELS) {
             // All images loaded
-
             updateUI();
             updateFavorites();
         }
@@ -346,7 +347,8 @@ function updateUI() {
     barrel2.innerHTML = "<--  " + fullname2;
 
     // Image stuff
-    if (typeof (images[getFile(id1)]) != "string" && typeof (images[getFile(id2)]) != "string") {
+    console.log(loadedIDs.includes("barrel" + id1));
+    if (loadedIDs.includes("barrel" + id1) && loadedIDs.includes("barrel" + id2)) {
         clearCanvas();
         if (id1 > 0 && id2 > 0 && settings.miximg) {
             switch (settings.mixtype) {
