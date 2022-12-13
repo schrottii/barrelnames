@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/barrels/b.+",
+      "source": "/barrels/barrel_35.png",
       "headers": [
         {
           "key": "Cache-Control",
@@ -12,7 +12,7 @@
   ],
   "redirects": [
     {
-      "source": "/main.js",
+      "source": "/test",
       "destination": "/index.html"
     }
   ]
