@@ -10,6 +10,8 @@ var ctx = canvas.getContext("2d");
 const SX = 256;
 const SY = 256;
 
+const BARRELS = 594;
+
 var Names;
 var output = "";
 
@@ -52,7 +54,7 @@ var images = [];
 var prev = [];
 var prefull = [0, 0];
 
-function pickAName(number=0) {
+function pickAName(number = 0) {
     let num = Math.floor(Math.random() * (Names.length - 1)) + 1;
     if (number == 1) id1 = num;
     if (number == 2) id2 = num;
@@ -142,7 +144,7 @@ function loadSave() {
             }
         }
         favorites = loadFavs;
-        }
+    }
 }
 
 function saveSave() {
@@ -154,7 +156,7 @@ function saveSave() {
 }
 
 function addFavorite() {
-    if(output != "") favorites.push([output, id1, id2]);
+    if (output != "") favorites.push([output, id1, id2]);
 }
 
 function removeFavorite(f) {
@@ -221,7 +223,7 @@ function preloadNames() {
     for (n = 0; n < Names.length; n++) {
         Names[n] = Names[n].replace(/^[^_]*: /, "")
     }
-    
+
 }
 
 function changePage(p) {
@@ -284,17 +286,21 @@ for (i = 1; i < 595; i++) {
     images["barrel" + i] = getFile(i);
 }
 
+let imgC = [];
 let loadedImages = 0;
 
 for (let image in images) {
-    let img = new Image();
+    imgC.push(new Image());
+    let img = imgC[imgC.length - 1];
     img.src = images[image];
     images[image] = img;
     img.onload = () => {
+        console.log("loaded")
         loadedImages += 1;
-        putout.innerHTML = "Loading images, please wait... " + loadedImages + "/594";
-        if (loadedImages == 594) {
+        putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
+        if (loadedImages == BARRELS) {
             // All images loaded
+            console.log(imgC)
             updateUI();
             updateFavorites();
         }
