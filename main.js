@@ -10,6 +10,8 @@ var ctx = canvas.getContext("2d");
 const SX = 256;
 const SY = 256;
 
+const BARRELS = 594; // Amount of barrels
+
 var Names;
 var output = "";
 
@@ -48,12 +50,12 @@ var settings = {
     mixtype: 0,
 }
 
-var images = [];
+var images = {};
 var prev = [];
 var prefull = [0, 0];
 
 function pickAName(number=0) {
-    let num = Math.floor(Math.random() * (Names.length - 1)) + 1;
+    let num = Math.floor(Math.random() * (Names.length - 2)) + 1;
     if (number == 1) id1 = num;
     if (number == 2) id2 = num;
     return Names[num];
@@ -289,12 +291,12 @@ let loadedImages = 0;
 for (let image in images) {
     let img = new Image();
     img.onload = () => {
-        console.log("loaded")
         images[image] = img;
         loadedImages += 1;
-        putout.innerHTML = "Loading images, please wait... " + loadedImages + "/594";
-        if (loadedImages == 594) {
+        putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
+        if (loadedImages == BARRELS) {
             // All images loaded
+
             updateUI();
             updateFavorites();
         }
@@ -343,29 +345,32 @@ function updateUI() {
     barrel1.innerHTML = fullname1 + "  -->";
     barrel2.innerHTML = "<--  " + fullname2;
 
-    clearCanvas();
-    if (id1 > 0 && id2 > 0 && settings.miximg) {
-        switch (settings.mixtype) {
-            case 0:
-                drawSides(id1, id2);
-                break;
-            case 1:
-                drawStacked(id1, id2);
-                break;
-            case 2:
-                drawBlend(id1, id2);
-                break;
-            case 3:
-                let rand = Math.random() * 100;
-                if (rand > 66) drawSides(id1, id2);
-                else if (rand > 33) drawStacked(id1, id2);
-                else drawBlend(id1, id2);
-                break;
+    // Image stuff
+    if (typeof (images[getFile(id1)]) != "string" && typeof (images[getFile(id2)]) != "string") {
+        clearCanvas();
+        if (id1 > 0 && id2 > 0 && settings.miximg) {
+            switch (settings.mixtype) {
+                case 0:
+                    drawSides(id1, id2);
+                    break;
+                case 1:
+                    drawStacked(id1, id2);
+                    break;
+                case 2:
+                    drawBlend(id1, id2);
+                    break;
+                case 3:
+                    let rand = Math.random() * 100;
+                    if (rand > 66) drawSides(id1, id2);
+                    else if (rand > 33) drawStacked(id1, id2);
+                    else drawBlend(id1, id2);
+                    break;
+            }
         }
-    }
 
-    pic1.src = getFile(id1);
-    pic2.src = getFile(id2);
+        pic1.src = getFile(id1);
+        pic2.src = getFile(id2);
+    }
 }
 
 loadSave();
