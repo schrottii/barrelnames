@@ -54,10 +54,6 @@ var images = [];
 var prev = [];
 var prefull = [0, 0];
 
-const myHeaders = new Headers(); // Currently empty
-
-myHeaders.set('cache-control', 'public, max-age=2592000');
-
 
 function pickAName(number = 0) {
     let num = Math.floor(Math.random() * (Names.length - 1)) + 1;
@@ -313,6 +309,15 @@ for (let image in images) {
         }
     }
 }
+
+
+caches
+    .open("v1")
+    .then((cache) =>
+        cache.addAll([
+            images
+        ])
+)
 
 function clearCanvas() {
     ctx.clearRect(0, 0, SX, SY);
