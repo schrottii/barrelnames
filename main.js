@@ -282,6 +282,8 @@ function getFile(num) {
 }
 
 // Canvas stuff
+
+// Set the names, e. g. barrel1 to barrel_1.png (will later be replaced by the img)
 for (i = 1; i < 595; i++) {
     images["barrel" + i] = getFile(i);
 }
