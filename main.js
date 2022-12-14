@@ -267,20 +267,7 @@ function toggleCanvas() {
 }
 
 function toggleMixType() {
-    switch (settings.mixtype) {
-        case 0:
-            settings.mixtype = 1;
-            break;
-        case 1:
-            settings.mixtype = 2;
-            break;
-        case 2:
-            settings.mixtype = 3;
-            break;
-        case 3:
-            settings.mixtype = 0;
-            break;
-    }
+    settings.mixtype = ++settings.mixtype % 4;
     updateSettingsDisplay();
     saveSave();
 }
