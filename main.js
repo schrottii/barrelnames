@@ -258,12 +258,11 @@ function showFavorites() {
 function toggleCanvas() {
     if (settings.miximg == true) {
         settings.miximg = false;
-        setb1.innerHTML = "Mixed images: OFF";
     }
     else {
         settings.miximg = true;
-        setb1.innerHTML = "Mixed images: ON";
     }
+    updateSettingsDisplay();
     saveSave();
 }
 
@@ -271,21 +270,18 @@ function toggleMixType() {
     switch (settings.mixtype) {
         case 0:
             settings.mixtype = 1;
-            setb2.innerHTML = "Mix Type: Top / Bottom";
             break;
         case 1:
             settings.mixtype = 2;
-            setb2.innerHTML = "Mix Type: Fusion";
             break;
         case 2:
             settings.mixtype = 3;
-            setb2.innerHTML = "Mix Type: Random";
             break;
         case 3:
             settings.mixtype = 0;
-            setb2.innerHTML = "Mix Type: Left / Right";
             break;
     }
+    updateSettingsDisplay();
     saveSave();
 }
 
@@ -352,6 +348,11 @@ function drawBlend(b1, b2) {
 
 // Update UI
 
+function updateSettingsDisplay() {
+    setb1.innerHTML = "Mixed images: " + (settings.miximg ? "ON" : "OFF");
+    setb2.innerHTML = "Mix Type: " + ["Left / Right", "Top / Bottom", "Fusion", "Random", "???"][settings.mixtype];
+}
+
 function updateUI() {
     putout.innerHTML = output;
 
@@ -391,6 +392,8 @@ function updateUI() {
         pic1.style.display = "none";
         pic2.style.display = "none";
     }
+
+    updateSettingsDisplay();
 }
 
 loadSave();
