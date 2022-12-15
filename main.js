@@ -280,6 +280,11 @@ for (let image in images) {
         images[image] = img;
         loadedImages += 1;
         loadedIDs.push(image);
+
+        if (image.substr(6) == id1 || image.substr(6) == id2) {
+            updateUI();
+        }
+
         //putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
         if (loadedImages == BARRELS) {
             // All images loaded
