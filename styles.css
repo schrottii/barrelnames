@@ -3,7 +3,8 @@ body {
 }
 
 ul {
-    margin: 0px;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 
 .buttonStyle{
@@ -93,16 +94,26 @@ ul {
 
 .barrelleft {
     position: absolute;
-    left: 25px;
+    left: 12px;
     font-size: 24px;
     vertical-align: central;
 }
 
 .barrelright {
     position: absolute;
-    right: 25px;
+    right: 12px;
     font-size: 24px;
     vertical-align: central;
+}
+
+@media screen and (min-width: 960px) {
+    .barrelleft {
+        left: 25%;
+    }
+
+    .barrelright {
+        right: 25%;
+    }
 }
 
 .resultStyle {

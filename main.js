@@ -2,7 +2,7 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.4:<br>- Improved loading times<br>- Improved design of the favorites list and settings buttons<br>- Added hover and click effects for flags and buttons<br>- Other small design changes<br>- Added button to hide favorites<br>- Fixed barrel 595 bug';
+const notes = 'New in Update 1.4:<br>- Improved loading times<br>- Barrels are now closer to the middle on large screens<br>- Improved design of the favorites list and settings buttons<br>- Added hover and click effects for flags and buttons<br>- Other small design changes<br>- Added button to hide favorites<br>- Fixed several bugs';
 
 var canvas = document.getElementById("canvie");
 var ctx = canvas.getContext("2d");
@@ -163,7 +163,7 @@ function addFavorite() {
 
 function removeFavorite(f) {
     favorites.splice(f, 1);
-    updateUI();
+    updateFavorites();
 }
 
 function viewFavorite(f) {
@@ -233,16 +233,6 @@ function changePage(p) {
     if (p == 999) favoritesPage = Math.floor((favorites.length - 1) / 25);
     else favoritesPage = Math.min(Math.max(0, favoritesPage + p), Math.floor((favorites.length - 1) / 25));
     updateFavorites();
-}
-
-function updateFavorites() {
-    favoritesList.innerHTML = "<ul>";
-    for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
-        if (f > favorites.length - 1) continue;
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 24px">View</button>                   <button onclick="removeFavorite(' + f + '); updateFavorites();" class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
-    }
-    favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
-    favoritesCurrentPage.innerHTML = "(Page " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
 }
 
 function hideFavorites() {
@@ -334,6 +324,15 @@ function drawBlend(b1, b2) {
 }
 
 // Update UI
+function updateFavorites() {
+    favoritesList.innerHTML = "<ul>";
+    for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
+        if (f > favorites.length - 1) continue;
+        favoritesList.innerHTML = favoritesList.innerHTML + "<ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 20px">View</button>                   <button onclick="removeFavorite(' + f + '); updateFavorites();" class="buttonStyle" style="font-size: 20px">Remove</button></ul>';
+    }
+    favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
+    favoritesCurrentPage.innerHTML = "(Page " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
+}
 
 function updateSettingsDisplay() {
     setb1.innerHTML = "Mixed images: " + (settings.miximg ? "ON" : "OFF");
