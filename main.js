@@ -2,13 +2,15 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.3:<br>- Added mixed images!<br>- Turned on by default, can be turned off in the settings<br>- Added four mix types: Left / Right, Top / Bottom, Fusion and Random!<br>- Mix type can be changed in the settings<br>- On PC, the mixed images can be saved with right click<br>- The selected language is now kept after closing the name mixer';
+const notes = 'New in Update 1.4:<br>- Improved loading times<br>- Barrels are now closer to the middle on large screens<br>- Improved design of the favorites list and settings buttons<br>- Added hover and click effects for flags and buttons<br>- Other small design changes<br>- Added button to hide favorites<br>- Fixed several bugs';
 
 var canvas = document.getElementById("canvie");
 var ctx = canvas.getContext("2d");
 
 const SX = 256;
 const SY = 256;
+
+const BARRELS = 594; // Amount of barrels
 
 var Names;
 var output = "";
@@ -17,6 +19,8 @@ var putout = document.getElementById("output");
 var barrel1 = document.getElementById("barrel1");
 var barrel2 = document.getElementById("barrel2");
 var favoritesList = document.getElementById("favoritesList");
+var favoritesListFull = document.getElementById("favoritesListFull");
+var favoritesListShowButton = document.getElementById("favoritesListShowButton");
 var pic1 = document.getElementById("pic1");
 var pic2 = document.getElementById("pic2");
 var patchNotesText = document.getElementById("patchNotesText");
@@ -48,12 +52,12 @@ var settings = {
     mixtype: 0,
 }
 
-var images = [];
+var images = {};
 var prev = [];
 var prefull = [0, 0];
 
 function pickAName(number=0) {
-    let num = Math.floor(Math.random() * (Names.length - 1)) + 1;
+    let num = Math.floor(Math.random() * (Names.length - 2)) + 1;
     if (number == 1) id1 = num;
     if (number == 2) id2 = num;
     return Names[num];
@@ -159,7 +163,7 @@ function addFavorite() {
 
 function removeFavorite(f) {
     favorites.splice(f, 1);
-    updateUI();
+    updateFavorites();
 }
 
 function viewFavorite(f) {
@@ -231,47 +235,30 @@ function changePage(p) {
     updateFavorites();
 }
 
-function updateFavorites() {
-    favoritesList.innerHTML = "<ul>";
-    for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
-        if (f > favorites.length - 1) continue;
-        favoritesList.innerHTML = favoritesList.innerHTML + "<br /><ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 16px">View</button>                   <button onclick="removeFavorite(' + f + '); updateFavorites();" class="buttonStyle" style="font-size: 24px">Remove</button></ul>';
-    }
-    favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
-    favoritesCurrentPage.innerHTML = "(Page " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
+function hideFavorites() {
+    favoritesListFull.style.display = "none";
+    favoritesListShowButton.style.display = "inline";
+}
+
+function showFavorites() {
+    favoritesListFull.style.display = "block";
+    favoritesListShowButton.style.display = "none";
 }
 
 function toggleCanvas() {
     if (settings.miximg == true) {
         settings.miximg = false;
-        setb1.innerHTML = "Mixed images: OFF";
     }
     else {
         settings.miximg = true;
-        setb1.innerHTML = "Mixed images: ON";
     }
+    updateSettingsDisplay();
     saveSave();
 }
 
 function toggleMixType() {
-    switch (settings.mixtype) {
-        case 0:
-            settings.mixtype = 1;
-            setb2.innerHTML = "Mix Type: Top / Bottom";
-            break;
-        case 1:
-            settings.mixtype = 2;
-            setb2.innerHTML = "Mix Type: Fusion";
-            break;
-        case 2:
-            settings.mixtype = 3;
-            setb2.innerHTML = "Mix Type: Random";
-            break;
-        case 3:
-            settings.mixtype = 0;
-            setb2.innerHTML = "Mix Type: Left / Right";
-            break;
-    }
+    settings.mixtype = ++settings.mixtype % 4;
+    updateSettingsDisplay();
     saveSave();
 }
 
@@ -285,20 +272,23 @@ for (i = 1; i < 595; i++) {
 }
 
 let loadedImages = 0;
+let loadedIDs = [];
 
 for (let image in images) {
     let img = new Image();
-    img.src = images[image];
-    images[image] = img;
     img.onload = () => {
+        images[image] = img;
         loadedImages += 1;
-        putout.innerHTML = "Loading images, please wait... " + loadedImages + "/594";
-        if (loadedImages == 594) {
+        loadedIDs.push(image);
+        //putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
+        if (loadedImages == BARRELS) {
             // All images loaded
             updateUI();
             updateFavorites();
         }
     }
+
+    img.src = images[image];
 }
 
 function clearCanvas() {
@@ -334,6 +324,20 @@ function drawBlend(b1, b2) {
 }
 
 // Update UI
+function updateFavorites() {
+    favoritesList.innerHTML = "<ul>";
+    for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
+        if (f > favorites.length - 1) continue;
+        favoritesList.innerHTML = favoritesList.innerHTML + "<ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 20px">View</button>                   <button onclick="removeFavorite(' + f + '); updateFavorites();" class="buttonStyle" style="font-size: 20px">Remove</button></ul>';
+    }
+    favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
+    favoritesCurrentPage.innerHTML = "(Page " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
+}
+
+function updateSettingsDisplay() {
+    setb1.innerHTML = "Mixed images: " + (settings.miximg ? "ON" : "OFF");
+    setb2.innerHTML = "Mix Type: " + ["Left / Right", "Top / Bottom", "Fusion", "Random", "???"][settings.mixtype];
+}
 
 function updateUI() {
     putout.innerHTML = output;
@@ -341,29 +345,41 @@ function updateUI() {
     barrel1.innerHTML = fullname1 + "  -->";
     barrel2.innerHTML = "<--  " + fullname2;
 
+    // Image stuff
     clearCanvas();
-    if (id1 > 0 && id2 > 0 && settings.miximg) {
-        switch (settings.mixtype) {
-            case 0:
-                drawSides(id1, id2);
-                break;
-            case 1:
-                drawStacked(id1, id2);
-                break;
-            case 2:
-                drawBlend(id1, id2);
-                break;
-            case 3:
-                let rand = Math.random() * 100;
-                if (rand > 66) drawSides(id1, id2);
-                else if (rand > 33) drawStacked(id1, id2);
-                else drawBlend(id1, id2);
-                break;
+    if (loadedIDs.includes("barrel" + id1) && loadedIDs.includes("barrel" + id2)) {
+        if (id1 > 0 && id2 > 0 && settings.miximg) {
+            switch (settings.mixtype) {
+                case 0:
+                    drawSides(id1, id2);
+                    break;
+                case 1:
+                    drawStacked(id1, id2);
+                    break;
+                case 2:
+                    drawBlend(id1, id2);
+                    break;
+                case 3:
+                    let rand = Math.random() * 100;
+                    if (rand > 66) drawSides(id1, id2);
+                    else if (rand > 33) drawStacked(id1, id2);
+                    else drawBlend(id1, id2);
+                    break;
+            }
         }
+
+        pic1.style.display = "block";
+        pic2.style.display = "block";
+
+        pic1.src = getFile(id1);
+        pic2.src = getFile(id2);
+    }
+    else {
+        pic1.style.display = "none";
+        pic2.style.display = "none";
     }
 
-    pic1.src = getFile(id1);
-    pic2.src = getFile(id2);
+    updateSettingsDisplay();
 }
 
 loadSave();
