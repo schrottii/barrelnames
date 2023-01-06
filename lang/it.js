@@ -2,6 +2,44 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
+const trans_it = {
+    "lang": "Italiano",
+    "currentlanguage": "Lingua corrente: ",
+    "showpatchnotes": "Mostra le note sulla patch",
+    "hide": "Nascondi",
+    "view": "Visualizza",
+    "remove": "Rimuovi",
+    "page": "Pagina",
+    "mixedimages": "Immagini miste",
+    "mixtype": "Tipo misto",
+    "ON": "ACCESO",
+    "OFF": "SPENTO",
+    "leftright": "Sinistra / Destra",
+    "topbottom": "Alto / Basso",
+    "fusion": "Fusione",
+    "random": "Casuale",
+    "madeby": "Fatto da Schrottii",
+    "based": "Basato su Scrap Clicker 2 di Schrott Games",
+    "idea": "Idea del 11/09/22, sviluppata dal 24/10/22",
+    "version": "Versione",
+    "from": "Immagini del barile da",
+    "wiki": "l'inglese Scrap Wiki",
+    "wikipedia": "bandiere da Wikipedia",
+    "data": "Non ho accesso a nessuno dei tuoi dati personali, vengono salvati solo i tuoi nomi misti e le tue impostazioni preferite.",
+    "howtouse": "COME SI USA:",
+    "justclick": 'Fai clic su "Mix!" È così semplice!',
+    "explanation": 'Fai clic su "Preferiti" per aggiungere un nome misto ai tuoi preferiti, "Torna indietro" per tornare alla combinazione precedente.',
+    "usage": "Usalo per trovare combinazioni di nomi divertenti o lasciati ispirare per nuovi barili!",
+    "mix": "mescolare!",
+    "favorite": "Preferito",
+    "favorites": "Preferiti",
+    "back": "Torna indietro",
+    "firstpage": "Prima pagina",
+    "previouspage": "Pagina precedente",
+    "nextpage": "Pagina successiva",
+    "lastpage": "Ultima pagina",
+}
+
 const names_it = `
 1: Circolo Blue
 2: Quadrato Rosa

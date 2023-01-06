@@ -27,6 +27,17 @@ var patchNotesText = document.getElementById("patchNotesText");
 var notesButton = document.getElementById("notesButton");
 var favoritesCurrentPage = document.getElementById("favoritesCurrentPage");
 var currentLanguage = document.getElementById("currentLanguage");
+var creditsText1 = document.getElementById("creditsText1");
+var creditsText2 = document.getElementById("creditsText2");
+var mix = document.getElementById("mix");
+var favoritehtml = document.getElementById("favorite");
+var favorite2html = document.getElementById("favorites2");
+var back = document.getElementById("back");
+
+var firstpage = document.getElementById("firstpage");
+var previouspage = document.getElementById("prevpage");
+var nextpage = document.getElementById("nextpage");
+var lastpage = document.getElementById("lastpage");
 
 var setb1 = document.getElementById("setb1");
 var setb2 = document.getElementById("setb2");
@@ -56,7 +67,30 @@ var images = {};
 var prev = [];
 var prefull = [0, 0];
 
-function pickAName(number=0) {
+function tt(id) {
+    switch (settings.lang) {
+        case "en":
+            return trans_en[id];
+            break;
+        case "uk":
+            return trans_uk[id];
+            break;
+        case "it":
+            return trans_it[id];
+            break;
+        case "ru":
+            return trans_ru[id];
+            break;
+        case "fr":
+            return trans_fr[id];
+            break;
+        case "de":
+            return trans_de[id];
+            break;
+    }
+}
+
+function pickAName(number = 0) {
     let num = Math.floor(Math.random() * (Names.length - 2)) + 1;
     if (number == 1) id1 = num;
     if (number == 2) id2 = num;
@@ -146,7 +180,7 @@ function loadSave() {
             }
         }
         favorites = loadFavs;
-        }
+    }
 }
 
 function saveSave() {
@@ -158,7 +192,7 @@ function saveSave() {
 }
 
 function addFavorite() {
-    if(output != "") favorites.push([output, id1, id2]);
+    if (output != "") favorites.push([output, id1, id2]);
 }
 
 function removeFavorite(f) {
@@ -186,12 +220,12 @@ function patchNotes() {
     if (showPatchNotes) {
         showPatchNotes = false;
         patchNotesText.innerHTML = "";
-        notesButton.innerHTML = "Show patch notes";
+        notesButton.innerHTML = tt("showpatchnotes");
     }
     else {
         showPatchNotes = true;
         patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px; text-align: left;"> ' + notes + ' </div>';
-        notesButton.innerHTML = "Hide";
+        notesButton.innerHTML = tt("hide");
     }
 }
 
@@ -205,27 +239,33 @@ function preloadNames() {
     switch (settings.lang) {
         case "en":
             Names = names_en.split("\n");
-            currentLanguage.innerHTML = "Current Language: English";
             break;
         case "uk":
             Names = names_uk.split("\n");
-            currentLanguage.innerHTML = "Current Language: Ukrainian";
             break
         case "it":
             Names = names_it.split("\n");
-            currentLanguage.innerHTML = "Current Language: Italian";
             break;
         case "ru":
             Names = names_ru.split("\n");
-            currentLanguage.innerHTML = "Current Language: Russian";
             break
+        case "fr":
+            Names = names_en.split("\n");
+            break;
+        case "de":
+            Names = names_en.split("\n");
+            break;
     }
+    currentLanguage.innerHTML = tt("currentlanguage") + tt("lang");
 
     // Remove the numbers (multis have to be removed manually)
     for (n = 0; n < Names.length; n++) {
         Names[n] = Names[n].replace(/^[^_]*: /, "")
     }
-    
+
+    updateFavorites();
+    updateSettingsDisplay();
+    updateUI();
 }
 
 function changePage(p) {
@@ -333,15 +373,28 @@ function updateFavorites() {
     favoritesList.innerHTML = "<ul>";
     for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
         if (f > favorites.length - 1) continue;
-        favoritesList.innerHTML = favoritesList.innerHTML + "<ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 20px">View</button>                   <button onclick="removeFavorite(' + f + '); updateFavorites();" class="buttonStyle" style="font-size: 20px">Remove</button></ul>';
+        favoritesList.innerHTML = favoritesList.innerHTML + "<ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 20px">' + tt("view") + '</button>                   <button onclick="removeFavorite(' + f + '); updateFavorites();" class="buttonStyle" style="font-size: 20px">' + tt("remove") + '</button></ul>';
     }
     favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
-    favoritesCurrentPage.innerHTML = "(Page " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
+    favoritesCurrentPage.innerHTML = "(" + tt("page") + " " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
 }
 
 function updateSettingsDisplay() {
-    setb1.innerHTML = "Mixed images: " + (settings.miximg ? "ON" : "OFF");
-    setb2.innerHTML = "Mix Type: " + ["Left / Right", "Top / Bottom", "Fusion", "Random", "???"][settings.mixtype];
+    if (!showPatchNotes) {
+        patchNotesText.innerHTML = "";
+        notesButton.innerHTML = tt("showpatchnotes");
+    }
+    else {
+        patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px; text-align: left;"> ' + notes + ' </div>';
+        notesButton.innerHTML = tt("hide");
+    }
+
+    setb1.innerHTML = tt("mixedimages") + ": " + (settings.miximg ? tt("ON") : tt("OFF"));
+    setb2.innerHTML = tt("mixtype") + ": " + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), "???"][settings.mixtype];
+
+    creditsText1.innerHTML = tt("madeby") + " (c)2023 <br /> " + tt("based") + " (c)2017 <br /> " + tt("idea") + "<br />" + tt("version") + " 1.5 (01/06/23)";
+    creditsText2.innerHTML = "<br />" + tt("from") + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">' + tt("wiki") + "</a>, " + tt("wikipedia") +
+            "<br />" + tt("data") + "<br /><b>" + tt("howtouse") + "</b> <br />" + tt("justclick") + "<br />" + tt("explanation") + "<br />" + tt("usage");
 }
 
 function updateUI() {
@@ -384,8 +437,20 @@ function updateUI() {
         pic2.style.display = "none";
     }
 
+    mix.innerHTML = tt("mix");
+    favoritehtml.innerHTML = tt("favorite");
+    favorite2html.innerHTML = tt("favorites");
+    back.innerHTML = tt("back");
+
+    firstpage.innerHTML = tt("firstpage");
+    previouspage.innerHTML = tt("previouspage");
+    nextpage.innerHTML = tt("nextpage");
+    lastpage.innerHTML = tt("lastpage");
+
     updateSettingsDisplay();
 }
 
 loadSave();
 preloadNames();
+updateUI();
+notesButton.innerHTML = tt("showpatchnotes");
