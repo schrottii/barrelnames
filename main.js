@@ -2,7 +2,7 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.5:<br>- Changing the language now also translates buttons and texts (rather than only using the barrel names from a different language)!<br>- Added French translation (by Varlyne)<br>-Added German translation (by Schrottii)<br>- Added barrel icons to flags that have their own barrel names, other languages use the English names<br>- Up to 25 previous barrels are now cached (rather than only one), making it possible to go back by up to 25 barrels with the "Go back" button!';
+const notes = 'New in Update 1.5:<br>- Changing the language now also translates buttons and texts (rather than only using the barrel names from a different language)!<br>- Added French translation (by Varlyne)<br>-Added German translation (by Schrottii)<br>- Added barrel icons to flags that have their own barrel names, other languages use the English names<br>- Up to 25 previous barrels are now cached (rather than only one), making it possible to go back by up to 25 barrels with the "Go back" button!<br>- If the origin barrel names are very long, their size will now be reduced, to avoid overlapping';
 
 var canvas = document.getElementById("canvie");
 var ctx = canvas.getContext("2d");
@@ -407,6 +407,9 @@ function updateUI() {
 
     barrel1.innerHTML = fullname1 + "  -->";
     barrel2.innerHTML = "<--  " + fullname2;
+
+    barrel1.style.fontSize = fullname1.length < 16 ? "24px" : "" + Math.floor(32 - fullname1.length / 1.5) + "px";
+    barrel2.style.fontSize = fullname2.length < 16 ? "24px" : "" + Math.floor(32 - fullname2.length / 1.5) + "px";
 
     // Image stuff
     clearCanvas();
