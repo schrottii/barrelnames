@@ -2,7 +2,7 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.4:<br>- Improved loading times<br>- Barrels are now closer to the middle on large screens<br>- Improved design of the favorites list and settings buttons<br>- Added hover and click effects for flags and buttons<br>- Other small design changes<br>- Added button to hide favorites<br>- Fixed several bugs';
+const notes = 'New in Update 1.5:<br>- Changing the language now also translates buttons and texts (rather than only using the barrel names from a different language)!<br>- Added French translation (by Varlyne)<br>-Added German translation (by Schrottii)<br>- Added barrel icons to flags that have their own barrel names, other languages use the English names<br>- Up to 25 previous barrels are now cached (rather than only one), making it possible to go back by up to 25 barrels with the "Go back" button!';
 
 var canvas = document.getElementById("canvie");
 var ctx = canvas.getContext("2d");
@@ -31,7 +31,7 @@ var creditsText1 = document.getElementById("creditsText1");
 var creditsText2 = document.getElementById("creditsText2");
 var mix = document.getElementById("mix");
 var favoritehtml = document.getElementById("favorite");
-var favorite2html = document.getElementById("favorites2");
+var favoritehtml2 = document.getElementById("favoriteshidden");
 var back = document.getElementById("back");
 
 var firstpage = document.getElementById("firstpage");
@@ -126,25 +126,30 @@ function generateBackName() {
 }
 
 function generateCombination() {
-    prev = [name1, name2, output];
-
     name1 = generateFrontName();
     name2 = generateBackName();
 
     output = name1 + " " + name2;
+
+    prev.push([name1, name2, output, id1, id2]);
+    if (prev.length > 25) prev.shift();
 }
 
 function goBack() {
-    name1 = prev[0];
-    name2 = prev[1];
-    output = prev[2];
+    if (prev.length < 2) return false;
 
-    fullname1 = prefull[0];
-    fullname2 = prefull[1];
+    prev.pop();
 
-    for (b = 0; b < Names.length; b++) {
-        if (Names[b] == prefull[0]) id1 = b;
-        if (Names[b] == prefull[1]) id2 = b;
+    name1 = prev[prev.length - 1][0];
+    name2 = prev[prev.length - 1][1];
+    output = prev[prev.length - 1][2];
+
+    if (prev[prev.length - 1][3] != undefined) {
+        id1 = prev[prev.length - 1][3];
+        id2 = prev[prev.length - 1][4];
+
+        fullname1 = Names[id1];
+        fullname2 = Names[id2];
     }
     updateUI();
 }
@@ -203,15 +208,15 @@ function removeFavorite(f) {
 function viewFavorite(f) {
     let fav = favorites[f];
 
-    prev = [name1, name2, output];
-    prefull = [Names[id1], Names[id2]];
-
     output = fav[0];
     id1 = fav[1];
     id2 = fav[2];
 
     fullname1 = Names[id1];
     fullname2 = Names[id2];
+
+    prev.push([name1, name2, output, id1, id2]);
+    if (prev.length > 25) prev.shift();
 
     updateUI();
 }
@@ -439,7 +444,8 @@ function updateUI() {
 
     mix.innerHTML = tt("mix");
     favoritehtml.innerHTML = tt("favorite");
-    favorite2html.innerHTML = tt("favorites");
+    favoritehtml2.innerHTML = tt("favorites");
+    favoritesListShowButton.innerHTML = tt("favorites");
     back.innerHTML = tt("back");
 
     firstpage.innerHTML = tt("firstpage");
