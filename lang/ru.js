@@ -5,7 +5,7 @@
 const trans_ru = {
     "lang": "русский",
     "currentlanguage": "Текущий язык: ",
-    "showpatchnotes": "Показать примечания к патчу",
+    "showpatchnotes": "Показать изменения версий",
     "hide": "Скрыть",
     "view": "Просмотр",
     "remove": "Удалить",
