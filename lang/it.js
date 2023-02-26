@@ -635,4 +635,28 @@ const names_it = `
 592: La Caverna dei Barili
 593: Alimenta il tuo Rottame
 594: Hai Ottenuto Macaroon!
+595: Ciocco Robot 
+596: Guarnizione Semplificata 
+597: I R Incremental 
+598: Assaggia il Vapore 
+599: Il Libro del Destino 
+600: Pietra Miliare 
+601: Acidificazione 
+602: ModPocket Visualizer Deluxe 
+603: Fiamma Elettrica 
+604: Civilizzazione Nix 
+605: Burger di Rottami 
+606: Nelle profondità marine! 
+607: Quale strada prendiamo? 
+608: Scrapple 
+609: Pezzetto tagliato bene! 
+610: Sostanza pericolosa 
+611: Feng Shui 
+612: Rompicapo di rottami 
+613: Divieto di immersione 
+614: Stuzzichini da falò 
+615: Una corona per un Re 
+616: Kabosu 
+617: Proliferazione malevola 
+618: Capro espiatorio
 `
