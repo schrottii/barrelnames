@@ -635,4 +635,28 @@ const names_en = `
 592: The Cave of the Barrels
 593: Power Your Scrap
 594: You just got Macaroon'd!
+595: Robotic Choco
+596: Simplified Gasket
+597: I R Incremental
+598: Taste the Vapor
+599: Book of Doom
+600: Another Milestone
+601: Scrapels 2 - The Souring
+602: ModPocket Visualizer Deluxe
+603: Electric Flame
+604: Nix Civilizations
+605: Scraburger
+606: To the bottom of the sea!
+607: Which way do we go?
+608: Scrapple
+609: Baby slice it right!
+610: Dangerous Blob of Goo
+611: Feng Shui
+612: Scrapuzzle
+613: No diving allowed
+614: Campfire Munchies
+615: A Crown for a King
+616: Kabosu
+617: Malevolent Proliferation
+618: Hung out to Dry
 `

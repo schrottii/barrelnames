@@ -2,7 +2,7 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.5:<br>- Changing the language now also translates buttons and texts (rather than only using the barrel names from a different language)!<br>- Added French translation (by Varlyne)<br>-Added German translation (by Schrottii)<br>- Added barrel icons to flags that have their own barrel names, other languages use the English names<br>- Up to 25 previous barrels are now cached (rather than only one), making it possible to go back by up to 25 barrels with the "Go back" button!<br>- If the origin barrel names are very long, their size will now be reduced, to avoid overlapping';
+const notes = 'New in Update 1.5.1:<br>- Added barrels 595-618 (update 11.0)<br><br>New in Update 1.5:<br>- Changing the language now also translates buttons and texts (rather than only using the barrel names from a different language)!<br>- Added French translation (by Varlyne)<br>-Added German translation (by Schrottii)<br>- Added barrel icons to flags that have their own barrel names, other languages use the English names<br>- Up to 25 previous barrels are now cached (rather than only one), making it possible to go back by up to 25 barrels with the "Go back" button!<br>- If the origin barrel names are very long, their size will now be reduced, to avoid overlapping';
 
 var canvas = document.getElementById("canvie");
 var ctx = canvas.getContext("2d");
@@ -10,7 +10,7 @@ var ctx = canvas.getContext("2d");
 const SX = 256;
 const SY = 256;
 
-const BARRELS = 594; // Amount of barrels
+const BARRELS = 618; // Amount of barrels
 
 var Names;
 var output = "";
@@ -312,7 +312,7 @@ function getFile(num) {
 }
 
 // Canvas stuff
-for (i = 1; i < 595; i++) {
+for (i = 1; i < BARRELS + 1; i++) {
     images["barrel" + i] = getFile(i);
 }
 
@@ -397,7 +397,8 @@ function updateSettingsDisplay() {
     setb1.innerHTML = tt("mixedimages") + ": " + (settings.miximg ? tt("ON") : tt("OFF"));
     setb2.innerHTML = tt("mixtype") + ": " + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), "???"][settings.mixtype];
 
-    creditsText1.innerHTML = tt("madeby") + " (c)2023 <br /> " + tt("based") + " (c)2017 <br /> " + tt("idea") + "<br />" + tt("version") + " 1.5 (01/06/23)";
+    creditsText1.innerHTML = tt("madeby") + " (c)2023 <br /> " + tt("based") + " (c)2017 <br /> " + tt("idea") + "<br />" + tt("version")
+        + " 1.5.1 (02/26/23)";
     creditsText2.innerHTML = "<br />" + tt("from") + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">' + tt("wiki") + "</a>, " + tt("wikipedia") +
             "<br />" + tt("data") + "<br /><b>" + tt("howtouse") + "</b> <br />" + tt("justclick") + "<br />" + tt("explanation") + "<br />" + tt("usage");
 }
