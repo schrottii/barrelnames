@@ -659,4 +659,28 @@ const names_it = `
 616: Kabosu 
 617: Proliferazione malevola 
 618: Capro espiatorio
+619: Sempre vigile
+620: L'Eroe chiamato H
+621: Pane di Mais 
+622: Raggio Ascorbico
+623: S-800
+624: Etere Scintillante
+625: Calamita Mk.IV
+626: Pelliccia della Tigre
+627: Gattopalla! 
+628: Un altro dollaro sprecato
+629: Incontri Occasionali!
+630: Gusto.... Scacchi?
+631: Pozione Lunare
+632: Scienza Antica
+633: Beta Pictoris
+634: Pip-Papera 4000
+635: Barile Scintillante
+636: Passaggio al Nucleare
+637: Torre di Rame
+638: Mossa del giocatore definitiva!
+639: Luogo di Nascita Misterioso
+640: Occhio elettrico
+641: CuboTecnologico 3000
+642: Droga per le dita
 `

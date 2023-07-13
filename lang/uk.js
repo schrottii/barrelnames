@@ -659,4 +659,28 @@ const names_uk = `
 616: Кабосу
 617: Зловмисне поширення
 618: Розвісив сушитися
+619: Always watching
+620: The Hero Called H
+621: Cornbread 
+622: Ascorbic Beam
+623: S-800
+624: Shimmering Aether
+625: Magnet Attractor Mk.IV
+626: Fur of the Tiger
+627: Kittyball! 
+628: Another Dollar Wasted
+629: Free hook-ups!
+630: Chess... flavored?
+631: Lunar Potion
+632: Old Science
+633: Beta Pictoris
+634: Pip-Duck 4000
+635: Shiny Barrel
+636: Going nuclear
+637: Copper Tower
+638: Ultimate gamer move!
+639: Eldritch hatching grounds
+640: Electric Eye
+641: TechCube 3000
+642: Finger Drug
 `
