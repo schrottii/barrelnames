@@ -10,7 +10,7 @@ var ctx = canvas.getContext("2d");
 const SX = 256;
 const SY = 256;
 
-const BARRELS = 618; // Amount of barrels
+const BARRELS = 642; // Amount of barrels
 
 var Names;
 var output = "";

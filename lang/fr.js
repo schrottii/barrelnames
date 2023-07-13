@@ -25,7 +25,7 @@ const trans_fr = {
     "from": "Les images des barrils viennent du ",
     "wiki": "Wiki anglais de Scrap",
     "wikipedia": "Les drapeaux viennent de Wikipédia",
-    "data": "Aucune donnée personelle n'est collectée, seulement vos barrils mis en favoris et les paramètres sont enregistrés. Traduction faite par Varlyne.",
+    "data": "Aucune donnée personelle n'est collectée, seulement vos barrils mis en favoris et les paramètres sont enregistrés.",
     "howtouse": "Comment ça marche:",
     "justclick": `Cliquer simplement sur "Mixe!", C'est tout aussi simple!`,
     "explanation": `Cliquer sur "Favoris" pour ajouter un nom mixé dans vos favoris, "Retourner en arrière" pour retourner à la précédente combinaison.`,
