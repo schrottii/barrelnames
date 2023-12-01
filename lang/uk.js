@@ -4,7 +4,7 @@
 
 const trans_uk = {
     "lang": "Українська",
-    "currentlanguage": "Поточна мова: ",
+    "currentLanguage": "Поточна мова: ",
     "showpatchnotes": "Показати примітки до виправлення",
     "hide": "Приховати",
     "view": "Перегляд",
@@ -33,11 +33,11 @@ const trans_uk = {
     "mix": "Змішайте!",
     "favorite": "Улюблений",
     "favorites": "Вибране",
-    "back": "Повернутися",
-    "firstpage": "Перша сторінка",
-    "previouspage": "Попередня сторінка",
-    "nextpage": "Наступна сторінка",
-    "lastpage": "Остання сторінка",
+    "backButton": "Повернутися",
+    "firstPageButton": "Перша сторінка",
+    "previousPageButton": "Попередня сторінка",
+    "nextPageButton": "Наступна сторінка",
+    "lastPageButton": "Остання сторінка",
 }
 
 const names_uk = `
@@ -683,4 +683,28 @@ const names_uk = `
 640: Electric Eye
 641: TechCube 3000
 642: Finger Drug
+643: Artistic Revolution
+644: Scrapdines
+645: Pink Simulation
+646: RETURN THE SLAAAB
+647: Poison Pool
+648: ScrapTOS
+649: Stone & Dirt
+650: Jugs and Slopers
+651: Please Don't Die
+652: Scraptory
+653: Cleats
+654: Sweet Memories 
+655: Please wait 60 seconds!
+656: Stop... you failed!
+657: NOSE
+658: Her favorite drink
+659: Fairy Acid
+660: Don't put...
+661: Peter
+662: The 1,000,000th Star
+663: Shapeshift
+664: Acceleration Road
+665: Can I Sell This?
+666: Barrel to Hell
 `

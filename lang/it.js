@@ -4,7 +4,7 @@
 
 const trans_it = {
     "lang": "Italiano",
-    "currentlanguage": "Lingua corrente: ",
+    "currentLanguage": "Lingua corrente: ",
     "showpatchnotes": "Mostra le note sulla patch",
     "hide": "Nascondi",
     "view": "Visualizza",
@@ -33,11 +33,11 @@ const trans_it = {
     "mix": "mescolare!",
     "favorite": "Preferito",
     "favorites": "Preferiti",
-    "back": "Torna indietro",
-    "firstpage": "Prima pagina",
-    "previouspage": "Pagina precedente",
-    "nextpage": "Pagina successiva",
-    "lastpage": "Ultima pagina",
+    "backButton": "Torna indietro",
+    "firstPageButton": "Prima pagina",
+    "previousPageButton": "Pagina precedente",
+    "nextPageButton": "Pagina successiva",
+    "lastPageButton": "Ultima pagina",
 }
 
 const names_it = `
@@ -683,4 +683,28 @@ const names_it = `
 640: Occhio elettrico
 641: CuboTecnologico 3000
 642: Droga per le dita
+643: Rivoluzione Artistica
+644: Scrapdine
+645: Simulazione Rosa
+646: RESTITUISCI LA LASTRAAA
+647: Piscina Avvelenata
+648: Condizioni d'uso
+649: Pietra & Terra
+650: Prese a incastro
+651: Per favore, non morire
+652: Scraptario
+653: Tacchetti
+654: Dolci Ricordi 
+655: Aspetta 60 secondi!
+656: Fermo... hai fallito!
+657: NOSE
+658: La sua bevanda preferita
+659: Acido Fatato
+660: Non inserire...
+661: Peter
+662: La Milionesima Stella
+663: Mutaforma
+664: Corsia di Accelerazione
+665: Posso Venderlo?
+666: Barile per l'Inferno
 `

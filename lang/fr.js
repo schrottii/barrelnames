@@ -4,7 +4,7 @@
 
 const trans_fr = {
     "lang": "Français",
-    "currentlanguage": "Langue actuelle: ",
+    "currentLanguage": "Langue actuelle: ",
     "showpatchnotes": "Ouvrir le patch-note",
     "hide": "Cacher",
     "view": "Regarder",
@@ -33,9 +33,9 @@ const trans_fr = {
     "mix": "Mixe!",
     "favorite": "Favoris",
     "favorites": "Favoris",
-    "back": "Retourner en arrière",
-    "firstpage": "Première page",
-    "previouspage": "Précédente page",
-    "nextpage": "Prochaine page",
-    "lastpage": "Dernière page",
+    "backButton": "Retourner en arrière",
+    "firstPageButton": "Première page",
+    "previousPageButton": "Précédente page",
+    "nextPageButton": "Prochaine page",
+    "lastPageButton": "Dernière page",
 }

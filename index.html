@@ -14,7 +14,7 @@
             <span id="barrel1" class="barrelleft"></span>
             <span id="barrel2" class="barrelright"></span>
             <br />
-            <span id="output" style="text-align: center">Press Mix!</span>
+            <span id="output" style="text-align: center">Press mix!</span>
             <br />
             <img src="barrels\barrel_1.png" id="pic1" class="barrelleft" width="128">
             <img src="barrels\barrel_1.png" id="pic2" class="barrelright" width="128">
@@ -25,9 +25,9 @@
 
         <hr style="margin-top: 16px" /><hr />
 
-        <button onclick="generateCombination(); updateUI();" class="buttonStyle" id="mix">Mix!</button><br />
+        <button onclick="generateCombination(); updateUI();" class="buttonStyle" id="mix">mix!</button><br />
         <button onclick="addFavorite(); saveSave(); updateFavorites();" class="buttonStyle" style="font-size: 32px" id="favorite">Favorite</button><br />
-        <button onclick="goBack(); saveSave(); updateUI();" class="buttonStyle" style="font-size: 32px" id="back">Go back</button>
+        <button onclick="goBack(); saveSave(); updateUI();" class="buttonStyle" style="font-size: 32px" id="backButton">Go backButton</button>
 
     </div>
 
@@ -35,10 +35,10 @@
         <button onclick="hideFavorites();" class="buttonStyle" style="font-size: 20px" id="favoriteshidden">Favorites</button><br /><span id="favoritesCurrentPage"></span>
         <span id="favoritesList">0</span>
         <hr />
-        <button onclick="changePage(0);" class="buttonStyle" style="font-size: 20px" id="firstpage">First Page</button>
-        <button onclick="changePage(-1);" class="buttonStyle" style="font-size: 24px" id="prevpage">Previous Page</button>
-        <button onclick="changePage(1);" class="buttonStyle" style="font-size: 24px" id="nextpage">Next Page</button>
-        <button onclick="changePage(999);" class="buttonStyle" style="font-size: 20px" id="lastpage">Last Page</button>
+        <button onclick="changePage(0);" class="buttonStyle" style="font-size: 20px" id="firstPageButton">First Page</button>
+        <button onclick="changePage(-1);" class="buttonStyle" style="font-size: 24px" id="previousPageButton">Previous Page</button>
+        <button onclick="changePage(1);" class="buttonStyle" style="font-size: 24px" id="nextPageButton">Next Page</button>
+        <button onclick="changePage(999);" class="buttonStyle" style="font-size: 20px" id="lastPageButton">Last Page</button>
     </div>
     <div style="text-align: center">
         <button onclick="showFavorites();" class="buttonStyle" id="favoritesListShowButton" style="display: none; font-size: 20px;">Favorites</button>
@@ -60,7 +60,7 @@
         <img src="de.png" onclick="changeLanguage('de')" class="flag" />
         <br />
         <button onclick="toggleCanvas()" id="setb1" class="settingButton">Mixed images: ON</button>
-        <button onclick="toggleMixType()" id="setb2" class="settingButton">Mix Type: Left/Right</button>
+        <button onclick="toggleMixType()" id="setb2" class="settingButton">mix Type: Left/Right</button>
     </div>
     <br />
     <script type="text/javascript" src="lang\en.js"></script>

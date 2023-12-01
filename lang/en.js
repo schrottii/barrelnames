@@ -4,7 +4,7 @@
 
 const trans_en = {
     "lang": "English",
-    "currentlanguage": "Current Language: ",
+    "currentLanguage": "Current Language: ",
     "showpatchnotes": "Show patch notes",
     "hide": "Hide",
     "view": "View",
@@ -28,16 +28,16 @@ const trans_en = {
     "data": "I do not have access to any of your personal data, only your favorite mixed names and settings are saved.",
     "howtouse": "HOW TO USE:",
     "justclick": 'Just click "Mix!" It is that simple!',
-    "explanation": 'Click "Favorite" to add a mixed name to your favorites, "Go back" to return to the previous combination.',
+    "explanation": 'Click "Favorite" to add a mixed name to your favorites, "Go Back" to return to the previous combination.',
     "usage": "Use it to find funny name combinations or get inspired for new barrels!",
     "mix": "Mix!",
     "favorite": "Favorite",
     "favorites": "Favorites",
-    "back": "Go back",
-    "firstpage": "First Page",
-    "previouspage": "Previous Page",
-    "nextpage": "Next Page",
-    "lastpage": "Last Page",
+    "backButton": "Go Back",
+    "firstPageButton": "First Page",
+    "previousPageButton": "Previous Page",
+    "nextPageButton": "Next Page",
+    "lastPageButton": "Last Page",
 }
 
 const names_en = `
@@ -683,4 +683,28 @@ const names_en = `
 640: Electric Eye
 641: TechCube 3000
 642: Finger Drug
+643: Artistic Revolution
+644: Scrapdines
+645: Pink Simulation
+646: RETURN THE SLAAAB
+647: Poison Pool
+648: ScrapTOS
+649: Stone & Dirt
+650: Jugs and Slopers
+651: Please Don't Die
+652: Scraptory
+653: Cleats
+654: Sweet Memories
+655: Please wait 60 seconds!
+656: Stop... you failed!
+657: NOSE
+658: Her favorite drink
+659: Fairy Acid
+660: Don't put...
+661: Peter
+662: The 1,000,000th Star
+663: Shapeshift
+664: Acceleration Road
+665: Can I Sell This?
+666: Barrel to Hell
 `

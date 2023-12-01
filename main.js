@@ -1,8 +1,14 @@
-//
+﻿//
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = 'New in Update 1.5.1:<br>- Added barrels 595-618 (update 11.0)<br><br>New in Update 1.5:<br>- Changing the language now also translates buttons and texts (rather than only using the barrel names from a different language)!<br>- Added French translation (by Varlyne)<br>-Added German translation (by Schrottii)<br>- Added barrel icons to flags that have their own barrel names, other languages use the English names<br>- Up to 25 previous barrels are now cached (rather than only one), making it possible to go back by up to 25 barrels with the "Go back" button!<br>- If the origin barrel names are very long, their size will now be reduced, to avoid overlapping';
+const notes = `New in Update 1.6:`
+    + `<br>- Added barrels 643-666 (update 11.2)`
+    + `<br>- Reworked the image loading system, rather than loading all barrels at the start they are now only loaded when needed, drastically reducing loading times`
+    + `<br>- Added a link to my website / other games`
+    + `<br>- Added more space in the credits section`
+    + `<br>- Several code improvements`
+    ;
 
 var canvas = document.getElementById("canvie");
 var ctx = canvas.getContext("2d");
@@ -10,37 +16,41 @@ var ctx = canvas.getContext("2d");
 const SX = 256;
 const SY = 256;
 
-const BARRELS = 642; // Amount of barrels
+const BARRELS = 666; // Amount of barrels
 
 var Names;
 var output = "";
 
-var putout = document.getElementById("output");
-var barrel1 = document.getElementById("barrel1");
-var barrel2 = document.getElementById("barrel2");
-var favoritesList = document.getElementById("favoritesList");
-var favoritesListFull = document.getElementById("favoritesListFull");
-var favoritesListShowButton = document.getElementById("favoritesListShowButton");
-var pic1 = document.getElementById("pic1");
-var pic2 = document.getElementById("pic2");
-var patchNotesText = document.getElementById("patchNotesText");
-var notesButton = document.getElementById("notesButton");
-var favoritesCurrentPage = document.getElementById("favoritesCurrentPage");
-var currentLanguage = document.getElementById("currentLanguage");
-var creditsText1 = document.getElementById("creditsText1");
-var creditsText2 = document.getElementById("creditsText2");
-var mix = document.getElementById("mix");
-var favoritehtml = document.getElementById("favorite");
-var favoritehtml2 = document.getElementById("favoriteshidden");
-var back = document.getElementById("back");
+var ui = {
+    putout: document.getElementById("output"),
+    barrel1: document.getElementById("barrel1"),
+    barrel2: document.getElementById("barrel2"),
+    favoritesList: document.getElementById("favoritesList"),
+    favoritesListFull: document.getElementById("favoritesListFull"),
+    favoritesListShowButton: document.getElementById("favoritesListShowButton"),
+    pic1: document.getElementById("pic1"),
+    pic2: document.getElementById("pic2"),
+    patchNotesText: document.getElementById("patchNotesText"),
+    notesButton: document.getElementById("notesButton"),
+    favoritesCurrentPage: document.getElementById("favoritesCurrentPage"),
+    currentLanguage: document.getElementById("currentLanguage"),
+    creditsText1: document.getElementById("creditsText1"),
+    creditsText2: document.getElementById("creditsText2"),
+    mix: document.getElementById("mix"),
+    favoritehtml: document.getElementById("favorite"),
+    favoritehtml2: document.getElementById("favoriteshidden"),
+    backButton: document.getElementById("backButton"),
 
-var firstpage = document.getElementById("firstpage");
-var previouspage = document.getElementById("prevpage");
-var nextpage = document.getElementById("nextpage");
-var lastpage = document.getElementById("lastpage");
+    firstPageButton: document.getElementById("firstPageButton"),
+    previousPageButton: document.getElementById("prevpage"),
+    nextPageButton: document.getElementById("nextPageButton"),
+    lastPageButton: document.getElementById("lastPageButton"),
 
-var setb1 = document.getElementById("setb1");
-var setb2 = document.getElementById("setb2");
+    setb1: document.getElementById("setb1"),
+    setb2: document.getElementById("setb2"),
+}
+
+
 
 var name1 = "";
 var name2 = "";
@@ -224,13 +234,13 @@ function viewFavorite(f) {
 function patchNotes() {
     if (showPatchNotes) {
         showPatchNotes = false;
-        patchNotesText.innerHTML = "";
-        notesButton.innerHTML = tt("showpatchnotes");
+        ui.patchNotesText.innerHTML = "";
+        ui.notesButton.innerHTML = tt("showpatchnotes");
     }
     else {
         showPatchNotes = true;
-        patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px; text-align: left;"> ' + notes + ' </div>';
-        notesButton.innerHTML = tt("hide");
+        ui.patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px; text-align: left;"> ' + notes + ' </div>';
+        ui.notesButton.innerHTML = tt("hide");
     }
 }
 
@@ -261,7 +271,7 @@ function preloadNames() {
             Names = names_en.split("\n");
             break;
     }
-    currentLanguage.innerHTML = tt("currentlanguage") + tt("lang");
+    ui.currentLanguage.innerHTML = tt("currentLanguage") + tt("lang");
 
     // Remove the numbers (multis have to be removed manually)
     for (n = 0; n < Names.length; n++) {
@@ -281,13 +291,13 @@ function changePage(p) {
 }
 
 function hideFavorites() {
-    favoritesListFull.style.display = "none";
-    favoritesListShowButton.style.display = "inline";
+    ui.favoritesListFull.style.display = "none";
+    ui.favoritesListShowButton.style.display = "inline";
 }
 
 function showFavorites() {
-    favoritesListFull.style.display = "block";
-    favoritesListShowButton.style.display = "none";
+    ui.favoritesListFull.style.display = "block";
+    ui.favoritesListShowButton.style.display = "none";
 }
 
 function toggleCanvas() {
@@ -319,26 +329,30 @@ for (i = 1; i < BARRELS + 1; i++) {
 let loadedImages = 0;
 let loadedIDs = [];
 
-for (let image in images) {
+function loadImage(id) {
+    // Do not load this barrel image if it is already loaded
+    if (loadedIDs.includes(id)) return false;
+
+    //console.log("New: " + id);
     let img = new Image();
+
     img.onload = () => {
-        images[image] = img;
+        images[id] = img;
         loadedImages += 1;
-        loadedIDs.push(image);
+        loadedIDs.push(id);
 
-        if (image.substr(6) == id1 || image.substr(6) == id2) {
-            updateUI();
-        }
+        //console.log("Loaded: " + id);
+        updateUI();
 
-        //putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
+        /* ui.putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
         if (loadedImages == BARRELS) {
             // All images loaded
             updateUI();
             updateFavorites();
-        }
+        } */
     }
 
-    img.src = images[image];
+    img.src = images["barrel" + id];
 }
 
 function clearCanvas() {
@@ -375,46 +389,51 @@ function drawBlend(b1, b2) {
 
 // Update UI
 function updateFavorites() {
-    favoritesList.innerHTML = "<ul>";
+    ui.favoritesList.innerHTML = "<ul>";
     for (f = 0 + (favoritesPage * 25); f < 25 + (favoritesPage * 25); f++) {
         if (f > favorites.length - 1) continue;
-        favoritesList.innerHTML = favoritesList.innerHTML + "<ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 20px">' + tt("view") + '</button>                   <button onclick="removeFavorite(' + f + '); updateFavorites();" class="buttonStyle" style="font-size: 20px">' + tt("remove") + '</button></ul>';
+        ui.favoritesList.innerHTML = ui.favoritesList.innerHTML + "<ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 20px">' + tt("view") + '</button>                   <button onclick="removeFavorite(' + f + '); updateFavorites();" class="buttonStyle" style="font-size: 20px">' + tt("remove") + '</button></ul>';
     }
-    favoritesList.innerHTML = favoritesList.innerHTML + "</ul>";
-    favoritesCurrentPage.innerHTML = "(" + tt("page") + " " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
+    ui.favoritesList.innerHTML = ui.favoritesList.innerHTML + "</ul>";
+    ui.favoritesCurrentPage.innerHTML = "(" + tt("page") + " " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
 }
 
 function updateSettingsDisplay() {
     if (!showPatchNotes) {
-        patchNotesText.innerHTML = "";
-        notesButton.innerHTML = tt("showpatchnotes");
+        ui.patchNotesText.innerHTML = "";
+        ui.notesButton.innerHTML = tt("showpatchnotes");
     }
     else {
-        patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px; text-align: left;"> ' + notes + ' </div>';
-        notesButton.innerHTML = tt("hide");
+        ui.patchNotesText.innerHTML = '<br /> <div class="resultStyle" style="font-size: 24px; text-align: left;"> ' + notes + ' </div>';
+        ui.notesButton.innerHTML = tt("hide");
     }
 
-    setb1.innerHTML = tt("mixedimages") + ": " + (settings.miximg ? tt("ON") : tt("OFF"));
-    setb2.innerHTML = tt("mixtype") + ": " + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), "???"][settings.mixtype];
+    ui.setb1.innerHTML = tt("mixedimages") + ": " + (settings.miximg ? tt("ON") : tt("OFF"));
+    ui.setb2.innerHTML = tt("mixtype") + ": " + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), "???"][settings.mixtype];
 
-    creditsText1.innerHTML = tt("madeby") + " (c)2023 <br /> " + tt("based") + " (c)2017 <br /> " + tt("idea") + "<br />" + tt("version")
-        + " 1.5.1 (02/26/23)";
-    creditsText2.innerHTML = "<br />" + tt("from") + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">' + tt("wiki") + "</a>, " + tt("wikipedia") +
-            "<br />" + tt("data") + "<br /><b>" + tt("howtouse") + "</b> <br />" + tt("justclick") + "<br />" + tt("explanation") + "<br />" + tt("usage");
+    ui.creditsText1.innerHTML = "<a href='https://schrottii.github.io/'>" + tt("madeby") + "</a> ©️2022-2024 <br /> " + tt("based") + " ©️2017 <br /> " + tt("idea") + "<br /><br />" + tt("version")
+        + " 1.6 (12/02/23)<br />";
+    ui.creditsText2.innerHTML = "<br /><br />" + tt("from") + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">' + tt("wiki") + "</a>, " + tt("wikipedia") +
+        "<br />" + tt("data") + "<br /><a href='https://schrottii.github.io/'>Click here to see my other projects!</a><br /><br /><b>" + tt("howtouse") + "</b> <br />" + tt("justclick") + "<br />" + tt("explanation") + "<br />" + tt("usage");
 }
 
 function updateUI() {
-    putout.innerHTML = output;
+    ui.putout.innerHTML = output;
 
-    barrel1.innerHTML = fullname1 + "  -->";
-    barrel2.innerHTML = "<--  " + fullname2;
+    ui.barrel1.innerHTML = fullname1 + "  -->";
+    ui.barrel2.innerHTML = "<--  " + fullname2;
 
-    barrel1.style.fontSize = fullname1.length < 16 ? "24px" : "" + Math.floor(32 - fullname1.length / 1.5) + "px";
-    barrel2.style.fontSize = fullname2.length < 16 ? "24px" : "" + Math.floor(32 - fullname2.length / 1.5) + "px";
+    ui.barrel1.style.fontSize = fullname1.length < 16 ? "24px" : "" + Math.floor(32 - fullname1.length / 1.5) + "px";
+    ui.barrel2.style.fontSize = fullname2.length < 16 ? "24px" : "" + Math.floor(32 - fullname2.length / 1.5) + "px";
+
+    if (id1 != 0) {
+        loadImage(id1);
+        loadImage(id2);
+    }
 
     // Image stuff
     clearCanvas();
-    if (loadedIDs.includes("barrel" + id1) && loadedIDs.includes("barrel" + id2)) {
+    if (loadedIDs.includes(id1) && loadedIDs.includes(id2)) {
         if (id1 > 0 && id2 > 0 && settings.miximg) {
             switch (settings.mixtype) {
                 case 0:
@@ -435,27 +454,27 @@ function updateUI() {
             }
         }
 
-        pic1.style.display = "block";
-        pic2.style.display = "block";
+        ui.pic1.style.display = "block";
+        ui.pic2.style.display = "block";
 
-        pic1.src = getFile(id1);
-        pic2.src = getFile(id2);
+        ui.pic1.src = getFile(id1);
+        ui.pic2.src = getFile(id2);
     }
     else {
-        pic1.style.display = "none";
-        pic2.style.display = "none";
+        ui.pic1.style.display = "none";
+        ui.pic2.style.display = "none";
     }
 
-    mix.innerHTML = tt("mix");
-    favoritehtml.innerHTML = tt("favorite");
-    favoritehtml2.innerHTML = tt("favorites");
-    favoritesListShowButton.innerHTML = tt("favorites");
-    back.innerHTML = tt("back");
+    ui.mix.innerHTML = tt("mix");
+    ui.favoritehtml.innerHTML = tt("favorite");
+    ui.favoritehtml2.innerHTML = tt("favorites");
+    ui.favoritesListShowButton.innerHTML = tt("favorites");
+    ui.backButton.innerHTML = tt("backButton");
 
-    firstpage.innerHTML = tt("firstpage");
-    previouspage.innerHTML = tt("previouspage");
-    nextpage.innerHTML = tt("nextpage");
-    lastpage.innerHTML = tt("lastpage");
+    ui.firstPageButton.innerHTML = tt("firstPageButton");
+    ui.previousPageButton.innerHTML = tt("previousPageButton");
+    ui.nextPageButton.innerHTML = tt("nextPageButton");
+    ui.lastPageButton.innerHTML = tt("lastPageButton");
 
     updateSettingsDisplay();
 }
@@ -463,4 +482,5 @@ function updateUI() {
 loadSave();
 preloadNames();
 updateUI();
-notesButton.innerHTML = tt("showpatchnotes");
+updateFavorites();
+ui.notesButton.innerHTML = tt("showpatchnotes");

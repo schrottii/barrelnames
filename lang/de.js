@@ -4,7 +4,7 @@
 
 const trans_de = {
     "lang": "Deutsch",
-    "currentlanguage": "Aktuelle Sprache: ",
+    "currentLanguage": "Aktuelle Sprache: ",
     "showpatchnotes": "Änderungen einblenden",
     "hide": "Ausblenden",
     "view": "Anzeigen",
@@ -33,9 +33,9 @@ const trans_de = {
     "mix": "Mixen!",
     "favorite": "Favorit",
     "favorites": "Favoriten",
-    "back": "Zurück",
-    "firstpage": "Erste Seite",
-    "previouspage": "Vorherige Seite",
-    "nextpage": "Nächste Seite",
-    "lastpage": "Letzte Seite",
+    "backButton": "Zurück",
+    "firstPageButton": "Erste Seite",
+    "previousPageButton": "Vorherige Seite",
+    "nextPageButton": "Nächste Seite",
+    "lastPageButton": "Letzte Seite",
 }
