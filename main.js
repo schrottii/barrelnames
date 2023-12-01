@@ -42,7 +42,7 @@ var ui = {
     backButton: document.getElementById("backButton"),
 
     firstPageButton: document.getElementById("firstPageButton"),
-    previousPageButton: document.getElementById("prevpage"),
+    previousPageButton: document.getElementById("previousPageButton"),
     nextPageButton: document.getElementById("nextPageButton"),
     lastPageButton: document.getElementById("lastPageButton"),
 
