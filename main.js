@@ -323,7 +323,7 @@ function getFile(num) {
 
 // Canvas stuff
 for (i = 1; i < BARRELS + 1; i++) {
-    images["barrel" + i] = getFile(i);
+    images[i] = getFile(i);
 }
 
 let loadedImages = 0;
@@ -352,7 +352,7 @@ function loadImage(id) {
         } */
     }
 
-    img.src = images["barrel" + id];
+    img.src = images[id];
 }
 
 function clearCanvas() {
@@ -360,8 +360,8 @@ function clearCanvas() {
 }
 
 function drawSides(b1, b2) {
-    let p1 = images["barrel" + b1];
-    let p2 = images["barrel" + b2];
+    let p1 = images[b1];
+    let p2 = images[b2];
 
     ctx.drawImage(p1, 0, 0, p1.width / 2, SY, 128 - p1.width / 2, 0, p1.width / 2, SY);
     ctx.drawImage(p2, p2.width / 2, 0, p1.width / 2, SY, 128, 0, p2.width / 2, SY);
@@ -369,16 +369,16 @@ function drawSides(b1, b2) {
 }
 
 function drawStacked(b1, b2) {
-    let p1 = images["barrel" + b1];
-    let p2 = images["barrel" + b2];
+    let p1 = images[b1];
+    let p2 = images[b2];
 
     ctx.drawImage(p1, 0, 0, SX, p1.height / 2, 128 - p1.width / 2, 128 - p1.height / 2, SX, p1.height / 2);
     ctx.drawImage(p2, 0, p2.height / 2, SX, p1.height / 2, 128 - p2.width / 2, 128, SX, p2.height / 2);
 }
 
 function drawBlend(b1, b2) {
-    let p1 = images["barrel" + b1];
-    let p2 = images["barrel" + b2];
+    let p1 = images[b1];
+    let p2 = images[b2];
 
     ctx.globalAlpha = 1;
     ctx.drawImage(p1, 0, 0, p1.width, p1.height, 128 - p1.width / 2, 0, p1.width, SY);
