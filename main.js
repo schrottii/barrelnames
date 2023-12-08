@@ -2,7 +2,10 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = `New in Update 1.6:`
+const notes = `New in Update 1.6.1:`
+    + `<br>- Changed host`
+    + `<br>- Added export and import`
+    + `<br><br><br>- New in Update 1.6:`
     + `<br>- Added barrels 643-666 (update 11.2)`
     + `<br>- Reworked the image loading system, rather than loading all barrels at the start they are now only loaded when needed, drastically reducing loading times`
     + `<br>- Added a link to my website / other games`
@@ -164,48 +167,6 @@ function goBack() {
     updateUI();
 }
 
-function loadSave() {
-    let temp = JSON.parse(localStorage.getItem("NameMixer"));
-
-    if (temp != null) {
-        let loadFavs;
-
-        if (temp[0] == undefined) {
-            loadFavs = temp.fav;
-            for (s in temp.set) {
-                settings[s] = temp.set[s];
-            }
-        }
-        else {
-            loadFavs = temp;
-        }
-        if (typeof (loadFavs[0]) != "object") {
-            for (t in loadFavs) {
-                let thisName = loadFavs[t].split(" ");
-                let b1;
-                let b2;
-                for (b = 0; b < Names.length; b++) {
-                    let splittedName = Names[b].split(" ");
-                    if (splittedName[0] == thisName[0]) b1 = b;
-
-                    splittedName = Names[b].split(" ");
-                    if (splittedName[splittedName.length - 1] == thisName[thisName.length - 1]) b2 = b;
-                }
-                loadFavs[t] = [loadFavs[t], b1, b2];
-            }
-        }
-        favorites = loadFavs;
-    }
-}
-
-function saveSave() {
-    let strn = JSON.stringify({
-        "fav": favorites,
-        "set": settings
-    });
-    localStorage.setItem("NameMixer", strn);
-}
-
 function addFavorite() {
     if (output != "") favorites.push([output, id1, id2]);
 }
@@ -317,6 +278,71 @@ function toggleMixType() {
     saveSave();
 }
 
+function loadSave(save = "") {
+    let temp = "";
+    if (save == "") temp = JSON.parse(localStorage.getItem("NameMixer"));
+    else temp = JSON.parse(save);
+
+    if (temp != null) {
+        let loadFavs;
+
+        if (temp[0] == undefined) {
+            loadFavs = temp.fav;
+            for (s in temp.set) {
+                settings[s] = temp.set[s];
+            }
+        }
+        else {
+            loadFavs = temp;
+        }
+        if (typeof (loadFavs[0]) != "object") {
+            for (t in loadFavs) {
+                let thisName = loadFavs[t].split(" ");
+                let b1;
+                let b2;
+                for (b = 0; b < Names.length; b++) {
+                    let splittedName = Names[b].split(" ");
+                    if (splittedName[0] == thisName[0]) b1 = b;
+
+                    splittedName = Names[b].split(" ");
+                    if (splittedName[splittedName.length - 1] == thisName[thisName.length - 1]) b2 = b;
+                }
+                loadFavs[t] = [loadFavs[t], b1, b2];
+            }
+        }
+        favorites = loadFavs;
+    }
+}
+
+function saveSave() {
+    let strn = JSON.stringify({
+        "fav": favorites,
+        "set": settings
+    });
+    localStorage.setItem("NameMixer", strn);
+}
+
+function importSave() {
+    let toImport = prompt("Insert import code...");
+    if (toImport == "" || toImport == undefined || toImport == false) return false;
+    else {
+        loadSave(decodeURIComponent(escape(window.atob(toImport))));
+
+        updateUI();
+        updateFavorites();
+        saveSave();
+    }
+}
+
+function exportSave() {
+    let toExport = JSON.stringify({
+        "fav": favorites,
+        "set": settings
+    });
+    toExport = btoa(unescape(encodeURIComponent(toExport)));
+    navigator.clipboard.writeText(toExport);
+}
+
 function getFile(num) {
     return "barrels/" + (num > 177 ? "B" : "b") + "arrel_" + Math.max(1, num) + ".png";
 }
@@ -412,7 +438,7 @@ function updateSettingsDisplay() {
     ui.setb2.innerHTML = tt("mixtype") + ": " + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), "???"][settings.mixtype];
 
     ui.creditsText1.innerHTML = "<a href='https://schrottii.github.io/'>" + tt("madeby") + "</a> ©️2022-2024 <br /> " + tt("based") + " ©️2017 <br /> " + tt("idea") + "<br /><br />" + tt("version")
-        + " 1.6 (12/02/23)<br />";
+        + " 1.6.1 (12/08/23)<br />";
     ui.creditsText2.innerHTML = "<br /><br />" + tt("from") + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">' + tt("wiki") + "</a>, " + tt("wikipedia") +
         "<br />" + tt("data") + "<br /><a href='https://schrottii.github.io/'>Click here to see my other projects!</a><br /><br /><b>" + tt("howtouse") + "</b> <br />" + tt("justclick") + "<br />" + tt("explanation") + "<br />" + tt("usage");
 }
