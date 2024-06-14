@@ -27,7 +27,7 @@
 
         <button onclick="generateCombination(); updateUI();" class="buttonStyle" id="mix">mix!</button><br />
         <button onclick="addFavorite(); saveSave(); updateFavorites();" class="buttonStyle" style="font-size: 32px" id="favorite">Favorite</button><br />
-        <button onclick="goBack(); saveSave(); updateUI();" class="buttonStyle" style="font-size: 32px" id="backButton">Go backButton</button>
+        <button onclick="goBack(); saveSave(); updateUI();" class="buttonStyle" style="font-size: 32px" id="backButton">Go back button</button>
 
     </div>
 
@@ -46,10 +46,11 @@
     <br />
     <div class="creditsBox">
         <span id="creditsText1"></span>
-            <button onclick="patchNotes();" class="buttonStyle" style="font-size: 24px" id="notesButton">Show patch notes</button>
-            <span id="patchNotesText"></span>
+        <a href="terms-of-service.html" target="_blank">Terms of Service</a><br /><br />
+        <button onclick="patchNotes();" class="buttonStyle" style="font-size: 24px" id="notesButton">Show patch notes</button>
+        <span id="patchNotesText"></span>
         <span id="creditsText2"></span>
-</div>
+    </div>
     <div class="settingsBox">
         <span id="currentLanguage" style="color: white"></span><br />
         <img src="us.png" onclick="changeLanguage('en')" class="flag" />

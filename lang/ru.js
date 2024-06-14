@@ -18,6 +18,7 @@ const trans_ru = {
     "topbottom": "Верх/Низ",
     "fusion": "фьюжн",
     "random": "Случайный",
+    "frame": "рамка",
     "madeby": "Сделано Schrottii",
     "based": "На основе игры Scrap Clicker 2 от Schrott Games",
     "idea": "Идея от 11.09.22, разработка с 24.10.22",

@@ -8,17 +8,19 @@ ul {
 }
 
 h1 {
-    margin-top: 8px;
+    margin-top: 0px;
     margin-bottom: 8px;
 }
 
 h3 {
     margin-top: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
 }
 
 .buttonStyle{
-    outline-color: saddlebrown;
+    border-color: saddlebrown;
+    border-width: 3px;
+    border-style: ridge;
     background-color: darkorange;
     text-align: center;
     font-family: 'DejaVu Sans Mono';

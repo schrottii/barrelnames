@@ -18,6 +18,7 @@ const trans_uk = {
     "topbottom": "Верх/Низ",
     "fusion": "Злиття",
     "random": "Випадковий",
+    "frame": "рамка",
     "madeby": "Зроблено Шротті",
     "based": "На основі Scrap Clicker 2 від Schrott Games",
     "idea": "Ідея від 11.09.22, розроблена з 24.10.22",

@@ -19,6 +19,7 @@ const trans_fr = {
     "fusion": "Fusion",
     "random": "Aléatoire",
     "madeby": "Créer par Schrottii",
+    "frame": "Cadre",
     "based": "Inspiré du jeu Scrap II par Schrott Games'",
     "idea": "Idée eu le 09/11/22, développé à partir du 10/24/22",
     "version": "Version",

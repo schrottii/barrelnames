@@ -2,15 +2,13 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = `New in Update 1.6.1:`
-    + `<br>- Changed host`
-    + `<br>- Added export and import`
-    + `<br><br><br>- New in Update 1.6:`
-    + `<br>- Added barrels 643-666 (update 11.2)`
-    + `<br>- Reworked the image loading system, rather than loading all barrels at the start they are now only loaded when needed, drastically reducing loading times`
-    + `<br>- Added a link to my website / other games`
-    + `<br>- Added more space in the credits section`
-    + `<br>- Several code improvements`
+const notes = `New in Update 1.7:`
+    + `<br>- Added barrels 667-714 (updates 11.3 & 11.4)`
+    + `<br>- New mix type: frame!`
+    + `<br>- Added Terms of Service`
+    + `<br>- Changed button outline`
+    + `<br>- Other minor design improvements`
+//    + `<br>- `
     ;
 
 var canvas = document.getElementById("canvie");
@@ -19,7 +17,7 @@ var ctx = canvas.getContext("2d");
 const SX = 256;
 const SY = 256;
 
-const BARRELS = 666; // Amount of barrels
+const BARRELS = 714; // Amount of barrels
 
 var Names;
 var output = "";
@@ -273,7 +271,7 @@ function toggleCanvas() {
 }
 
 function toggleMixType() {
-    settings.mixtype = ++settings.mixtype % 4;
+    settings.mixtype = ++settings.mixtype % 5;
     updateSettingsDisplay();
     saveSave();
 }
@@ -413,6 +411,14 @@ function drawBlend(b1, b2) {
     ctx.globalAlpha = 1;
 }
 
+function drawFrame(b1, b2) {
+    let p1 = images[b1];
+    let p2 = images[b2];
+
+    ctx.drawImage(p1, 0, 0, p1.width, p1.height, 128 - p1.width / 2, 0, p1.width, SY);
+    ctx.drawImage(p2, 128 - (p2.height / 5.6), 128 - 64, p2.height / 2.8, 128);
+}
+
 // Update UI
 function updateFavorites() {
     ui.favoritesList.innerHTML = "<ul>";
@@ -435,10 +441,10 @@ function updateSettingsDisplay() {
     }
 
     ui.setb1.innerHTML = tt("mixedimages") + ": " + (settings.miximg ? tt("ON") : tt("OFF"));
-    ui.setb2.innerHTML = tt("mixtype") + ": " + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), "???"][settings.mixtype];
+    ui.setb2.innerHTML = tt("mixtype") + ": " + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), tt("frame"), "???"][settings.mixtype];
 
     ui.creditsText1.innerHTML = "<a href='https://schrottii.github.io/'>" + tt("madeby") + "</a> ©️2022-2024 <br /> " + tt("based") + " ©️2017 <br /> " + tt("idea") + "<br /><br />" + tt("version")
-        + " 1.6.1 (12/08/23)<br />";
+        + " 1.7 (2024-06-15)<br />";
     ui.creditsText2.innerHTML = "<br /><br />" + tt("from") + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">' + tt("wiki") + "</a>, " + tt("wikipedia") +
         "<br />" + tt("data") + "<br /><a href='https://schrottii.github.io/'>Click here to see my other projects!</a><br /><br /><b>" + tt("howtouse") + "</b> <br />" + tt("justclick") + "<br />" + tt("explanation") + "<br />" + tt("usage");
 }
@@ -446,8 +452,8 @@ function updateSettingsDisplay() {
 function updateUI() {
     ui.putout.innerHTML = output;
 
-    ui.barrel1.innerHTML = fullname1 + "  -->";
-    ui.barrel2.innerHTML = "<--  " + fullname2;
+    ui.barrel1.innerHTML = fullname1 + "  →";
+    ui.barrel2.innerHTML = "←  " + fullname2;
 
     ui.barrel1.style.fontSize = fullname1.length < 16 ? "24px" : "" + Math.floor(32 - fullname1.length / 1.5) + "px";
     ui.barrel2.style.fontSize = fullname2.length < 16 ? "24px" : "" + Math.floor(32 - fullname2.length / 1.5) + "px";
@@ -472,10 +478,25 @@ function updateUI() {
                     drawBlend(id1, id2);
                     break;
                 case 3:
-                    let rand = Math.random() * 100;
-                    if (rand > 66) drawSides(id1, id2);
-                    else if (rand > 33) drawStacked(id1, id2);
-                    else drawBlend(id1, id2);
+                    let rand = Math.floor(Math.random() * 400);
+
+                    switch (rand) {
+                        case 0:
+                            drawSides(id1, id2);
+                            break;
+                        case 1:
+                            drawStacked(id1, id2);
+                            break;
+                        case 2:
+                            drawBlend(id1, id2);
+                            break;
+                        case 3:
+                            drawFrame(id1, id2);
+                            break;
+                    }
+                    break;
+                case 4:
+                    drawFrame(id1, id2);
                     break;
             }
         }

@@ -18,6 +18,7 @@ const trans_it = {
     "topbottom": "Alto / Basso",
     "fusion": "Fusione",
     "random": "Casuale",
+    "frame": "Telaio",
     "madeby": "Fatto da Schrottii",
     "based": "Basato su Scrap Clicker 2 di Schrott Games",
     "idea": "Idea del 11/09/22, sviluppata dal 24/10/22",

@@ -18,6 +18,7 @@ const trans_de = {
     "topbottom": "Oben / Unten",
     "fusion": "Fusion",
     "random": "Zufällig",
+    "frame": "Rahmen",
     "madeby": "Gemacht von Schrottii",
     "based": "Basierend auf Schrotttonne 2 von Schrott Games",
     "idea": "Idee von dem 11.9.2022, entwickelt seit dem 24.10.2022",
