@@ -478,7 +478,7 @@ function updateUI() {
                     drawBlend(id1, id2);
                     break;
                 case 3:
-                    let rand = Math.floor(Math.random() * 400);
+                    let rand = Math.floor(Math.random() * 4);
 
                     switch (rand) {
                         case 0:
