@@ -493,6 +493,9 @@ function updateUI() {
                         case 3:
                             drawFrame(id1, id2);
                             break;
+                        default:
+                            drawBlend(id1, id2);
+                            break;
                     }
                     break;
                 case 4:
