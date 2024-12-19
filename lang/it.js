@@ -708,4 +708,100 @@ const names_it = `
 664: Corsia di Accelerazione
 665: Posso Venderlo?
 666: Barile per l'Inferno
+Questo latte è pazzesco!
+Smetti di consumare carne!
+Dov'è il mais?
+Elettricità gratis
+Dov'è la base?
+Coperto di Nero
+Barili di Nove Pollici
+Dai pepe alla vita
+Non una palla!
+Come si guarda questo?
+Meglio della legna!
+Ghiaccio-B
+Frosty v. Yule
+Buco di riciclo
+Casa delle Feste
+Pozione per auto-accendersi
+Luminosità compatta
+Tieni caldo il tuo collo!
+Verdure
+Il potere della tua anima
+Sono perso! Aiuto
+Sono daltonico! Aiuto
+Barile Jazz
+XOXO
+La Ciliegina sulla torta
+Costruzione pesante
+Strati rosa
+Pugnalata
+Castello Finale
+La Vita trova un modo
+Radiatore Ultra Potente
+Dov'è il Succo Felice?
+Galleggia in una vasca!
+Il Cuore del Mare
+Dov'è la spiaggia?
+Livello Successivo
+Cono di Magma
+Collina Orientale
+Scioccante!
+Compagno d'Erba
+Brocca Naturale
+Rompimi
+10+
+Palle Misteriose
+Laser Mortale 250
+Non è invecchiato bene
+CYMK
+Tripla-Doppia
+Sogno ad occhi aperti
+Warhol
+Futhark
+Pacco Rubato
+Rosa Bambina!
+Orzo
+Risorse umane
+Difensore del Regno
+Blocchi
+La Roccia
+Coniglietto Verde
+Lo Specchio verso il nulla
+Più lati - Più divertimento
+Scrittura ad inchiostro
+Roma & Venezia
+Celebrare la Morte
+Sospiro di Sollievo
+Scadenza: 28/11/2004
+Soluzione Cappello Matto
+Scrap Gioco di Ruolo
+Viola, e dimenticato
+La Torre Perfetta
+La Rosa del Deserto
+SSD GigaEnergia
+Premi "E" per disarmare
+I numeri, Mason!
+Uccello calvo
+Gemme del potere
+"Spaventoso"
+Ritorno alla scimmia!
+Agente Anatra
+50% più silenzioso!
+Dov'è la pasta?
+Non lanciare
+Scatenarsi con la gravità
+Il buono, il cattivo e l'anatra
+Un mare di stelle
+Piante bianche come la neve
+Cretaceo
+Sangria
+Buongiorno
+Non congelarti!
+Determinato a bruciare
+Prendendo forma
+Crescita eccessiva
+Brillare in eterno
+Erosione
+Corrente ascendente
 `

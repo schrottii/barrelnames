@@ -2,14 +2,20 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = `New in Update 1.7:`
-    + `<br>- Added barrels 667-714 (updates 11.3 & 11.4)`
-    + `<br>- New mix type: frame!`
-    + `<br>- Added Terms of Service`
-    + `<br>- Changed button outline`
-    + `<br>- Other minor design improvements`
-//    + `<br>- `
-    ;
+const notes = `New in Update 1.8:<br />` + 
+    `-> Additions:
+- Added barrels 715 - 762 (updates 11.5 & 11.6)
+- Added favicon
+- Added donate button
+- Added file with all patch notes
+-> Design:
+- Changed color palette slightly and made it consistent
+- Changed colors of some stuff
+- Re-arranged the info/credits section
+- Slightly changed settings section
+-> Other:
+- Severe organization improvements
+- Fixed an issue with newer barrels`.replaceAll("\n", "<br />");
 
 var canvas = document.getElementById("canvie");
 var ctx = canvas.getContext("2d");
@@ -17,7 +23,7 @@ var ctx = canvas.getContext("2d");
 const SX = 256;
 const SY = 256;
 
-const BARRELS = 714; // Amount of barrels
+const BARRELS = 762; // Amount of barrels
 
 var Names;
 var output = "";
@@ -37,6 +43,8 @@ var ui = {
     currentLanguage: document.getElementById("currentLanguage"),
     creditsText1: document.getElementById("creditsText1"),
     creditsText2: document.getElementById("creditsText2"),
+    creditsText3: document.getElementById("creditsText3"),
+    creditsText4: document.getElementById("creditsText4"),
     mix: document.getElementById("mix"),
     favoritehtml: document.getElementById("favorite"),
     favoritehtml2: document.getElementById("favoriteshidden"),
@@ -233,6 +241,7 @@ function preloadNames() {
     ui.currentLanguage.innerHTML = tt("currentLanguage") + tt("lang");
 
     // Remove the numbers (multis have to be removed manually)
+    // Note: seems like barrels don't have the numbers anymore past 666, this does make it easier, cool
     for (n = 0; n < Names.length; n++) {
         Names[n] = Names[n].replace(/^[^_]*: /, "")
     }
@@ -443,10 +452,11 @@ function updateSettingsDisplay() {
     ui.setb1.innerHTML = tt("mixedimages") + ": " + (settings.miximg ? tt("ON") : tt("OFF"));
     ui.setb2.innerHTML = tt("mixtype") + ": " + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), tt("frame"), "???"][settings.mixtype];
 
-    ui.creditsText1.innerHTML = "<a href='https://schrottii.github.io/'>" + tt("madeby") + "</a> ©️2022-2024 <br /> " + tt("based") + " ©️2017 <br /> " + tt("idea") + "<br /><br />" + tt("version")
-        + " 1.7 (2024-06-15)<br />";
-    ui.creditsText2.innerHTML = "<br /><br />" + tt("from") + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">' + tt("wiki") + "</a>, " + tt("wikipedia") +
-        "<br />" + tt("data") + "<br /><a href='https://schrottii.github.io/'>Click here to see my other projects!</a><br /><br /><b>" + tt("howtouse") + "</b> <br />" + tt("justclick") + "<br />" + tt("explanation") + "<br />" + tt("usage");
+    ui.creditsText1.innerHTML = "<a href='https://schrottii.github.io/'>" + tt("madeby") + "</a> ©️2022-2024 <br /> " + tt("based") + " ©️2017 <br /> " + tt("idea");
+    ui.creditsText2.innerHTML =tt("from") + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">' + tt("wiki") + "</a>, " + tt("wikipedia") +
+        "<br />" + tt("data");
+    ui.creditsText3.innerHTML = tt("howtouse") + "<br />" + tt("justclick") + "<br />" + tt("explanation") + "<br />" + tt("usage");
+    ui.creditsText4.innerHTML = tt("version") + " 1.8 (2024-12-20)";
 }
 
 function updateUI() {

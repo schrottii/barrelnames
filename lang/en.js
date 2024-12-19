@@ -708,4 +708,100 @@ const names_en = `
 664: Acceleration Road
 665: Can I Sell This?
 666: Barrel to Hell
+This milk is nuts!
+Stop Meat Consumption!
+Where's the Corn?
+No Electricity Bills
+Where's the Base?
+A Coat of Nero
+Nine Inch Barrels
+Spice up your life!
+Not a Bowl!
+How to watch this?
+Better than Wood!
+Ice-B
+Frosty v. Yule
+Recycle Hole
+Festive Housing
+Potion to Self-Ignite
+Compact Glow
+Keep Your Neck Warm!
+Verdure
+The Power of your Soul
+I'm lost! help
+I'm colorblind! help
+Scrapyard Jazz
+XOXO
+Cherry On Top
+Heavy Construction
+Pink Layers
+Knife Hit
+Final Castle
+Life finds a Way
+Ultimate Heat Heater
+Where's Happy Juice?
+Floats in a Tub!
+Heart of the Sea
+Where's the Beach?
+Next Level Gaming
+Magma Cone
+Hill of the Orient
+Shocker!
+Yerba Mate
+Nature's Pitchers
+Crack Me
+A+
+Mystery Pods
+Deadly Laser 250
+That didn't age well
+CYMK
+Triple-Double
+Daydreaming
+Warhol
+Futhark
+Lost Parcel
+Baby pink!
+Beer Food
+Human Resources
+Kingdom Defender
+Bocchi
+The Rock
+Green Bunny
+The Mirror to Nowhere
+More sides - more fun
+Inky Writing
+Rome & Venice
+Celebrate Death
+Sigh... unzips pants
+EXP: 11/28/2004
+Mad Hat Solution
+ScrapRPG
+Purple, and forgotten
+The Perfect Tower
+The Desert Rose
+SSD GigaEnergy
+Press "E" to Disarm
+The numbers, Mason!
+Bald Bird
+Gems of Power
+"Frightening"
+Return to monke!
+Officer Duck
+50% more quiet!
+Where's the Pasta?
+Do not throw
+Getting Funky With Gravity
+Good, Bad, and Quacky
+A Starry Sea
+Plants as White as Snow
+Cretaceous
+Sangria 
+Good Morning
+Don't get frostbite!
+Determined to Burn
+Taking shape
+Overgrowth
+Shines Eternal
+Erosion
+Updraft
 `

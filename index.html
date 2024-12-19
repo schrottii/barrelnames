@@ -5,8 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="styles.css" rel="stylesheet" type="text/css">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
 </head>
 <body>
+    <!-- GENERATOR AND BUTTONS -->
     <div style="text-align: center">
         <h3>Schrottii's</h3><h1>Barrel Name Mixer</h1>
         <!-- This work is copyrighted. Copying, cloning or stealing is prohibited. -->
@@ -31,6 +36,7 @@
 
     </div>
 
+    <!-- LIST OF FAVORITES -->
     <div class="favoritesBox" id="favoritesListFull">
         <button onclick="hideFavorites();" class="buttonStyle" style="font-size: 20px" id="favoriteshidden">Favorites</button><br /><span id="favoritesCurrentPage"></span>
         <span id="favoritesList">0</span>
@@ -44,34 +50,62 @@
         <button onclick="showFavorites();" class="buttonStyle" id="favoritesListShowButton" style="display: none; font-size: 20px;">Favorites</button>
     </div>
     <br />
+
+    <!-- CREDITS -->
     <div class="creditsBox">
+        <h2>Info</h2>
+        <h3>How to use</h3>
+        <span id="creditsText3"></span>
+
+        <h3>Credits</h3>
         <span id="creditsText1"></span>
+
+        <h3>Sources</h3>
+        <span id="creditsText2"></span> <br />
+
+        <a href='https://schrottii.github.io/'>Click here to see my other projects!</a><br />
         <a href="terms-of-service.html" target="_blank">Terms of Service</a><br /><br />
+
+        <h3>Donate</h3>
+        If you're enjoying this or my other works and have some money left, consider donating me some - it's my only income source! :) <br />
+        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+        <script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#A15621', 'Y8Y2XMZX1'); kofiwidget2.draw();</script>
+
+        <h3>Patch notes</h3>
+        <span id="creditsText4"></span> <br />
         <button onclick="patchNotes();" class="buttonStyle" style="font-size: 24px" id="notesButton">Show patch notes</button>
         <span id="patchNotesText"></span>
-        <span id="creditsText2"></span>
+        <br /><a href="patch-notes.html" target="_blank">All Patch Notes</a><br /><br />
     </div>
+
+    <!-- SETTINGS -->
     <div class="settingsBox">
+        <h2>Settings</h2>
+        <h3>Language</h3>
         <span id="currentLanguage" style="color: white"></span><br />
-        <img src="us.png" onclick="changeLanguage('en')" class="flag" />
-        <img src="uk.png" onclick="changeLanguage('uk')" class="flag" /><br />
-        <img src="it.png" onclick="changeLanguage('it')" class="flag" />
-        <img src="ru.png" onclick="changeLanguage('ru')" class="flag" /><br />
-        <img src="fr.png" onclick="changeLanguage('fr')" class="flag" />
-        <img src="de.png" onclick="changeLanguage('de')" class="flag" />
-        <br />
+        <img src="images/flags/us.png" onclick="changeLanguage('en')" class="flag" />
+        <img src="images/flags/uk.png" onclick="changeLanguage('uk')" class="flag" /><br />
+        <img src="images/flags/it.png" onclick="changeLanguage('it')" class="flag" />
+        <img src="images/flags/ru.png" onclick="changeLanguage('ru')" class="flag" /><br />
+        <img src="images/flags/fr.png" onclick="changeLanguage('fr')" class="flag" />
+        <img src="images/flags/de.png" onclick="changeLanguage('de')" class="flag" />
+
+        <h3>Other settings</h3>
         <button onclick="toggleCanvas()" id="setb1" class="settingButton">Mixed images: ON</button>
         <button onclick="toggleMixType()" id="setb2" class="settingButton">mix Type: Left/Right</button><br />
         <button onclick="exportSave()" class="settingButton">Export</button>
         <button onclick="importSave()" class="settingButton">Import</button>
     </div>
     <br />
+
+    <!-- LOAD SCRIPTS -->
     <script type="text/javascript" src="lang\en.js"></script>
     <script type="text/javascript" src="lang\uk.js"></script>
     <script type="text/javascript" src="lang\it.js"></script>
     <script type="text/javascript" src="lang\ru.js"></script>
     <script type="text/javascript" src="lang\fr.js"></script>
     <script type="text/javascript" src="lang\de.js"></script>
-    <script src="main.js"></script>
+
+    <script src="code\main.js"></script>
 </body>
 </html>

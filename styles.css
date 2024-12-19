@@ -1,5 +1,14 @@
+/* 
+    COLOR PALETTE
+    #F4A460 - Sandy brown - black text
+    #A15621 - Brown - white text, mid readability
+    #FFB325 - Xanthous - black text, insane readability
+    #ADA493 - Khaki - black text
+*/
+
+/* THE COMMON STUFF */
 body {
-    background-color: sandybrown;
+    background-color: #F4A460;
 }
 
 ul {
@@ -17,11 +26,12 @@ h3 {
     margin-bottom: 0px;
 }
 
-.buttonStyle{
-    border-color: saddlebrown;
+/* BUTTONS */
+.buttonStyle {
+    background-color: #FFB325;
+    border-color: #A15621;
     border-width: 3px;
     border-style: ridge;
-    background-color: darkorange;
     text-align: center;
     font-family: 'DejaVu Sans Mono';
     font-size: 48px;
@@ -37,27 +47,50 @@ h3 {
         transition: 0.3s;
     }
 
+.settingButton {
+    background-color: #FFB325;
+    color: black;
+    border-color: darkmagenta;
+    border-width: 4px;
+    border-radius: 8px 8px;
+    font-size: 20px;
+    font-family: 'DejaVu Sans Mono';
+    margin: 8px 4px 8px 4px;
+    padding: 4px 12px 4px 12px;
+    transition: 0.6s;
+}
+
+    .settingButton:hover {
+        filter: brightness(115%);
+        transition: 0.3s;
+    }
+
+    .settingButton:active {
+        filter: brightness(85%);
+        transition: 0.3s;
+    }
+
+/* BOXES / CONTAINERS */
 .creditsBox {
+    background-color: #ADA493;
     position: absolute;
     width: 50%;
     right: 12px;
-    outline-style: dashed;
     font-family: 'DejaVu Sans Mono';
     outline-color: orangered;
-    background-color: orange;
     text-align: right;
 }
 
 .settingsBox {
+    background-color: #ADA493;
     position: absolute;
     width: 40%;
     text-align: center;
-    background-color: lightslategray;
 }
 
 .favoritesBox {
+    background-color: #ADA493;
     text-align: center;
-    background-color: burlywood;
     color: black;
     border-top-style: solid;
     border-top-color: brown;
@@ -67,6 +100,14 @@ h3 {
     border-bottom-width: 3px;
 }
 
+.resultStyle {
+    background-color: #A15621;
+    width: 100%;
+    color: white;
+    font-size: 36px;
+}
+
+/* CONTENTS */
 .flag {
     width: 50%;
     max-width: 192px;
@@ -80,28 +121,6 @@ h3 {
     .flag:active {
         filter: brightness(160%);
         transition: 0.6s;
-    }
-
-.settingButton {
-    color: black;
-    background-color: deepskyblue;
-    border-color: darkmagenta;
-    border-width: 4px;
-    border-radius: 8px 8px;
-    font-size: 20px;
-    font-family: 'DejaVu Sans Mono';
-    margin: 8px 4px 8px 4px;
-    padding: 4px 12px 4px 12px;
-    transition: 0.6s;
-}
-    .settingButton:hover {
-        filter: brightness(115%);
-        transition: 0.3s;
-    }
-
-    .settingButton:active {
-        filter: brightness(85%);
-        transition: 0.3s;
     }
 
 .barrelleft {
@@ -126,11 +145,4 @@ h3 {
     .barrelright {
         right: 25%;
     }
-}
-
-.resultStyle {
-    background-color: saddlebrown;
-    width: 100%;
-    color: white;
-    font-size: 36px;
 }
