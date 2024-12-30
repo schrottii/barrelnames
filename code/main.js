@@ -2,20 +2,19 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const notes = `New in Update 1.8:<br />` + 
-    `-> Additions:
-- Added barrels 715 - 762 (updates 11.5 & 11.6)
-- Added favicon
-- Added donate button
-- Added file with all patch notes
--> Design:
-- Changed color palette slightly and made it consistent
-- Changed colors of some stuff
-- Re-arranged the info/credits section
-- Slightly changed settings section
+const gameVersion = "1.8.1";
+const updateDate = "2024-12-30";
+const notes = "New in Update " + gameVersion + ":<br />" + 
+    `
+-> Translations:
+- Separated translations for barrels and the mixer itself
+- You can now pick the languages for them separately
+- Improved translations
+
 -> Other:
-- Severe organization improvements
-- Fixed an issue with newer barrels`.replaceAll("\n", "<br />");
+- Moved some more files around
+- Added separation lines in the settings and info/credits
+`.replaceAll("\n", "<br />");
 
 var canvas = document.getElementById("canvie");
 var ctx = canvas.getContext("2d");
@@ -40,7 +39,6 @@ var ui = {
     patchNotesText: document.getElementById("patchNotesText"),
     notesButton: document.getElementById("notesButton"),
     favoritesCurrentPage: document.getElementById("favoritesCurrentPage"),
-    currentLanguage: document.getElementById("currentLanguage"),
     creditsText1: document.getElementById("creditsText1"),
     creditsText2: document.getElementById("creditsText2"),
     creditsText3: document.getElementById("creditsText3"),
@@ -57,6 +55,15 @@ var ui = {
 
     setb1: document.getElementById("setb1"),
     setb2: document.getElementById("setb2"),
+
+    currentLanguage: document.getElementById("currentLanguage"),
+    currentLanguage2: document.getElementById("currentLanguage2"),
+    donateText: document.getElementById("donateText"),
+    languageSetting1Header: document.getElementById("languageSetting1Header"),
+    languageSetting2Header: document.getElementById("languageSetting2Header"),
+    languageSetting1Description: document.getElementById("languageSetting1Description"),
+    languageSetting2Description: document.getElementById("languageSetting2Description"),
+    otherSettings: document.getElementById("otherSettings"),
 }
 
 
@@ -78,6 +85,7 @@ var favorites = [];
 
 var settings = {
     lang: "en",
+    barrellang: "en",
     miximg: true,
     mixtype: 0,
 }
@@ -213,32 +221,47 @@ function patchNotes() {
 
 function changeLanguage(langTo) {
     settings.lang = langTo;
+    updateFavorites();
+    updateSettingsDisplay();
+    updateUI();
+    saveSave();
+}
+
+function changeBarrelLanguage(langTo) {
+    settings.barrellang = langTo;
+    ui.currentLanguage.innerHTML = tt("currentLanguage") + tt("lang");
+
     preloadNames();
     saveSave();
 }
 
 function preloadNames() {
-    switch (settings.lang) {
+    switch (settings.barrellang) {
         case "en":
             Names = names_en.split("\n");
+            ui.currentLanguage2.innerHTML = tt("currentLanguage") + "English";
             break;
         case "uk":
             Names = names_uk.split("\n");
+            ui.currentLanguage2.innerHTML = tt("currentLanguage") + "Ukrainian";
             break
         case "it":
             Names = names_it.split("\n");
+            ui.currentLanguage2.innerHTML = tt("currentLanguage") + "Italian";
             break;
         case "ru":
             Names = names_ru.split("\n");
+            ui.currentLanguage2.innerHTML = tt("currentLanguage") + "Russian";
             break
         case "fr":
             Names = names_en.split("\n");
+            ui.currentLanguage2.innerHTML = tt("currentLanguage") + "French";
             break;
         case "de":
             Names = names_en.split("\n");
+            ui.currentLanguage2.innerHTML = tt("currentLanguage") + "German";
             break;
     }
-    ui.currentLanguage.innerHTML = tt("currentLanguage") + tt("lang");
 
     // Remove the numbers (multis have to be removed manually)
     // Note: seems like barrels don't have the numbers anymore past 666, this does make it easier, cool
@@ -351,7 +374,7 @@ function exportSave() {
 }
 
 function getFile(num) {
-    return "barrels/" + (num > 177 ? "B" : "b") + "arrel_" + Math.max(1, num) + ".png";
+    return "images/barrels/" + (num > 177 ? "B" : "b") + "arrel_" + Math.max(1, num) + ".png";
 }
 
 // Canvas stuff
@@ -456,7 +479,13 @@ function updateSettingsDisplay() {
     ui.creditsText2.innerHTML =tt("from") + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">' + tt("wiki") + "</a>, " + tt("wikipedia") +
         "<br />" + tt("data");
     ui.creditsText3.innerHTML = tt("howtouse") + "<br />" + tt("justclick") + "<br />" + tt("explanation") + "<br />" + tt("usage");
-    ui.creditsText4.innerHTML = tt("version") + " 1.8 (2024-12-20)";
+    ui.creditsText4.innerHTML = tt("version") + " " + gameVersion + " (" + updateDate + ")";
+
+    ui.languageSetting1Header.innerHTML = tt("languageSetting1Header");
+    ui.languageSetting2Header.innerHTML = tt("languageSetting2Header");
+    ui.languageSetting1Description.innerHTML = tt("languageSetting1Description");
+    ui.languageSetting2Description.innerHTML = tt("languageSetting2Description");
+    ui.otherSettings.innerHTML = tt("otherSettings");
 }
 
 function updateUI() {
@@ -535,6 +564,7 @@ function updateUI() {
     ui.previousPageButton.innerHTML = tt("previousPageButton");
     ui.nextPageButton.innerHTML = tt("nextPageButton");
     ui.lastPageButton.innerHTML = tt("lastPageButton");
+    ui.donateText.innerHTML = tt("donateText");
 
     updateSettingsDisplay();
 }

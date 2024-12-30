@@ -51,25 +51,29 @@
     </div>
     <br />
 
-    <!-- CREDITS -->
+    <!-- INFO / CREDITS -->
     <div class="creditsBox">
         <h2>Info</h2>
         <h3>How to use</h3>
         <span id="creditsText3"></span>
+        <hr />
 
         <h3>Credits</h3>
-        <span id="creditsText1"></span>
-
-        <h3>Sources</h3>
-        <span id="creditsText2"></span> <br />
+        <span id="creditsText1"></span> <br />
 
         <a href='https://schrottii.github.io/'>Click here to see my other projects!</a><br />
-        <a href="terms-of-service.html" target="_blank">Terms of Service</a><br /><br />
+        <a href="terms-of-service.html" target="_blank">Terms of Service</a><br />
+        <hr />
+
+        <h3>Sources</h3>
+        <span id="creditsText2"></span>
+        <hr />
 
         <h3>Donate</h3>
-        If you're enjoying this or my other works and have some money left, consider donating me some - it's my only income source! :) <br />
+        <span id="donateText"></span> <br />
         <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
         <script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#A15621', 'Y8Y2XMZX1'); kofiwidget2.draw();</script>
+        <hr />
 
         <h3>Patch notes</h3>
         <span id="creditsText4"></span> <br />
@@ -81,16 +85,24 @@
     <!-- SETTINGS -->
     <div class="settingsBox">
         <h2>Settings</h2>
-        <h3>Language</h3>
+        <h3><span id="languageSetting1Header"></span></h3>
+        <span id="languageSetting1Description"></span><br />
         <span id="currentLanguage" style="color: white"></span><br />
-        <img src="images/flags/us.png" onclick="changeLanguage('en')" class="flag" />
-        <img src="images/flags/uk.png" onclick="changeLanguage('uk')" class="flag" /><br />
-        <img src="images/flags/it.png" onclick="changeLanguage('it')" class="flag" />
-        <img src="images/flags/ru.png" onclick="changeLanguage('ru')" class="flag" /><br />
+        <img src="images/flags/us.png" onclick="changeLanguage('en')" class="flag" /><br />
         <img src="images/flags/fr.png" onclick="changeLanguage('fr')" class="flag" />
         <img src="images/flags/de.png" onclick="changeLanguage('de')" class="flag" />
+        <hr />
 
-        <h3>Other settings</h3>
+        <h3><span id="languageSetting2Header"></span></h3>
+        <span id="languageSetting2Description"></span><br />
+        <span id="currentLanguage2" style="color: white"></span><br />
+        <img src="images/flags/us.png" onclick="changeBarrelLanguage('en')" class="flag" />
+        <img src="images/flags/uk.png" onclick="changeBarrelLanguage('uk')" class="flag" /><br />
+        <img src="images/flags/it.png" onclick="changeBarrelLanguage('it')" class="flag" />
+        <img src="images/flags/ru.png" onclick="changeBarrelLanguage('ru')" class="flag" />
+        <hr />
+
+        <h3><span id="otherSettings"></span></h3>
         <button onclick="toggleCanvas()" id="setb1" class="settingButton">Mixed images: ON</button>
         <button onclick="toggleMixType()" id="setb2" class="settingButton">mix Type: Left/Right</button><br />
         <button onclick="exportSave()" class="settingButton">Export</button>
@@ -99,12 +111,14 @@
     <br />
 
     <!-- LOAD SCRIPTS -->
-    <script type="text/javascript" src="lang\en.js"></script>
-    <script type="text/javascript" src="lang\uk.js"></script>
-    <script type="text/javascript" src="lang\it.js"></script>
-    <script type="text/javascript" src="lang\ru.js"></script>
-    <script type="text/javascript" src="lang\fr.js"></script>
-    <script type="text/javascript" src="lang\de.js"></script>
+    <script type="text/javascript" src="lang\mixer\en.js"></script>
+    <script type="text/javascript" src="lang\mixer\de.js"></script>
+    <script type="text/javascript" src="lang\mixer\fr.js"></script>
+
+    <script type="text/javascript" src="lang\barrels\en.js"></script>
+    <script type="text/javascript" src="lang\barrels\uk.js"></script>
+    <script type="text/javascript" src="lang\barrels\it.js"></script>
+    <script type="text/javascript" src="lang\barrels\ru.js"></script>
 
     <script src="code\main.js"></script>
 </body>

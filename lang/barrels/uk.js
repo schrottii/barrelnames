@@ -708,7 +708,6 @@ const names_uk = `
 664: Acceleration Road
 665: Can I Sell This?
 666: Barrel to Hell
-Barrel to Hell
 This milk is nuts!
 Stop Meat Consumption!
 Where's the Corn?
