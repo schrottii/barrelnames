@@ -36,6 +36,9 @@ h3 {
     font-family: 'DejaVu Sans Mono';
     font-size: 48px;
     margin-bottom: 16px;
+    
+    margin-left: 4px;
+    margin-right: 4px;
 }
     .buttonStyle:hover {
         filter: brightness(115%);
@@ -69,6 +72,12 @@ h3 {
         filter: brightness(85%);
         transition: 0.3s;
     }
+
+.grayed {
+    background-color: dimgray;
+    color: gray;
+    border: none;
+}
 
 /* BOXES / CONTAINERS */
 .creditsBox {

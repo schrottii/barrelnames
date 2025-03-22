@@ -761,4 +761,34 @@ Overgrowth
 Shines Eternal
 Erosion
 Updraft
+Nature's Coat
+Revved & Ready
+The Sandman
+Double Playfield
+Not again!
+Crème brûlée
+Psycho Beach Ball
+Carry on!
+Back to school!
+Precious Cinnamon Rolls
+Fun Fare
+Absolute Difference
+Rich Man's Shroom
+The Sea's Blessing
+Molten Cubestruction
+The End.
+Embraced Energy Extreme
+250 Carat Lemon
+Bake for 10-12 Minutes
+Any In Small
+Three-course juice!
+The Great Scrap Drama
+Pumpkin Monster II
+Sailor's best friend
+Lethal Lava Cake
+Time to Get Out!!!
+More than Coffee
+All You Can Merge
+Million Merge Club
+Drink to be spooked
 `

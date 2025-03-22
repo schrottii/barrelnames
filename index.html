@@ -30,9 +30,9 @@
 
         <hr style="margin-top: 16px" /><hr />
 
-        <button onclick="generateCombination(); updateUI();" class="buttonStyle" id="mix">mix!</button><br />
-        <button onclick="addFavorite(); saveSave(); updateFavorites();" class="buttonStyle" style="font-size: 32px" id="favorite">Favorite</button><br />
-        <button onclick="goBack(); saveSave(); updateUI();" class="buttonStyle" style="font-size: 32px" id="backButton">Go back button</button>
+        <button onclick="goBack(); saveSave(); updateUI();" class="buttonStyle" style="height: 64px" id="backButton"><b><<</b></button>
+        <button onclick="generateCombination(); updateUI();" class="buttonStyle" id="mix">mix!</button>
+        <button onclick="addFavorite(); saveSave(); updateFavorites();" class="buttonStyle" style="height: 64px" id="favorite"><b>♥</b></button>
 
     </div>
 
@@ -41,10 +41,11 @@
         <button onclick="hideFavorites();" class="buttonStyle" style="font-size: 20px" id="favoriteshidden">Favorites</button><br /><span id="favoritesCurrentPage"></span>
         <span id="favoritesList">0</span>
         <hr />
-        <button onclick="changePage(0);" class="buttonStyle" style="font-size: 20px" id="firstPageButton">First Page</button>
-        <button onclick="changePage(-1);" class="buttonStyle" style="font-size: 24px" id="previousPageButton">Previous Page</button>
-        <button onclick="changePage(1);" class="buttonStyle" style="font-size: 24px" id="nextPageButton">Next Page</button>
-        <button onclick="changePage(999);" class="buttonStyle" style="font-size: 20px" id="lastPageButton">Last Page</button>
+        <button onclick="changePage(0);" class="buttonStyle" style="font-size: 20px"><<<</button>
+        <button onclick="changePage(-1);" class="buttonStyle" style="font-size: 24px"><</button>
+        <span id="favoritesCurrentPage2"></span>
+        <button onclick="changePage(1);" class="buttonStyle" style="font-size: 24px">></button>
+        <button onclick="changePage(999);" class="buttonStyle" style="font-size: 20px">>>></button>
     </div>
     <div style="text-align: center">
         <button onclick="showFavorites();" class="buttonStyle" id="favoritesListShowButton" style="display: none; font-size: 20px;">Favorites</button>
@@ -107,6 +108,8 @@
         <button onclick="toggleMixType()" id="setb2" class="settingButton">mix Type: Left/Right</button><br />
         <button onclick="exportSave()" class="settingButton">Export</button>
         <button onclick="importSave()" class="settingButton">Import</button>
+        <button onclick="toggleAutoGenerate()" id="autogen" class="settingButton">Auto Generate</button>
+        <button onclick="changeAutoGenerateSpeed()" id="autogenspeed" class="settingButton">Speed</button>
     </div>
     <br />
 
@@ -120,6 +123,8 @@
     <script type="text/javascript" src="lang\barrels\it.js"></script>
     <script type="text/javascript" src="lang\barrels\ru.js"></script>
 
+    <script src="code\save.js"></script>
+    <script src="code\mix.js"></script>
     <script src="code\main.js"></script>
 </body>
 </html>

@@ -2,18 +2,29 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const gameVersion = "1.8.1";
-const updateDate = "2024-12-30";
+const gameVersion = "1.9";
+const updateDate = "2025-03-23";
 const notes = "New in Update " + gameVersion + ":<br />" + 
     `
--> Translations:
-- Separated translations for barrels and the mixer itself
-- You can now pick the languages for them separately
-- Improved translations
+-> Auto Generate:
+- You can now let the mixer automatically mix for you and lean back 
+- Can be enabled and disabled in the settings at any time
+- Added a setting to adjust the time: 0.1s, 0.5s, 1s (default), 2s, 5s, 10s, 30s
+
+-> Barrels:
+- Added barrels 763-792 (11.7)
+- Fixed crop issues for barrels 457, 468, 469, 471, 488
+
+-> Go back and favorite buttons:
+- Put them into the same row as the mix button
+- Go back button now just says <<
+- Favorite button now just says ♥
+- Those two buttons are now grayed out when not available
+- Favorite button is now also unavailable if the current mix is your most recent favorite
 
 -> Other:
-- Moved some more files around
-- Added separation lines in the settings and info/credits
+- Replaced the texts for the favorite page buttons with arrows, and added page count there
+- Major code changes
 `.replaceAll("\n", "<br />");
 
 var canvas = document.getElementById("canvie");
@@ -22,13 +33,12 @@ var ctx = canvas.getContext("2d");
 const SX = 256;
 const SY = 256;
 
-const BARRELS = 762; // Amount of barrels
+const BARRELS = 792; // Amount of barrels
 
 var Names;
-var output = "";
 
 var ui = {
-    putout: document.getElementById("output"),
+    output: document.getElementById("output"),
     barrel1: document.getElementById("barrel1"),
     barrel2: document.getElementById("barrel2"),
     favoritesList: document.getElementById("favoritesList"),
@@ -39,6 +49,7 @@ var ui = {
     patchNotesText: document.getElementById("patchNotesText"),
     notesButton: document.getElementById("notesButton"),
     favoritesCurrentPage: document.getElementById("favoritesCurrentPage"),
+    favoritesCurrentPage2: document.getElementById("favoritesCurrentPage2"),
     creditsText1: document.getElementById("creditsText1"),
     creditsText2: document.getElementById("creditsText2"),
     creditsText3: document.getElementById("creditsText3"),
@@ -47,11 +58,6 @@ var ui = {
     favoritehtml: document.getElementById("favorite"),
     favoritehtml2: document.getElementById("favoriteshidden"),
     backButton: document.getElementById("backButton"),
-
-    firstPageButton: document.getElementById("firstPageButton"),
-    previousPageButton: document.getElementById("previousPageButton"),
-    nextPageButton: document.getElementById("nextPageButton"),
-    lastPageButton: document.getElementById("lastPageButton"),
 
     setb1: document.getElementById("setb1"),
     setb2: document.getElementById("setb2"),
@@ -64,36 +70,31 @@ var ui = {
     languageSetting1Description: document.getElementById("languageSetting1Description"),
     languageSetting2Description: document.getElementById("languageSetting2Description"),
     otherSettings: document.getElementById("otherSettings"),
+    autogen: document.getElementById("autogen"),
+    autogenspeed: document.getElementById("autogenspeed"),
 }
 
 
 
-var name1 = "";
-var name2 = "";
-
-var fullname1 = "";
-var fullname2 = "";
-
-var id1 = 0;
-var id2 = 0;
-
-var favoritesPage = 0;
-
-var showPatchNotes = false;
-
-var favorites = [];
-
-var settings = {
-    lang: "en",
-    barrellang: "en",
-    miximg: true,
-    mixtype: 0,
+// your current barrel mix goes here
+var mix = {
+    name: "",
+    full1: "",
+    full2: "",
+    id1: 0,
+    id2: 0,
 }
 
+// other stuff
 var images = {};
 var prev = [];
 var prefull = [0, 0];
 
+for (i = 1; i < BARRELS + 1; i++) {
+    images[i] = getFile(i);
+}
+
+// translations
 function tt(id) {
     switch (settings.lang) {
         case "en":
@@ -117,48 +118,9 @@ function tt(id) {
     }
 }
 
-function pickAName(number = 0) {
-    let num = Math.floor(Math.random() * (Names.length - 2)) + 1;
-    if (number == 1) id1 = num;
-    if (number == 2) id2 = num;
-    return Names[num];
-}
-
-// Name 1
-function generateFrontName() {
-    let name = pickAName(1);
-    prefull[0] = fullname1;
-    fullname1 = name;
-    let splittedName = name.split(" ");
-    name = splittedName[0];
-    for (i = 1; i < splittedName.length; i++) {
-        if (Math.random() > 0.25) name = name + " " + splittedName[i];
-        else return name;
-    }
-    return name;
-}
-
-// Name 2
-function generateBackName() {
-    let name = pickAName(2);
-    prefull[1] = fullname2;
-    fullname2 = name;
-    let splittedName = name.split(" ");
-    name = splittedName[splittedName.length - 1];
-    for (i = splittedName.length - 2; i > -1; i--) {
-        if (Math.random() > 0.25) name = splittedName[i] + " " + name;
-        else return name;
-    }
-    return name;
-}
-
-function generateCombination() {
-    name1 = generateFrontName();
-    name2 = generateBackName();
-
-    output = name1 + " " + name2;
-
-    prev.push([name1, name2, output, id1, id2]);
+// previous
+function updatePrev() {
+    prev.push([mix.name, mix.id1, mix.id2]);
     if (prev.length > 25) prev.shift();
 }
 
@@ -167,22 +129,24 @@ function goBack() {
 
     prev.pop();
 
-    name1 = prev[prev.length - 1][0];
-    name2 = prev[prev.length - 1][1];
-    output = prev[prev.length - 1][2];
+    mix.name = prev[prev.length - 1][0];
+    mix.name.replace("  ", " ");
 
-    if (prev[prev.length - 1][3] != undefined) {
-        id1 = prev[prev.length - 1][3];
-        id2 = prev[prev.length - 1][4];
+    if (prev[prev.length - 1][1] != undefined) {
+        mix.id1 = prev[prev.length - 1][1];
+        mix.id2 = prev[prev.length - 1][2];
 
-        fullname1 = Names[id1];
-        fullname2 = Names[id2];
+        mix.full1 = Names[mix.id1];
+        mix.full2 = Names[mix.id2];
     }
     updateUI();
 }
 
+// favorites
 function addFavorite() {
-    if (output != "") favorites.push([output, id1, id2]);
+    if (mix.name == "" || (favorites.length > 0 && favorites[favorites.length - 1][0] == mix.name)) return false; // don't add when no mix is there, or you already favorited it
+
+    favorites.push([mix.name, mix.id1, mix.id2]);
 }
 
 function removeFavorite(f) {
@@ -193,19 +157,35 @@ function removeFavorite(f) {
 function viewFavorite(f) {
     let fav = favorites[f];
 
-    output = fav[0];
-    id1 = fav[1];
-    id2 = fav[2];
+    mix.name = fav[0];
+    mix.id1 = fav[1];
+    mix.id2 = fav[2];
 
-    fullname1 = Names[id1];
-    fullname2 = Names[id2];
+    mix.full1 = Names[mix.id1];
+    mix.full2 = Names[mix.id2];
 
-    prev.push([name1, name2, output, id1, id2]);
-    if (prev.length > 25) prev.shift();
-
+    updatePrev();
     updateUI();
 }
 
+function changePage(p) {
+    if (p == 0) favoritesPage = 0;
+    if (p == 999) favoritesPage = Math.floor((favorites.length - 1) / 25);
+    else favoritesPage = Math.min(Math.max(0, favoritesPage + p), Math.floor((favorites.length - 1) / 25));
+    updateFavorites();
+}
+
+function hideFavorites() {
+    ui.favoritesListFull.style.display = "none";
+    ui.favoritesListShowButton.style.display = "inline";
+}
+
+function showFavorites() {
+    ui.favoritesListFull.style.display = "block";
+    ui.favoritesListShowButton.style.display = "none";
+}
+
+// patch notes
 function patchNotes() {
     if (showPatchNotes) {
         showPatchNotes = false;
@@ -219,6 +199,7 @@ function patchNotes() {
     }
 }
 
+// languages and names
 function changeLanguage(langTo) {
     settings.lang = langTo;
     updateFavorites();
@@ -274,23 +255,7 @@ function preloadNames() {
     updateUI();
 }
 
-function changePage(p) {
-    if (p == 0) favoritesPage = 0;
-    if (p == 999) favoritesPage = Math.floor((favorites.length - 1) / 25);
-    else favoritesPage = Math.min(Math.max(0, favoritesPage + p), Math.floor((favorites.length - 1) / 25));
-    updateFavorites();
-}
-
-function hideFavorites() {
-    ui.favoritesListFull.style.display = "none";
-    ui.favoritesListShowButton.style.display = "inline";
-}
-
-function showFavorites() {
-    ui.favoritesListFull.style.display = "block";
-    ui.favoritesListShowButton.style.display = "none";
-}
-
+// settings
 function toggleCanvas() {
     if (settings.miximg == true) {
         settings.miximg = false;
@@ -308,80 +273,7 @@ function toggleMixType() {
     saveSave();
 }
 
-function loadSave(save = "") {
-    let temp = "";
-    if (save == "") temp = JSON.parse(localStorage.getItem("NameMixer"));
-    else temp = JSON.parse(save);
-
-    if (temp != null) {
-        let loadFavs;
-
-        if (temp[0] == undefined) {
-            loadFavs = temp.fav;
-            for (s in temp.set) {
-                settings[s] = temp.set[s];
-            }
-        }
-        else {
-            loadFavs = temp;
-        }
-        if (typeof (loadFavs[0]) != "object") {
-            for (t in loadFavs) {
-                let thisName = loadFavs[t].split(" ");
-                let b1;
-                let b2;
-                for (b = 0; b < Names.length; b++) {
-                    let splittedName = Names[b].split(" ");
-                    if (splittedName[0] == thisName[0]) b1 = b;
-
-                    splittedName = Names[b].split(" ");
-                    if (splittedName[splittedName.length - 1] == thisName[thisName.length - 1]) b2 = b;
-                }
-                loadFavs[t] = [loadFavs[t], b1, b2];
-            }
-        }
-        favorites = loadFavs;
-    }
-}
-
-function saveSave() {
-    let strn = JSON.stringify({
-        "fav": favorites,
-        "set": settings
-    });
-    localStorage.setItem("NameMixer", strn);
-}
-
-function importSave() {
-    let toImport = prompt("Insert import code...");
-    if (toImport == "" || toImport == undefined || toImport == false) return false;
-    else {
-        loadSave(decodeURIComponent(escape(window.atob(toImport))));
-
-        updateUI();
-        updateFavorites();
-        saveSave();
-    }
-}
-
-function exportSave() {
-    let toExport = JSON.stringify({
-        "fav": favorites,
-        "set": settings
-    });
-    toExport = btoa(unescape(encodeURIComponent(toExport)));
-    navigator.clipboard.writeText(toExport);
-}
-
-function getFile(num) {
-    return "images/barrels/" + (num > 177 ? "B" : "b") + "arrel_" + Math.max(1, num) + ".png";
-}
-
 // Canvas stuff
-for (i = 1; i < BARRELS + 1; i++) {
-    images[i] = getFile(i);
-}
-
 let loadedImages = 0;
 let loadedIDs = [];
 
@@ -400,7 +292,7 @@ function loadImage(id) {
         //console.log("Loaded: " + id);
         updateUI();
 
-        /* ui.putout.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
+        /* ui.output.innerHTML = "Loading images, please wait... " + loadedImages + "/" + BARRELS;
         if (loadedImages == BARRELS) {
             // All images loaded
             updateUI();
@@ -460,6 +352,12 @@ function updateFavorites() {
     }
     ui.favoritesList.innerHTML = ui.favoritesList.innerHTML + "</ul>";
     ui.favoritesCurrentPage.innerHTML = "(" + tt("page") + " " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
+    ui.favoritesCurrentPage2.innerHTML = "(" + tt("page") + " " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
+
+    ui.favoritehtml2.innerHTML = tt("favorites");
+    ui.favoritesListShowButton.innerHTML = tt("favorites");
+    if (mix.name == "" || (favorites.length > 0 && favorites[favorites.length - 1][0] == mix.name)) ui.favoritehtml.classList.add("grayed");
+    else ui.favoritehtml.classList.remove("grayed");
 }
 
 function updateSettingsDisplay() {
@@ -472,14 +370,36 @@ function updateSettingsDisplay() {
         ui.notesButton.innerHTML = tt("hide");
     }
 
-    ui.setb1.innerHTML = tt("mixedimages") + ": " + (settings.miximg ? tt("ON") : tt("OFF"));
-    ui.setb2.innerHTML = tt("mixtype") + ": " + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), tt("frame"), "???"][settings.mixtype];
+    ui.setb1.innerHTML = tt("mixedimages") + ": "
+        + (settings.miximg ? tt("ON") : tt("OFF"));
 
-    ui.creditsText1.innerHTML = "<a href='https://schrottii.github.io/'>" + tt("madeby") + "</a> ©️2022-2024 <br /> " + tt("based") + " ©️2017 <br /> " + tt("idea");
-    ui.creditsText2.innerHTML =tt("from") + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">' + tt("wiki") + "</a>, " + tt("wikipedia") +
-        "<br />" + tt("data");
-    ui.creditsText3.innerHTML = tt("howtouse") + "<br />" + tt("justclick") + "<br />" + tt("explanation") + "<br />" + tt("usage");
-    ui.creditsText4.innerHTML = tt("version") + " " + gameVersion + " (" + updateDate + ")";
+    ui.setb2.innerHTML = tt("mixtype") + ": "
+        + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), tt("frame"), "???"][settings.mixtype];
+
+    ui.autogen.innerHTML = "Auto Generate: " + (settings.autogenerate ? tt("ON") : tt("OFF"));
+    ui.autogenspeed.innerHTML = "Speed: " + settings.autogenspeed;
+
+    ui.creditsText1.innerHTML = "<a href='https://schrottii.github.io/'>"
+        + tt("madeby")
+        + "</a> ©️2022-2025 <br /> "
+        + tt("based")
+        + " ©️2017 <br /> "
+        + tt("idea");
+
+    ui.creditsText2.innerHTML = tt("from")
+        + ' <a href="https://official-scrap-2.fandom.com/wiki/Barrels">'
+        + tt("wiki")
+        + "</a>, " + tt("wikipedia")
+        + "<br />" + tt("data");
+
+    ui.creditsText3.innerHTML = tt("howtouse")
+        + "<br />" + tt("justclick")
+        + "<br />" + tt("explanation")
+        + "<br />" + tt("usage");
+
+    ui.creditsText4.innerHTML = tt("version")
+        + " " + gameVersion
+        + " (" + updateDate + ")";
 
     ui.languageSetting1Header.innerHTML = tt("languageSetting1Header");
     ui.languageSetting2Header.innerHTML = tt("languageSetting2Header");
@@ -488,57 +408,44 @@ function updateSettingsDisplay() {
     ui.otherSettings.innerHTML = tt("otherSettings");
 }
 
-function updateUI() {
-    ui.putout.innerHTML = output;
-
-    ui.barrel1.innerHTML = fullname1 + "  →";
-    ui.barrel2.innerHTML = "←  " + fullname2;
-
-    ui.barrel1.style.fontSize = fullname1.length < 16 ? "24px" : "" + Math.floor(32 - fullname1.length / 1.5) + "px";
-    ui.barrel2.style.fontSize = fullname2.length < 16 ? "24px" : "" + Math.floor(32 - fullname2.length / 1.5) + "px";
-
-    if (id1 != 0) {
-        loadImage(id1);
-        loadImage(id2);
-    }
-
+function updateCanvas() {
     // Image stuff
     clearCanvas();
-    if (loadedIDs.includes(id1) && loadedIDs.includes(id2)) {
-        if (id1 > 0 && id2 > 0 && settings.miximg) {
+    if (loadedIDs.includes(mix.id1) && loadedIDs.includes(mix.id2)) {
+        if (mix.id1 > 0 && mix.id2 > 0 && settings.miximg) {
             switch (settings.mixtype) {
                 case 0:
-                    drawSides(id1, id2);
+                    drawSides(mix.id1, mix.id2);
                     break;
                 case 1:
-                    drawStacked(id1, id2);
+                    drawStacked(mix.id1, mix.id2);
                     break;
                 case 2:
-                    drawBlend(id1, id2);
+                    drawBlend(mix.id1, mix.id2);
                     break;
                 case 3:
                     let rand = Math.floor(Math.random() * 4);
 
                     switch (rand) {
                         case 0:
-                            drawSides(id1, id2);
+                            drawSides(mix.id1, mix.id2);
                             break;
                         case 1:
-                            drawStacked(id1, id2);
+                            drawStacked(mix.id1, mix.id2);
                             break;
                         case 2:
-                            drawBlend(id1, id2);
+                            drawBlend(mix.id1, mix.id2);
                             break;
                         case 3:
-                            drawFrame(id1, id2);
+                            drawFrame(mix.id1, mix.id2);
                             break;
                         default:
-                            drawBlend(id1, id2);
+                            drawBlend(mix.id1, mix.id2);
                             break;
                     }
                     break;
                 case 4:
-                    drawFrame(id1, id2);
+                    drawFrame(mix.id1, mix.id2);
                     break;
             }
         }
@@ -546,24 +453,36 @@ function updateUI() {
         ui.pic1.style.display = "block";
         ui.pic2.style.display = "block";
 
-        ui.pic1.src = getFile(id1);
-        ui.pic2.src = getFile(id2);
+        ui.pic1.src = getFile(mix.id1);
+        ui.pic2.src = getFile(mix.id2);
     }
     else {
         ui.pic1.style.display = "none";
         ui.pic2.style.display = "none";
     }
+}
+
+function updateUI() {
+    ui.output.innerHTML = mix.name;
+
+    ui.barrel1.innerHTML = mix.full1 + "  →";
+    ui.barrel2.innerHTML = "←  " + mix.full2;
+
+    ui.barrel1.style.fontSize = mix.full1.length < 16 ? "24px" : "" + Math.floor(32 - mix.full1.length / 1.5) + "px";
+    ui.barrel2.style.fontSize = mix.full2.length < 16 ? "24px" : "" + Math.floor(32 - mix.full2.length / 1.5) + "px";
+
+    if (mix.id1 != 0) {
+        loadImage(mix.id1);
+        loadImage(mix.id2);
+    }
+
+    updateCanvas();
+    updateFavorites();
+
+    if (prev.length < 2) ui.backButton.classList.add("grayed");
+    else ui.backButton.classList.remove("grayed");
 
     ui.mix.innerHTML = tt("mix");
-    ui.favoritehtml.innerHTML = tt("favorite");
-    ui.favoritehtml2.innerHTML = tt("favorites");
-    ui.favoritesListShowButton.innerHTML = tt("favorites");
-    ui.backButton.innerHTML = tt("backButton");
-
-    ui.firstPageButton.innerHTML = tt("firstPageButton");
-    ui.previousPageButton.innerHTML = tt("previousPageButton");
-    ui.nextPageButton.innerHTML = tt("nextPageButton");
-    ui.lastPageButton.innerHTML = tt("lastPageButton");
     ui.donateText.innerHTML = tt("donateText");
 
     updateSettingsDisplay();
@@ -573,4 +492,5 @@ loadSave();
 preloadNames();
 updateUI();
 updateFavorites();
+autoGenerate();
 ui.notesButton.innerHTML = tt("showpatchnotes");

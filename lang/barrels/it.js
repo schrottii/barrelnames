@@ -804,4 +804,34 @@ Crescita eccessiva
 Brillare in eterno
 Erosione
 Corrente ascendente
+Il Mantello della Natura
+Carico e Pronto
+L'Uomo Sabbia
+Campo da Gioco Doppio
+Di nuovo?!
+Crème brûlée
+Psico Pallone da Spiaggia
+Continua così!
+Ritorno a scuola!
+Preziosi Rotolini alla Cannella
+Dolcetti
+Giorno e Notte
+Il Fungo del Ricco
+La Benedizione del Mare
+Cubi in Fusione
+La Fine.
+Energia Imbrigliata
+Limone da 250 Carati
+Cuocere per 10-12 Minuti
+In miniatura
+Succo Misterioso
+Il Grande Dramma degli Scarti
+Mostro di Zucca II
+Il Migliore Amico del Marinaio
+Una Letale Torta di Lava
+È Ora di Andarsene!!!
+Più di un Caffè
+Tutto Quello che Puoi Unire
+Club Milionario delle Fusioni
+Bevi per Spaventarti
 `
