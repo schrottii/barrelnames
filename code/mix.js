@@ -10,16 +10,17 @@ function getFile(num) {
     return "images/barrels/" + (num > 177 ? "B" : "b") + "arrel_" + Math.max(1, num) + ".png";
 }
 
-function pickAName(number = 0) {
-    let num = Math.floor(Math.random() * (Names.length - 2)) + 1;
-    if (number == 1) mix.id1 = num;
-    if (number == 2) mix.id2 = num;
-    return Names[num];
+function randomBarrel(){
+    return Math.floor(Math.random() * (Names.length - 2)) + 1;
 }
 
-function generateFrontName() {
+function getName(id) {
+    return Names[id];
+}
+
+function generateFrontName(id) {
     // generates the left side of the name
-    let name = pickAName(1);
+    let name = getName(id);
     prefull[0] = mix.full1;
     mix.full1 = name;
 
@@ -33,10 +34,9 @@ function generateFrontName() {
     return name;
 }
 
-// Name 2
-function generateBackName() {
+function generateBackName(id) {
     // generates the right side of the name
-    let name = pickAName(2);
+    let name = getName(id);
     prefull[1] = mix.full2;
     mix.full2 = name;
 
@@ -50,18 +50,31 @@ function generateBackName() {
     return name;
 }
 
-function generateCombination() {
-    // mixes the barrels, the display part is done with update / UI functions
+function generateName(){
     let newName = "";
-    newName = generateFrontName();
-    newName = newName + " " + generateBackName();
+    newName = generateFrontName(mix.id1);
+    newName = newName + " " + generateBackName(mix.id2);
     newName.replace("  ", " ");
 
-    mix.name = newName;
+    if (!mix.real) newName = newName + "*";
 
+    mix.name = newName;
+}
+
+function generateCombination() {
+    // the main mix function
+    // mixes the barrels, the display part is done with update / UI functions
+    mix.real = true;
+    mix.id1 = randomBarrel();
+    mix.id2 = randomBarrel();
+    
+    generateName();
+
+    awardBook(mix.id1, mix.id2);
     updatePrev();
 }
 
+// AUTO GENERATE
 var autoGenID = -1;
 var autoGenChanged = false;
 function toggleAutoGenerate() {

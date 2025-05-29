@@ -51,6 +51,8 @@ const trans_en = {
     "fusion": "Fusion",
     "random": "Random",
     "frame": "Frame",
+    "superfusion": "Super Fusion",
+    "multimerge": "Multi Merge",
 
     "languageSetting1Header": "Name Mixer Language",
     "languageSetting2Header": "Barrel Name Language",

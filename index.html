@@ -51,6 +51,13 @@
         <button onclick="showFavorites();" class="buttonStyle" id="favoritesListShowButton" style="display: none; font-size: 20px;">Favorites</button>
     </div>
     <br />
+    
+    <!-- BARREL BOOK -->
+    <div class="favoritesBox" id="favoritesListFull">
+        <button onclick="toggleBarrelBook();" class="buttonStyle" style="font-size: 20px;" id="booktoggle">Barrel Book</button><br />
+        <span id="barrelBook"></span>
+    </div>
+    <br />
 
     <!-- INFO / CREDITS -->
     <div class="creditsBox">
@@ -104,11 +111,11 @@
         <hr />
 
         <h3><span id="otherSettings"></span></h3>
-        <button onclick="toggleCanvas()" id="setb1" class="settingButton">Mixed images: ON</button>
+        <button onclick="toggleCanvas()" id="setb1" class="settingButton">Mixed images: ON</button><br />
         <button onclick="toggleMixType()" id="setb2" class="settingButton">mix Type: Left/Right</button><br />
         <button onclick="exportSave()" class="settingButton">Export</button>
-        <button onclick="importSave()" class="settingButton">Import</button>
-        <button onclick="toggleAutoGenerate()" id="autogen" class="settingButton">Auto Generate</button>
+        <button onclick="importSave()" class="settingButton">Import</button><br />
+        <button onclick="toggleAutoGenerate()" id="autogen" class="settingButton">Auto Generate</button><br />
         <button onclick="changeAutoGenerateSpeed()" id="autogenspeed" class="settingButton">Speed</button>
     </div>
     <br />
@@ -125,6 +132,8 @@
 
     <script src="code\save.js"></script>
     <script src="code\mix.js"></script>
+    <script src="code\miximage.js"></script>
+    <script src="code\barrelbook.js"></script>
     <script src="code\main.js"></script>
 </body>
 </html>

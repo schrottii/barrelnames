@@ -2,29 +2,31 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const gameVersion = "1.9";
-const updateDate = "2025-03-23";
+const gameVersion = "2.0";
+const updateDate = "2025-05-29";
 const notes = "New in Update " + gameVersion + ":<br />" + 
     `
--> Auto Generate:
-- You can now let the mixer automatically mix for you and lean back 
-- Can be enabled and disabled in the settings at any time
-- Added a setting to adjust the time: 0.1s, 0.5s, 1s (default), 2s, 5s, 10s, 30s
+-> Barrel Book:
+- New feature, suggested by snekrot
+- Unlocked by default and found below favorites
+- Has a list of all barrels, 25/page, with filter to hide locked barrels, page buttons and search button
+- Barrels you have seen are unlocked and can be selected, and then you see what mixes you have found
+- Select a second barrel (it doesn't have to be unlocked) and you can see how often you had this exact mix, and directly mix the two
+- Selected barrels can be easily unselected or swapped
 
--> Barrels:
-- Added barrels 763-792 (11.7)
-- Fixed crop issues for barrels 457, 468, 469, 471, 488
-
--> Go back and favorite buttons:
-- Put them into the same row as the mix button
-- Go back button now just says <<
-- Favorite button now just says ♥
-- Those two buttons are now grayed out when not available
-- Favorite button is now also unavailable if the current mix is your most recent favorite
+-> Custom Mix:
+- The most requested feature is finally here: choosing what you want to mix!
+- In the Barrel Book, you can put a Barrel on the left or right side
+- Or you select two barrels and press "Mix these!" (second barrel does not need to be unlocked)
+- This way you can choose what barrels to mix, even if you never had the mix before
+- Custom mixes are marked with a * and don't contribute to the Book, but can be added as favorites and shared as usual!
 
 -> Other:
-- Replaced the texts for the favorite page buttons with arrows, and added page count there
-- Major code changes
+- New Mix Type: Super Fusion
+- New Mix Type: Multi Merge
+- Favorites and Book now stay hidden after reloading
+- Added auto save every 5 seconds
+- Smaller improvements
 `.replaceAll("\n", "<br />");
 
 var canvas = document.getElementById("canvie");
@@ -72,6 +74,8 @@ var ui = {
     otherSettings: document.getElementById("otherSettings"),
     autogen: document.getElementById("autogen"),
     autogenspeed: document.getElementById("autogenspeed"),
+    
+    barrelBook: document.getElementById("barrelBook"),
 }
 
 
@@ -83,6 +87,7 @@ var mix = {
     full2: "",
     id1: 0,
     id2: 0,
+    real: true
 }
 
 // other stuff
@@ -135,6 +140,7 @@ function goBack() {
     if (prev[prev.length - 1][1] != undefined) {
         mix.id1 = prev[prev.length - 1][1];
         mix.id2 = prev[prev.length - 1][2];
+        mix.real = mix.name.substr(mix.name.length - 1, 1) == "*" ? false : true;
 
         mix.full1 = Names[mix.id1];
         mix.full2 = Names[mix.id2];
@@ -160,6 +166,7 @@ function viewFavorite(f) {
     mix.name = fav[0];
     mix.id1 = fav[1];
     mix.id2 = fav[2];
+    mix.real = mix.name.substr(mix.name.length - 1, 1) == "*" ? false : true;
 
     mix.full1 = Names[mix.id1];
     mix.full2 = Names[mix.id2];
@@ -176,13 +183,13 @@ function changePage(p) {
 }
 
 function hideFavorites() {
-    ui.favoritesListFull.style.display = "none";
-    ui.favoritesListShowButton.style.display = "inline";
+    settings.togglefavorites = false;
+    updateToggleAreas();
 }
 
 function showFavorites() {
-    ui.favoritesListFull.style.display = "block";
-    ui.favoritesListShowButton.style.display = "none";
+    settings.togglefavorites = true;
+    updateToggleAreas();
 }
 
 // patch notes
@@ -268,7 +275,7 @@ function toggleCanvas() {
 }
 
 function toggleMixType() {
-    settings.mixtype = ++settings.mixtype % 5;
+    settings.mixtype = ++settings.mixtype % 7;
     updateSettingsDisplay();
     saveSave();
 }
@@ -303,46 +310,6 @@ function loadImage(id) {
     img.src = images[id];
 }
 
-function clearCanvas() {
-    ctx.clearRect(0, 0, SX, SY);
-}
-
-function drawSides(b1, b2) {
-    let p1 = images[b1];
-    let p2 = images[b2];
-
-    ctx.drawImage(p1, 0, 0, p1.width / 2, SY, 128 - p1.width / 2, 0, p1.width / 2, SY);
-    ctx.drawImage(p2, p2.width / 2, 0, p1.width / 2, SY, 128, 0, p2.width / 2, SY);
-    //ctx.fillRect(128, 0, 1, 256);
-}
-
-function drawStacked(b1, b2) {
-    let p1 = images[b1];
-    let p2 = images[b2];
-
-    ctx.drawImage(p1, 0, 0, SX, p1.height / 2, 128 - p1.width / 2, 128 - p1.height / 2, SX, p1.height / 2);
-    ctx.drawImage(p2, 0, p2.height / 2, SX, p1.height / 2, 128 - p2.width / 2, 128, SX, p2.height / 2);
-}
-
-function drawBlend(b1, b2) {
-    let p1 = images[b1];
-    let p2 = images[b2];
-
-    ctx.globalAlpha = 1;
-    ctx.drawImage(p1, 0, 0, p1.width, p1.height, 128 - p1.width / 2, 0, p1.width, SY);
-    ctx.globalAlpha = 0.5;
-    ctx.drawImage(p2, 0, 0, p2.width, p2.height, 128 - p2.width / 2, 0, p2.width, SY);
-    ctx.globalAlpha = 1;
-}
-
-function drawFrame(b1, b2) {
-    let p1 = images[b1];
-    let p2 = images[b2];
-
-    ctx.drawImage(p1, 0, 0, p1.width, p1.height, 128 - p1.width / 2, 0, p1.width, SY);
-    ctx.drawImage(p2, 128 - (p2.height / 5.6), 128 - 64, p2.height / 2.8, 128);
-}
-
 // Update UI
 function updateFavorites() {
     ui.favoritesList.innerHTML = "<ul>";
@@ -351,8 +318,7 @@ function updateFavorites() {
         ui.favoritesList.innerHTML = ui.favoritesList.innerHTML + "<ul> #" + (f + 1) + "  " + favorites[f][0] + ' <button onclick="viewFavorite(' + f + '); " class="buttonStyle" style="font-size: 20px">' + tt("view") + '</button>                   <button onclick="removeFavorite(' + f + '); updateFavorites();" class="buttonStyle" style="font-size: 20px">' + tt("remove") + '</button></ul>';
     }
     ui.favoritesList.innerHTML = ui.favoritesList.innerHTML + "</ul>";
-    ui.favoritesCurrentPage.innerHTML = "(" + tt("page") + " " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
-    ui.favoritesCurrentPage2.innerHTML = "(" + tt("page") + " " + (favoritesPage + 1) + "/" + (Math.floor((favorites.length - 1) / 25) + 1) + ")";
+    ui.favoritesCurrentPage.innerHTML = ui.favoritesCurrentPage2.innerHTML = "(" + tt("page") + " " + (favoritesPage + 1) + "/" + (Math.max(Math.ceil(favorites.length / 25), 1)) + ")";
 
     ui.favoritehtml2.innerHTML = tt("favorites");
     ui.favoritesListShowButton.innerHTML = tt("favorites");
@@ -374,7 +340,7 @@ function updateSettingsDisplay() {
         + (settings.miximg ? tt("ON") : tt("OFF"));
 
     ui.setb2.innerHTML = tt("mixtype") + ": "
-        + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), tt("frame"), "???"][settings.mixtype];
+        + [tt("leftright"), tt("topbottom"), tt("fusion"), tt("random"), tt("frame"), tt("superfusion"), tt("multimerge"), "???"][settings.mixtype];
 
     ui.autogen.innerHTML = "Auto Generate: " + (settings.autogenerate ? tt("ON") : tt("OFF"));
     ui.autogenspeed.innerHTML = "Speed: " + settings.autogenspeed;
@@ -408,57 +374,23 @@ function updateSettingsDisplay() {
     ui.otherSettings.innerHTML = tt("otherSettings");
 }
 
-function updateCanvas() {
-    // Image stuff
-    clearCanvas();
-    if (loadedIDs.includes(mix.id1) && loadedIDs.includes(mix.id2)) {
-        if (mix.id1 > 0 && mix.id2 > 0 && settings.miximg) {
-            switch (settings.mixtype) {
-                case 0:
-                    drawSides(mix.id1, mix.id2);
-                    break;
-                case 1:
-                    drawStacked(mix.id1, mix.id2);
-                    break;
-                case 2:
-                    drawBlend(mix.id1, mix.id2);
-                    break;
-                case 3:
-                    let rand = Math.floor(Math.random() * 4);
-
-                    switch (rand) {
-                        case 0:
-                            drawSides(mix.id1, mix.id2);
-                            break;
-                        case 1:
-                            drawStacked(mix.id1, mix.id2);
-                            break;
-                        case 2:
-                            drawBlend(mix.id1, mix.id2);
-                            break;
-                        case 3:
-                            drawFrame(mix.id1, mix.id2);
-                            break;
-                        default:
-                            drawBlend(mix.id1, mix.id2);
-                            break;
-                    }
-                    break;
-                case 4:
-                    drawFrame(mix.id1, mix.id2);
-                    break;
-            }
-        }
-
-        ui.pic1.style.display = "block";
-        ui.pic2.style.display = "block";
-
-        ui.pic1.src = getFile(mix.id1);
-        ui.pic2.src = getFile(mix.id2);
+function updateToggleAreas(){
+    // favorites
+    if (settings.togglefavorites){
+        ui.favoritesListFull.style.display = "block";
+        ui.favoritesListShowButton.style.display = "none";
     }
     else {
-        ui.pic1.style.display = "none";
-        ui.pic2.style.display = "none";
+        ui.favoritesListFull.style.display = "none";
+        ui.favoritesListShowButton.style.display = "inline";
+    }
+    
+    // book
+    if (settings.togglebook) {
+        ui.barrelBook.style.display = "";
+    }
+    else {
+        ui.barrelBook.style.display = "none";
     }
 }
 
@@ -478,12 +410,15 @@ function updateUI() {
 
     updateCanvas();
     updateFavorites();
+    updateBarrelBook();
 
     if (prev.length < 2) ui.backButton.classList.add("grayed");
     else ui.backButton.classList.remove("grayed");
 
     ui.mix.innerHTML = tt("mix");
     ui.donateText.innerHTML = tt("donateText");
+
+    updateToggleAreas();
 
     updateSettingsDisplay();
 }

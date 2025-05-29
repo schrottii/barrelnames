@@ -16,6 +16,8 @@ var settings = {
     mixtype: 0,
     autogenerate: false,
     autogenspeed: 1000,
+    togglefavorites: true,
+    togglebook: true
 }
 
 function loadSave(save = "") {
@@ -51,15 +53,21 @@ function loadSave(save = "") {
             }
         }
         favorites = loadFavs;
+
+        barrelbook = temp.bbk;
     }
+
+    console.log("loaded");
 }
 
 function saveSave() {
     let strn = JSON.stringify({
         "fav": favorites,
-        "set": settings
+        "set": settings,
+        "bbk": barrelbook
     });
     localStorage.setItem("NameMixer", strn);
+    console.log("saved");
 }
 
 function importSave() {
@@ -78,8 +86,11 @@ function importSave() {
 function exportSave() {
     let toExport = JSON.stringify({
         "fav": favorites,
-        "set": settings
+        "set": settings,
+        "bbk": barrelbook
     });
     toExport = btoa(unescape(encodeURIComponent(toExport)));
     navigator.clipboard.writeText(toExport);
 }
+
+setInterval("saveSave()", 5000);
