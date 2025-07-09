@@ -54,7 +54,7 @@ function loadSave(save = "") {
         }
         favorites = loadFavs;
 
-        barrelbook = temp.bbk;
+        if (temp.bbk != undefined) barrelbook = temp.bbk;
     }
 
     console.log("loaded");
