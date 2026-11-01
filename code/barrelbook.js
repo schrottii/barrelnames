@@ -134,13 +134,13 @@ function updateBarrelBook(){
     render = render + "<h2>Barrels:</h2>";
 
     // filter
-    render = render + "<button style='font-size: 16px; width: 10%; background-color: white' onclick='bookPageFirst()'>|<</button>";
-    render = render + "<button style='font-size: 16px; width: 60%; background-color: white' onclick='toggleBookFilter()'>Filter (" + (bookFilter ? "ON" : "OFF") + ")</button>";
-    render = render + "<button style='font-size: 16px; width: 10%; background-color: white' onclick='bookPageJump()'>_</button>";
-    render = render + "<button style='font-size: 16px; width: 10%; background-color: white' onclick='bookPageLast()'>>|</button>";
+    render = render + "<button style='font-size: 16px; width: 10%; background-color: white' onclick='bookPageFirst()'><b>|</b><</button>";
+    render = render + "<button style='font-size: 16px; width: 60%; background-color: white' onclick='toggleBookFilter()'><b>Filter</b> (" + (bookFilter ? "ON" : "OFF") + ") - " + (bookSel != -1 ? "Only obtained mixes" : "Only seen barrels") + "</button>";
+    render = render + "<button style='font-size: 16px; width: 10%; background-color: white' onclick='bookPageJump()'><b>JUMP</b></button>";
+    render = render + "<button style='font-size: 16px; width: 10%; background-color: white' onclick='bookPageLast()'><b>>|</b></button>";
 
-    render = render + "<button style='font-size: 20px; width: 45%; background-color: white' onclick='bookPagePrev()'>←</button>";
-    render = render + "<button style='font-size: 20px; width: 45%; background-color: white' onclick='bookPageNext()'>→</button>";
+    render = render + "<button style='font-size: 20px; width: 45%; background-color: white' onclick='bookPagePrev()'><b>←</b></button>";
+    render = render + "<button style='font-size: 20px; width: 45%; background-color: white' onclick='bookPageNext()'><b>→</b></button>";
 
     let color;
     let b2 = 0;
@@ -156,13 +156,13 @@ function updateBarrelBook(){
             continue;
         }
 
-        render = render + "<button style='font-size: 24px; width: 90%; background-color: " + color
+        render = render + "<button style='font-size: 24px; width: 90%; text-align: left; background-color: " + color
         + "' onclick='clickBookBarrel(" + b + ")'>"
         + b + ": " + Names[b] + "</button>";
     }
     
-    render = render + "<button style='font-size: 20px; width: 45%; background-color: white' onclick='bookPagePrev()'>←</button>";
-    render = render + "<button style='font-size: 20px; width: 45%; background-color: white' onclick='bookPageNext()'>→</button>";
+    render = render + "<button style='font-size: 20px; width: 45%; background-color: white' onclick='bookPagePrev()'><b>←</b></button>";
+    render = render + "<button style='font-size: 20px; width: 45%; background-color: white' onclick='bookPageNext()'><b>→</b></button>";
 
     render = render + "</div>";
 
@@ -170,18 +170,24 @@ function updateBarrelBook(){
     render = render + "<div style='float: right; margin-right: 3%; width: 60%; background-color: brown'>";
 
     if (bookSel == -1) {
-        render = render + "<h2>Select a barrel you unlocked</h2>";
+        render = render + "<h2>Select a barrel you unlocked</h2><div style='font-size: 16px; background-color: #F4A460; text-align: left;'>";
+        render = render + "<br /><br /><b>How to use:</b>";
+        render = render + "<br /><br />Use the list on the left side to select barrels. It's possible to go to the next page (+25), skip to the end/beginning, go to a specific barrel's position, or filter by the ones you have already seen. Barrels that you have seen are highlighted, unseen ones are darker.";
+        render = render + "<br /><br />After clicking on a barrel, you can unselect it, or force put it on the left side or right side. It will replaced the barrel (for the mix) that was there. This makes it possible to get non-randomized mixing results. Using the filter now will only show barrels you had already mixed with this one (naturally). Similarly, those barrels are highlighted.";
+        render = render + "<br /><br />After selecting the second barrel, a button to directly mix the two also appears. It is not necessary to have seen the barrel before (but it doesn't count towards that, or mixes). You will see how often you had that mix, and you can swap the two. (left-right in the book - used if you want the second barrel as the primary now, to see what you had it combined with.)";
+        render = render + "<br /><br />So overall, the Barrel Book is both a collectathlon (seeing all the barrels and getting the mixes) and a tool to get non-random mixes.";
+        render = render + "</div>";
     }
     else {
         render = render + "<button style='font-size: 24px; width: 40%; background-color: white' onclick='unselectBookBarrel()'>Unselect</button>";
-        render = render + "<button style='font-size: 24px; width: 40%; background-color: white' onclick='swapBookBarrel()'>Swap</button>";
+        render = render + "<button style='font-size: 24px; width: 40%; background-color: " + (bookSel2 != -1 ? "white" : "gray") + "' onclick='swapBookBarrel()'>Swap</button>";
 
         // barrel 1
         if (bookSel != -1) {
             render = render + "<div style='float: left; width: 50%'>"
             render = render + "<h2>" + ("#" + bookSel + ": " + Names[bookSel]) + "</h2>";
             render = render + "<img src='" + getFile(bookSel) + "'/>";
-            if (barrelbook[bookSel] != undefined) render = render + "<br /><h2>" + Object.keys(barrelbook[bookSel]).length + "/" + BARRELS + "</h2>";
+            if (barrelbook[bookSel] != undefined) render = render + "<br /><h2>" + Object.keys(barrelbook[bookSel]).length + "/" + BARRELS + " mixes</h2>";
         
             render = render + "<br /><button style='font-size: 20px; width: 40%; background-color: " + (mix.id1 == bookSel ? "yellow" : "white") + "' onclick='force(0, 1)'>Left</button>";
             render = render + "<button style='font-size: 20px; width: 40%; background-color: " + (mix.id2 == bookSel ? "yellow" : "white") + "' onclick='force(1, 1)'>Right</button>";

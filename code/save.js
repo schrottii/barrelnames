@@ -17,7 +17,8 @@ var settings = {
     autogenerate: false,
     autogenspeed: 1000,
     togglefavorites: true,
-    togglebook: true
+    togglebook: true,
+    onlynew: false
 }
 
 function loadSave(save = "") {

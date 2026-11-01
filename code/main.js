@@ -2,21 +2,27 @@
 // This work is copyrighted. Copying, cloning or stealing is prohibited.
 //
 
-const gameVersion = "2.0.1";
-const updateDate = "2026-05-17";
+const gameVersion = "2.0.2";
+const updateDate = "2026-11-01";
 const notes = "New in Update " + gameVersion + ":<br />" + 
     `
 -> Barrels:
-- Added barrels 793 - 822 (11.8, 2025)
-- Added barrels 823 - 870 (11.9, 2025)
-- Added barrels 871 - 900 (11.10, 2026)
-- Added barrels 901 - 960 (12.0, 2026)
-- Added their English and Italian Names. They are not fully translated to Russian and Ukrainian in SC2
+- Added barrels 961 - 990 (12.1, 2026)
+- Added barrels 991 - 1020 (12.2, 2026)
+- Added their English and Italian names
+- Changed barrel names (including 208 and some newer barrels)
 
--> Info area:
-- Updated design (Settings too)
-- Text is on the left now
-- Added Balnoom name, updated year from 2025 to 2026
+-> Barrel Book:
+- Added explanation text (how to use) when no barrel is selected
+- List: names are now aligned to the left
+- List: Jump button now says JUMP instead of underscore
+- Swap button is now grayed out until the second barrel is selected
+- The left barrel's amount of mixes now days "mixes" after the number
+
+-> Other:
+- New setting: 2026 barrels only (when enabled, only the barrels from the current year will spawn - 871+ in this case)
+- Added modern Balnoom License, ToS & Privacy Policy (linked in Credits section)
+- The license has some additional bits regarding the licensing of barrels
 `.replaceAll("\n", "<br />");
 
 var canvas = document.getElementById("canvie");
@@ -25,7 +31,8 @@ var ctx = canvas.getContext("2d");
 const SX = 256;
 const SY = 256;
 
-const BARRELS = 960; // Amount of barrels
+const BARRELS = 1020; // Amount of barrels
+const BARRELS_FIRSTNEW = 871; // Oldest barrel from this year
 
 var Names;
 
@@ -64,6 +71,7 @@ var ui = {
     otherSettings: document.getElementById("otherSettings"),
     autogen: document.getElementById("autogen"),
     autogenspeed: document.getElementById("autogenspeed"),
+    settingOnlyNew: document.getElementById("settingOnlyNew"),
     
     barrelBook: document.getElementById("barrelBook"),
 }
@@ -334,6 +342,8 @@ function updateSettingsDisplay() {
 
     ui.autogen.innerHTML = "Auto Generate: " + (settings.autogenerate ? tt("ON") : tt("OFF"));
     ui.autogenspeed.innerHTML = "Speed: " + settings.autogenspeed;
+
+    ui.settingOnlyNew.innerHTML = "2026 barrels only: " + (settings.onlynew ? tt("ON") : tt("OFF"));
 
     ui.creditsText1.innerHTML = "<a href='https://schrottii.github.io/'>"
         + tt("madeby") + " / Balnoom"

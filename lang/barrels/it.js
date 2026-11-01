@@ -42,672 +42,672 @@ const trans_it = {
 }
 
 const names_it = `
-1: Circolo Blue
-2: Quadrato Rosa
-3: Bidone dell'immondizia
-4: Tabellone
-5: Casella Postale
-6: Cubo Blu
-7: Guarda Su
-8: Helter Skelter 
-9: Barile della spazzatura
-10: Cocomero
-11: Ti Amo
-12: Vortice blu
-13: Buona notte
-14: Posso vederti
-15: Vietato l'accesso
-16: Dottore degli alberi
-17: Torta a strati
-18: Brilla Brilla
-19: Luridamente a strati
-20: Spazzatura neon
-21: Lascia ogni speranza
-22: Il Buco della Banana
-23: L'esagono rosa del destino
-24: Il segno dei tempi
-25: Bidone della spazzatura
-26: Sfumature di grigio
-27: Direzione sbagliata
-28: Quale Direzione?
-29: Spalancato
-30: Posso vedere anche tu
-31: Illuminati 
-32: Nessun Pacco per te
-33: Rapsodia in verde
-34: Doppio salto
-35: Ruota il lime
-36: La scatola
-37: Visore
-38: Walking on Sunshine
-39: Avanti veloce
-40: Casella esadecimale
-41: Petardo
-42: Tagliasiepi
-43: Non é cosi grasso
-44: Lattina della spazzatura
-45: Dritto giù
-46: Riavvolgimento
-47: Due piccioni con una fava
-48: La fine dell'inizio
-49: Vortice Viola 
-50: Non ti sento
-51: Deja Vu 
-52: Il gioco delle forme
-53: Noce di Cocco
-54: La Nuvola
-55: Tostapane
-56: Ferro di cavallo
-57: Ma quante sfumature?
-58: Meglio il marrone
-59: Marmellata di lamponi
-60: Non aprirlo
-61: Ciliegia Esplosiva
-62: Solo per uso medico
-63: Neopolita
-64: 32 Milioni
-65: Red-It? 
-66: Giza in grigio
-67: Carbone
-68: Maneggiare con cura
-69: WC della casa delle bambole
-70: Non nero
-71: Tsunami 
-72: Non troppo fresco
-73: Ipnosi
-74: Zona pericolosa
-75: L'inizio
-76: Palla 8
-77: È vivo!
-78: Inchiostro infiammato
-79: Alla spina
-80: Barile Sciolto
-81: Mr. PietraMarrone
-82: AAAARGH!!! 
-83: Pixelato
-84: L'osservatore
-85: Sfocato
-86: Fammi uscire da qui
-87: Triplo guaio
-88: Asimov
-89: Non sono stato io
-90: Vuoto
-91: Fuoriposto
-92: Fetta d'Anguria
-93: Normandia
-94: IL CREATORE
-95: Fuori Tempo
-96: Educato e Corretto
-97: Cromato 
-98: Gloria
-99: Pollock 
-100: Burro d'Arachidi
-101: Numero Due
-102: Fulmine (Thor)
-103: Groviera
-104: La Gabbia
-105: Consegna a Domicilio 
-106: Il Dopo-Sbornia
-107: Natale
-108: Roba Calda
-109: Da Qualche Parte 
-110: Punti Vita
-111: Slade
-112: Intorno al Mondo
-113: Sushi
-114: Miele d'ape
-115: Cestino con le ruote
-116: LaCroc
-117: Caffe dei Vampiri
-118: Presa elettrica
-119: Aporgasmo
-120: Porta di Babbo Natale
-121: Dov'è il toast?
-122: Ubriaco
-123: Camino 
-124: Ti auguriamo...
-125: ... Un Buon Natale
-126: Scrivici
-127: Scatola di caramelle
-128: Perché ho fame
-129: Birra di Babbo Natale
-130: Caro Tom, Con amore Jerry
-131: Re della Collina
-132: Latte e zucchero
-133: Congelato
-134: 10 secondi rimanenti
-135: Dov'è la cannuccia? 
-136: Caro Jerry, con Amore Tom
-137: Avvitato
-138: Erba sintetica
-139: Caricato
-140: Fatto di Lego
-141: Qua, lo sviluppatore è qua?
-142: Intergalattico
-143: Tanica d'acqua verde
-144: Grandi sfere infuocate
-145: Ho di nuovo sete
-146: Rat-a-tat-tat
-147: Energia Pulita
-148: Let it Go
-149: Pezzo mancante
-150: Nessun punto di energia
-151: La Notte dei barili viventi
-152: Tramonto
-153: La vecchia libreria scolastica
-154: Sto ancora cercando la carta...
-155: Ho bisogno di latte
-156: 128 GB
-157: Bar(Ile) di cioccolato
-158: Kermit
-159: Speranze e sogni
-160: Attacco di cuore
-161: Devi solo continuare a nuotare
-162: BevandE(ndte)
-163: Doppio Dado (2D6)
-164: Pago io!
-165: Un Barile di Bach
-166: Situazione Appiccicosa
-167: Questa è quella giusta
-168: Puzzle Colorato
-169: SC Pad 2.0
-170: Fai il grande passo
-171: Che Cosa Sono?
-172: Chi vuoi chiamare?
-173: Niente fatica niente guadagno
-174: Infinito
-175: Sogno di un coniglio
-176: Mojito
-177: Alza il Volume!
-178: Rapsodia in Blu
-179: Taglialegna
-180: Pausa fumo
-181: Il gioco delle sedie
-182: Sporco
-183: Jackpot
-184: Super Schrott Bros
-185: Black-out
-186: Dove sono i burger?
-187: Il Lato Oscuro Del Barile
-188: Scusami...
-189: Barilananas
-190: Should I Stay or Should I Go?
-191: Rinfrescante, non credi?
-192: Vietato mangiare
-193: Samhain
-194: Merlot
-195: Miao
-196: Bassa risoluzione
-197: La Teiera
-198: Escher
-199: Sbucciata
-200: Al Dente
-201: Maglietta di cartone
-202: Tazza di Java
-203: Latte Cibernetico
-204: Campione
-205: Dov'è il toast
-206: Scarica per favore
-207: Chardonnay
-208: 3.47
-209: T-Virus
-210: Al settimo cielo
-211: Havana
-212: Antidoto
-213: Motorhead
-214: Peyote
-215: Sotto Zero
-216: 180
-217: SGBG
-218: Dov'è lo stoppino?
-219: Fine del Gioco
-220: Figo
-221: Auguri, Scrap 2
-222: Pozione viola del pericolo
-223: Mantenere asciutto
-224: Taglia il filo Blu?
-225: Speriamo Regga
-226: Pizza Party
-227: Budino
-228: Non serve il francobollo
-229: Stai bleffando?
-230: Punta
-231: 24k magia nell'aria
-232: Bevi piano
-233: Jack and Jill
-234: Succo di mucca
-235: Avanti, vola con me!
-236: R.I.P.
-237: Allerta Hacker
-238: Torre Pentastellata
-239: Non troppo caldo
-240: Non troppo freddo
-241: Dov'è il Pepe?
-242: Barile dell'Impossibile
-243: Etereo
-244: Confusione
-245: Dov'è il Jukebox?
-246: Eretico
-247: S2D2
-248: Caricatore
-249: Neon
-250: Non leccare
-251: Ciambelle
-252: Biscuit vs. Cookie
-253: Rossetto
-254: carbonato
-255: Oscurità eterna
-256: Tacos Tacos Tacos
-257: Consegna speciale
-258: Altri Pancake?
-259: Ne manca uno
-260: C'è posta per te
-261: Dov'è l'ago?
-262: Febbre del sabato sera
-263: La cura
-264: Barile Z264
-265: Format C
-266: 2πd(R-r)
-267: Malevolenza
-268: Tutto il mio amore
-269: Cannone Warp
-270: Emergenza Carta Igienica
-271: Stacks Blu
-272: 5 Donut
-273: Milkshake Tropicale
-274: La terra continua a girare
-275: Consegna Originale
-276: Dov'è la Tequila?
-277: 16R23L42R
-278: Magia Blu
-279: Acceso o Spento?
-280: Incredibilmente Banale
-281: Un barile al giorno
-282: Aprire con Prudenza
-283: Le cronache di Scrap
-284: Gnam!
-285: Baozi
-286: Tesseract
-287: Scrap O'Clock
-288: Torta arcobaleno
-289: È tempo di unire!
-290: Cassettiera
-291: Dollari di Schrott
-292: SCRAPyola
-293: Ben equilibrato
-294: Consumare entro Luglio 2019
-295: Hai uno spicciolo?
-296: Non l'uccello
-297: Tagliata professionalmente
-298: 1969
-299: Non lanciarlo, fidati di me!
-300: Il trecentesimo Barile!
-301: Faccia a Faccia
-302: Orologio smontato
-303: I Miei Documenti
-304: Dritto al punto
-305: Al profumo di lavanda
-306: Fusionspugna
-307: Sulla Luna!
-308: Dov'è il sugo di agnello?!
-309: Dov'è  il gatto arancione?
-310: Torsione
-311: Nuovo e migliorato
-312: Dall'Hangar
-313: Lavatrice
-314: Penne al tonno
-315: Dov'è la maionese?
-316: Pronto per essere mangiato
-317: È Delizioso
-318: Un altro succo?!
-319: Preparata Deliziosamente 
-320: Infanzia
-321: Cuppa Joe
-322: Preso!
-323: Passato... E Presente
-324: Reazione a catena
-325: Unisci come un'egiziano!
-326: Riscaldamento
-327: Come si mangia?
-328: Shekera! Shekera!
-329: Dov'è il mio hotdog?
-330: Ding!
-331: Zuppa d'anatra
-332: In qualsiasi modo ma...
-333: Rana Sana
-334: Un PAsso nel tempo...
-335: Scream!
-336: Déjà Vu
-337: Dov'è il burro?
-338: Una fredda accoglienza
-339: Ascolta, ti prego...
-340: Ninja
-341: Stanco
-342: Non toccare Niente
-343: Pollo o Papera?
-344: C12H12
-345: Scatola a sorpresa
-346: Dov'è il mio burger
-347: Giardino
-348: Rovina Capelli
-349: Scrapels
-350: Cosa cucini?
-351: Non nutrire lo sviluppatore
-352: Gravità
-353: Luce ed oscurità
-354: Grattacielo
-355: Bollente e piccante
-356: Mr. Robot
-357: Prosciutto al vapore
-358: Come diventare ricchi
-359: Cambio giro
-360: Dimensione successiva
-361: Masterchef
-362: Indovina la parola
-363: Sistemalo
-364: Dov'è il coniglio?
-365: 147
-366: Esaurito
-367: Quackuccino
-368: La caduta della colonia
-369: Guarisci!
-370: Satellite numero 15
-371: Fai un bel respiro
-372: Stato solido
-373: Compagno di Barile
-374: Casa dolce Casa
-375: Prendi la tua preferita 
-376: Due alla volta
-377: Entra nel serbatoio!
-378: Scacco matto
-379: 1000°
-380: Oh cavolo
-381: Buca in uno
-382: Tagliatelle
-383: Non è uno strumento
-384: Ghiacciato
-385: Glu Glu Glu
-386: Cosa stai ascoltando?
-387: 7.0
-388: Aperitivo
-389: Caricalo qui
-390: Sorbetto
-391: Prendi una pausa
-392: Bracciale nobiliare
-393: Bomba di vitamine
-394: Così buono...
-395: ACGT
-396: È tutto rose e fiori
-397: Dove sono i soldati?
-398: Un condominio squallido
-399: Fermati... e inizia ad unire...
-400: Congratulazioni!
-401: Lancia una moneta
-402: MP3 SC2
-403: Te con le bolle
-404: Direttamente dal freezer
-405: Dov'è la gelatina?
-406: L'intera storia
-407: Codice 0000
-408: 50 Hz
-409: Bersaglio acquisito
-410: Dov'è il mirtillo?
-411: Futuro...
-412: Vitamina
-413: Dov'è il biliardo?
-414: Lo Berresti?
-415: Energia suprema
-416: Paradiso del fumatore
-417: Grasso 3.0
-418: Aiutami, per favore
-419: What what in the button
-420: Il cibo di oggi
-421: Il custode vintage
-422: Sogno di cioccolato
-423: Bavaria
-424: L'orso del Natale
-425: Pshoom!
-426: Dov'è il pantano?
-427: La Caffettiera
-428: Punto di Vista
-429: Riserva di vitamine
-430: Accendilo!
-431: Paisley
-432: Leva Sbagliata
-433: Tra di noi
-434: Requiem Aeternam
-435: L'orologio si è bloccato
-436: Il livello succesivo
-437: Vendetta liquida
-438: 1996-2020
-439: Fuori campo
-440: Piacevolmente Salato
-441: Anti-sete 3000
-442: Si, ne abbiamo!
-443: Oreoreoreoreo
-444: Fonte di creazione
-445: Ne avevamo ordinati di più...
-446: Le statistiche sono bellissime
-447: Party Rockers
-448: Adatto ai bambini
-449: Chi li ha Mangiati?
-450: Non puoi nuotarci
-451: Estratto di foglie
-452: Risonanza
-453: Dammi il cibo!
-454: Petaloso!
-455: Per cosa?
-456: Un tuffo nel passato
-457: Dov'è il Parmigiano?
-458: Marcio!
-459: Spedizione in corso
-460: Qualsiasi colore che ti piace
-461: Fermati là!
-462: La pizza di Vito
-463: Rimedio casalingo
-464: Una casa per le formiche?
-465: Materiale miracoloso
-466: Sviluppatore v4.0
-467: Per il club di letteratura
-468: Un piccolo libro degli horror
-469: Sono un campeggiatore felice
-470: La terra come la conosciamo
-471: Lampada per il secondo piano
-472: La grande avidità
-473: Di chi è la colpa?
-474: Torre caprese
-475: Estetismo
-476: Fette di Potassio
-477: Warp of Ruination
-478: Rubus
-479: Leopardo delle Nevi
-480: Gelatina al Burro di Arachidi
-481: 29 in ritardo
-482: Lavoro di Saldatura
-483: Libro dell'Intelligenza
-484: Boss of all lockers
-485: Presentazione di Moda
-486: Ascensore Arcano
-487: Annusa più tardi!
-488: La Polvere
-489: da 8 a 16 Bit
-490: Crema di Fragole
-491: Gusto Frizzante
-492: Questo potrebbe pungere...
-493: Roguelike
-494: Il Mondo Strano
-495: Ceretta Drammatica
-496: Nuova Generazione
-497: Fruttato!
-498: Gelatina Bluastra
-499: Dove sono le scimmie?
-500: Lavoro Fatto!
-501: Road to yeet
-502: Cominciamo a Pulire!
-503: aMAZEing
-504: Let's Zill!
-505: Routine di Fusione, fatta!
-506: Fuoco3
-507: La Furia del Diavolo
-508: Architettura Allucinante
-509: Giardino Abbandonato
-510: Acido Citrico
-511: Divertente ma è Natale
-512: 12.65 V
-513: Inverno Portatile
-514: Il Prototipo
-515: Tintura Vivace
-516: Mais Caramellato
-517: Pentagono della Devastazione
-518: Dal Garage
-519: Il Triumvirato del Potere
-520: Acero e Sciroppo
-521: Mattone di Cioccolato
-522: Tu devi Costruire...
-523: Una dose di Morte 
-524: Premi qui!
-525: Sacchetto del pranzo d'Oriente 
-526: Energia Colorata 
-527: Premi, Tieni Premuto, Unisci! 
-528: Gran Maestro 
-529: Memorie 
-530: Chi è John? 
-531: Schrott dice 
-532: Il ritorno dei barili viventi 
-533: Hai provato a cambiare? 
-534: L'Esagono più Esagonale 
-535: Tesoro Fantastico! 
-536: Trova i frammenti 
-537: Offerta a Tempo Limitato 
-538: Granata!
-539: Quanto manca alla fine? 
-540: Attento al passo! 
-541: Eredità 
-542: Aggiornamento completato! 
-543: Il Conducente 
-544: Barile spettrale e spaventoso 
-545: Pianeta 9 
-546: Deframmentazione!
-547: Verso la Città
-548: Missione Spaziale Speciale
-549: L'Evento
-550: Tornado Classe F5
-551: Alfabeto Alieno
-552: 4k RPM
-553: L'acero è troppo popolare
-554: ScrapWood
-555: Controllo di Parità
-556: Decodificatore
-557: Discarica dell'Umido
-558: Puoi fare la torta?
-559: Le Cronache dell'Atomo
-560: Una casa per Hammy
-561: Strisciando nel Dungeon
-562: Questo è il mio Garage
-563: Con Comodità
-564: Le Origini
-565: L'Ultima Corsa
-566: Alfred, il Re dei Barili
-567: Commestibile?
-568: L'Antenato del PC
-569: Veloce e Affilato!
-570: Attacco a sorpresa!
-571: Polvere Uccidi Vampiri
-572: Lontano...
-573: L'Alveare!
-574: 1 Millione di Scoville
-575: Limone Tailandese
-576: Il Cuore della Fornace 
-577: Ricetta Originale 
-578: Cooper, Copi? 
-579: Aviatore fastidioso 
-580: Scrapeo and Giulietta 
-581: Il Buttafuori 
-582: Errore 503
-583: Polvere Fatata 
-584: 6 piedi di profondità
-585: Anti-Incendio 5
-586: In 50 anni...
-587: Le Armi dell'Artista
-588: Tramonto
-589: Liscio, fresco, nutriente
-590: Unisci o Clicchi?
-591: Dall'Ombra
-592: La Caverna dei Barili
-593: Alimenta il tuo Rottame
-594: Hai Ottenuto Macaroon!
-595: Ciocco Robot 
-596: Guarnizione Semplificata 
-597: I R Incremental 
-598: Assaggia il Vapore 
-599: Il Libro del Destino 
-600: Pietra Miliare 
-601: Acidificazione 
-602: ModPocket Visualizer Deluxe 
-603: Fiamma Elettrica 
-604: Civilizzazione Nix 
-605: Burger di Rottami 
-606: Nelle profondità marine! 
-607: Quale strada prendiamo? 
-608: Scrapple 
-609: Pezzetto tagliato bene! 
-610: Sostanza pericolosa 
-611: Feng Shui 
-612: Rompicapo di rottami 
-613: Divieto di immersione 
-614: Stuzzichini da falò 
-615: Una corona per un Re 
-616: Kabosu 
-617: Proliferazione malevola 
-618: Capro espiatorio
-619: Sempre vigile
-620: L'Eroe chiamato H
-621: Pane di Mais 
-622: Raggio Ascorbico
-623: S-800
-624: Etere Scintillante
-625: Calamita Mk.IV
-626: Pelliccia della Tigre
-627: Gattopalla! 
-628: Un altro dollaro sprecato
-629: Incontri Occasionali!
-630: Gusto.... Scacchi?
-631: Pozione Lunare
-632: Scienza Antica
-633: Beta Pictoris
-634: Pip-Papera 4000
-635: Barile Scintillante
-636: Passaggio al Nucleare
-637: Torre di Rame
-638: Mossa del giocatore definitiva!
-639: Luogo di Nascita Misterioso
-640: Occhio elettrico
-641: CuboTecnologico 3000
-642: Droga per le dita
-643: Rivoluzione Artistica
-644: Scrapdine
-645: Simulazione Rosa
-646: RESTITUISCI LA LASTRAAA
-647: Piscina Avvelenata
-648: Condizioni d'uso
-649: Pietra & Terra
-650: Prese a incastro
-651: Per favore, non morire
-652: Scraptario
-653: Tacchetti
-654: Dolci Ricordi 
-655: Aspetta 60 secondi!
-656: Fermo... hai fallito!
-657: NOSE
-658: La sua bevanda preferita
-659: Acido Fatato
-660: Non inserire...
-661: Peter
-662: La Milionesima Stella
-663: Mutaforma
-664: Corsia di Accelerazione
-665: Posso Venderlo?
-666: Barile per l'Inferno
+Circolo Blue
+Quadrato Rosa
+Bidone dell'immondizia
+Tabellone
+Casella Postale
+Cubo Blu
+Guarda Su
+Helter Skelter
+Barile della spazzatura
+Cocomero
+Ti Amo
+Vortice blu
+Buona notte
+Posso vederti
+Vietato l'accesso
+Dottore degli alberi
+Torta a strati
+Brilla Brilla
+Luridamente a strati
+Spazzatura neon
+Lascia ogni speranza
+Il Buco della Banana
+L'esagono rosa del destino
+Il segno dei tempi
+Bidone della spazzatura
+Sfumature di grigio
+Direzione sbagliata
+Quale Direzione?
+Spalancato
+Posso vedere anche tu
+Illuminati
+Nessun Pacco per te
+Rapsodia in verde
+Doppio salto
+Ruota il lime
+La scatola
+Visore
+Walking on Sunshine
+Avanti veloce
+Casella esadecimale
+Petardo
+Tagliasiepi
+Non é cosi grasso
+Lattina della spazzatura
+Dritto giù
+Riavvolgimento
+Due piccioni con una fava
+La fine dell'inizio
+Vortice Viola
+Non ti sento
+Deja Vu
+Il gioco delle forme
+Noce di Cocco
+La Nuvola
+Tostapane
+Ferro di cavallo
+Ma quante sfumature?
+Meglio il marrone
+Marmellata di lamponi
+Non aprirlo
+Ciliegia Esplosiva
+Solo per uso medico
+Neopolita
+32 Milioni
+Red-It?
+Giza in grigio
+Carbone
+Maneggiare con cura
+WC della casa delle bambole
+Non nero
+Tsunami
+Non troppo fresco
+Ipnosi
+Zona pericolosa
+L'inizio
+Palla 8
+È vivo!
+Inchiostro infiammato
+Alla spina
+Barile Sciolto
+Mr. PietraMarrone
+AAAARGH!!!
+Pixelato
+L'osservatore
+Sfocato
+Fammi uscire da qui
+Triplo guaio
+Asimov
+Non sono stato io
+Vuoto
+Fuoriposto
+Fetta d'Anguria
+Normandia
+IL CREATORE
+Fuori Tempo
+Educato e Corretto
+Cromato
+Gloria
+Pollock
+Burro d'Arachidi
+Numero Due
+Fulmine (Thor)
+Groviera
+La Gabbia
+Consegna a Domicilio
+Il Dopo-Sbornia
+Natale
+Roba Calda
+Da Qualche Parte
+Punti Vita
+Slade
+Intorno al Mondo
+Sushi
+Miele d'ape
+Cestino con le ruote
+LaCroc
+Caffe dei Vampiri
+Presa elettrica
+Aporgasmo
+Porta di Babbo Natale
+Dov'è il toast?
+Ubriaco
+Camino
+Ti auguriamo...
+... Un Buon Natale
+Scrivici
+Scatola di caramelle
+Perché ho fame
+Birra di Babbo Natale
+Caro Tom, Con amore Jerry
+Re della Collina
+Latte e zucchero
+Congelato
+10 secondi rimanenti
+Dov'è la cannuccia?
+Caro Jerry, con Amore Tom
+Avvitato
+Erba sintetica
+Caricato
+Fatto di Lego
+Qua, lo sviluppatore è qua?
+Intergalattico
+Tanica d'acqua verde
+Grandi sfere infuocate
+Ho di nuovo sete
+Rat-a-tat-tat
+Energia Pulita
+Let it Go
+Pezzo mancante
+Nessun punto di energia
+La Notte dei barili viventi
+Tramonto
+La vecchia libreria scolastica
+Sto ancora cercando la carta...
+Ho bisogno di latte
+128 GB
+Bar(Ile) di cioccolato
+Kermit
+Speranze e sogni
+Attacco di cuore
+Devi solo continuare a nuotare
+BevandE(ndte)
+Doppio Dado (2D6)
+Pago io!
+Un Barile di Bach
+Situazione Appiccicosa
+Questa è quella giusta
+Puzzle Colorato
+SC Pad 2.0
+Fai il grande passo
+Che Cosa Sono?
+Chi vuoi chiamare?
+Niente fatica niente guadagno
+Infinito
+Sogno di un coniglio
+Mojito
+Alza il Volume!
+Rapsodia in Blu
+Taglialegna
+Pausa fumo
+Il gioco delle sedie
+Sporco
+Jackpot
+Super Schrott Bros
+Black-out
+Dove sono i burger?
+Il Lato Oscuro Del Barile
+Scusami...
+Barilananas
+Should I Stay or Should I Go?
+Rinfrescante, non credi?
+Vietato mangiare
+Samhain
+Merlot
+Miao
+Bassa risoluzione
+La Teiera
+Escher
+Sbucciata
+Al Dente
+Maglietta di cartone
+Tazza di Java
+Latte Cibernetico
+Campione
+Dov'è il toast
+Scarica per favore
+Chardonnay
+2.76
+T-Virus
+Al settimo cielo
+Havana
+Antidoto
+Motorhead
+Peyote
+Sotto Zero
+180
+SGBG
+Dov'è lo stoppino?
+Fine del Gioco
+Figo
+Auguri, Scrap 2
+Pozione viola del pericolo
+Mantenere asciutto
+Taglia il filo Blu?
+Speriamo Regga
+Pizza Party
+Budino
+Non serve il francobollo
+Stai bleffando?
+Punta
+24k magia nell'aria
+Bevi piano
+Jack and Jill
+Succo di mucca
+Avanti, vola con me!
+R.I.P.
+Allerta Hacker
+Torre Pentastellata
+Non troppo caldo
+Non troppo freddo
+Dov'è il Pepe?
+Barile dell'Impossibile
+Etereo
+Confusione
+Dov'è il Jukebox?
+Eretico
+S2D2
+Caricatore
+Neon
+Non leccare
+Ciambelle
+Biscuit vs. Cookie
+Rossetto
+carbonato
+Oscurità eterna
+Tacos Tacos Tacos
+Consegna speciale
+Altri Pancake?
+Ne manca uno
+C'è posta per te
+Dov'è l'ago?
+Febbre del sabato sera
+La cura
+Barile Z264
+Format C
+2πd(R-r)
+Malevolenza
+Tutto il mio amore
+Cannone Warp
+Emergenza Carta Igienica
+Stacks Blu
+5 Donut
+Milkshake Tropicale
+La terra continua a girare
+Consegna Originale
+Dov'è la Tequila?
+16R23L42R
+Magia Blu
+Acceso o Spento?
+Incredibilmente Banale
+Un barile al giorno
+Aprire con Prudenza
+Le cronache di Scrap
+Gnam!
+Baozi
+Tesseract
+Scrap O'Clock
+Torta arcobaleno
+È tempo di unire!
+Cassettiera
+Dollari di Schrott
+SCRAPyola
+Ben equilibrato
+Consumare entro Luglio 2019
+Hai uno spicciolo?
+Non l'uccello
+Tagliata professionalmente
+1969
+Non lanciarlo, fidati di me!
+Il trecentesimo Barile!
+Faccia a Faccia
+Orologio smontato
+I Miei Documenti
+Dritto al punto
+Al profumo di lavanda
+Fusionspugna
+Sulla Luna!
+Dov'è il sugo di agnello?!
+Dov'è  il gatto arancione?
+Torsione
+Nuovo e migliorato
+Dall'Hangar
+Lavatrice
+Penne al tonno
+Dov'è la maionese?
+Pronto per essere mangiato
+È Delizioso
+Un altro succo?!
+Preparata Deliziosamente
+Infanzia
+Cuppa Joe
+Preso!
+Passato... E Presente
+Reazione a catena
+Unisci come un'egiziano!
+Riscaldamento
+Come si mangia?
+Shekera! Shekera!
+Dov'è il mio hotdog?
+Ding!
+Zuppa d'anatra
+In qualsiasi modo ma...
+Rana Sana
+Un PAsso nel tempo...
+Scream!
+Déjà Vu
+Dov'è il burro?
+Una fredda accoglienza
+Ascolta, ti prego...
+Ninja
+Stanco
+Non toccare Niente
+Pollo o Papera?
+C12H12
+Scatola a sorpresa
+Dov'è il mio burger
+Giardino
+Rovina Capelli
+Scrapels
+Cosa cucini?
+Non nutrire lo sviluppatore
+Gravità
+Luce ed oscurità
+Grattacielo
+Bollente e piccante
+Mr. Robot
+Prosciutto al vapore
+Come diventare ricchi
+Cambio giro
+Dimensione successiva
+Masterchef
+Indovina la parola
+Sistemalo
+Dov'è il coniglio?
+147
+Esaurito
+Quackuccino
+La caduta della colonia
+Guarisci!
+Satellite numero 15
+Fai un bel respiro
+Stato solido
+Compagno di Barile
+Casa dolce Casa
+Prendi la tua preferita
+Due alla volta
+Entra nel serbatoio!
+Scacco matto
+1000°
+Oh cavolo
+Buca in uno
+Tagliatelle
+Non è uno strumento
+Ghiacciato
+Glu Glu Glu
+Cosa stai ascoltando?
+7.0
+Aperitivo
+Caricalo qui
+Sorbetto
+Prendi una pausa
+Bracciale nobiliare
+Bomba di vitamine
+Così buono...
+ACGT
+È tutto rose e fiori
+Dove sono i soldati?
+Un condominio squallido
+Fermati... e inizia ad unire...
+Congratulazioni!
+Lancia una moneta
+MP3 SC2
+Te con le bolle
+Direttamente dal freezer
+Dov'è la gelatina?
+L'intera storia
+Codice 0000
+50 Hz
+Bersaglio acquisito
+Dov'è il mirtillo?
+Futuro...
+Vitamina
+Dov'è il biliardo?
+Lo Berresti?
+Energia suprema
+Paradiso del fumatore
+Grasso 3.0
+Aiutami, per favore
+What what in the button
+Il cibo di oggi
+Il custode vintage
+Sogno di cioccolato
+Bavaria
+L'orso del Natale
+Pshoom!
+Dov'è il pantano?
+La Caffettiera
+Punto di Vista
+Riserva di vitamine
+Accendilo!
+Paisley
+Leva Sbagliata
+Tra di noi
+Requiem Aeternam
+L'orologio si è bloccato
+Il livello succesivo
+Vendetta liquida
+1996-2020
+Fuori campo
+Piacevolmente Salato
+Anti-sete 3000
+Si, ne abbiamo!
+Oreoreoreoreo
+Fonte di creazione
+Ne avevamo ordinati di più...
+Le statistiche sono bellissime
+Party Rockers
+Adatto ai bambini
+Chi li ha Mangiati?
+Non puoi nuotarci
+Estratto di foglie
+Risonanza
+Dammi il cibo!
+Petaloso!
+Per cosa?
+Un tuffo nel passato
+Dov'è il Parmigiano?
+Marcio!
+Spedizione in corso
+Qualsiasi colore che ti piace
+Fermati là!
+La pizza di Vito
+Rimedio casalingo
+Una casa per le formiche?
+Materiale miracoloso
+Sviluppatore v4.0
+Per il club di letteratura
+Un piccolo libro degli horror
+Sono un campeggiatore felice
+La terra come la conosciamo
+Lampada per il secondo piano
+La grande avidità
+Di chi è la colpa?
+Torre caprese
+Estetismo
+Fette di Potassio
+Warp of Ruination
+Rubus
+Leopardo delle Nevi
+Gelatina al Burro di Arachidi
+29 in ritardo
+Lavoro di Saldatura
+Libro dell'Intelligenza
+Boss of all lockers
+Presentazione di Moda
+Ascensore Arcano
+Annusa più tardi!
+La Polvere
+da 8 a 16 Bit
+Crema di Fragole
+Gusto Frizzante
+Questo potrebbe pungere...
+Roguelike
+Il Mondo Strano
+Ceretta Drammatica
+Nuova Generazione
+Fruttato!
+Gelatina Bluastra
+Dove sono le scimmie?
+Lavoro Fatto!
+Road to yeet
+Cominciamo a Pulire!
+aMAZEing
+Let's Zill!
+Routine di Fusione, fatta!
+Fuoco3
+La Furia del Diavolo
+Architettura Allucinante
+Giardino Abbandonato
+Acido Citrico
+Divertente ma è Natale
+12.65 V
+Inverno Portatile
+Il Prototipo
+Tintura Vivace
+Mais Caramellato
+Pentagono della Devastazione
+Dal Garage
+Il Triumvirato del Potere
+Acero e Sciroppo
+Mattone di Cioccolato
+Tu devi Costruire...
+Una dose di Morte
+Premi qui!
+Sacchetto del pranzo d'Oriente
+Energia Colorata
+Premi, Tieni Premuto, Unisci!
+Gran Maestro
+Memorie
+Chi è John?
+Schrott dice
+Il ritorno dei barili viventi
+Hai provato a cambiare?
+L'Esagono più Esagonale
+Tesoro Fantastico!
+Trova i frammenti
+Offerta a Tempo Limitato
+Granata!
+Quanto manca alla fine?
+Attento al passo!
+Eredità
+Aggiornamento completato!
+Il Conducente
+Barile spettrale e spaventoso
+Pianeta 9
+Deframmentazione!
+Verso la Città
+Missione Spaziale Speciale
+L'Evento
+Tornado Classe F5
+Alfabeto Alieno
+4k RPM
+L'acero è troppo popolare
+ScrapWood
+Controllo di Parità
+Decodificatore
+Discarica dell'Umido
+Puoi fare la torta?
+Le Cronache dell'Atomo
+Una casa per Hammy
+Strisciando nel Dungeon
+Questo è il mio Garage
+Con Comodità
+Le Origini
+L'Ultima Corsa
+Alfred, il Re dei Barili
+Commestibile?
+L'Antenato del PC
+Veloce e Affilato!
+Attacco a sorpresa!
+Polvere Uccidi Vampiri
+Lontano...
+L'Alveare!
+1 Milione di Scoville
+Limone Tailandese
+Il Cuore della Fornace
+Ricetta Originale
+Cooper, Copi?
+Aviatore fastidioso
+Scrapeo and Giulietta
+Il Buttafuori
+Errore 503
+Polvere Fatata
+6 piedi di profondità
+Anti-Incendio 5
+In 50 anni...
+Le Armi dell'Artista
+Tramonto
+Liscio, fresco, nutriente
+Unisci o Clicchi?
+Dall'Ombra
+La Caverna dei Barili
+Alimenta il tuo Rottame
+Hai Ottenuto Macaroon!
+Ciocco Robot
+Guarnizione Semplificata
+I R Incremental
+Assaggia il Vapore
+Il Libro del Destino
+Pietra Miliare
+Acidificazione
+ModPocket Visualizer Deluxe
+Fiamma Elettrica
+Civilizzazione Nix
+Burger di Rottami
+Nelle profondità marine!
+Quale strada prendiamo?
+Scrapple
+Pezzetto tagliato bene!
+Sostanza pericolosa
+Feng Shui
+Rompicapo di rottami
+Divieto di immersione
+Stuzzichini da falò
+Una corona per un Re
+Kabosu
+Proliferazione malevola
+Capro espiatorio
+Sempre vigile
+L'Eroe chiamato H
+Pane di Mais
+Raggio Ascorbico
+S-800
+Etere Scintillante
+Calamita Mk.IV
+Pelliccia della Tigre
+Gattopalla!
+Un altro dollaro sprecato
+Incontri Occasionali!
+Gusto.... Scacchi?
+Pozione Lunare
+Scienza Antica
+Beta Pictoris
+Pip-Papera 4000
+Barile Scintillante
+Passaggio al Nucleare
+Torre di Rame
+Mossa del giocatore definitiva!
+Luogo di Nascita Misterioso
+Occhio elettrico
+CuboTecnologico 3000
+Droga per le dita
+Rivoluzione Artistica
+Scrapdine
+Simulazione Rosa
+RESTITUISCI LA LASTRAAA
+Piscina Avvelenata
+Condizioni d'uso
+Pietra & Terra
+Prese a incastro
+Per favore, non morire
+Scraptario
+Tacchetti
+Dolci Ricordi
+Aspetta 60 secondi!
+Fermo... hai fallito!
+NOSE
+La sua bevanda preferita
+Acido Fatato
+Non inserire...
+Peter
+La Milionesima Stella
+Mutaforma
+Corsia di Accelerazione
+Posso Venderlo?
+Barile per l'Inferno
 Questo latte è pazzesco!
 Smetti di consumare carne!
 Dov'è il mais?
@@ -1002,4 +1002,64 @@ Se non posso averti...
 Arte moderna
 Il frutto degli incubi
 Mondo 8 - Antica città dorata
+Finalmente Voxel
+Regina dei Barili
+Spiccioli e Monetine
+Divertimento Fungo-Funky
+Sepoltura Prematura
+Potere Fiorente
+Benvenuto in Inghilterra
+Espansione della Senape Virale
+Pozione Arcana di Ametista
+Energia Proibita
+L'Eco è il nuovo Cool
+Misero Jackpot
+Le Profondità
+Questa Corrosione
+Una Goccia di Tempo
+Squalo d'Acqua Dolce
+Il Tempo è Oro
+La Vita Troverà un Modo
+Biglie Reali
+Golem Bambino
+Rigenerazione Elfica
+Frutto o Verdura?
+L'Albero delle Fate
+Energistica Applicata
+Sidro alla Fragola. Gnam!
+Richiamo dei Dannati
+Invenzione Indigena Intricata
+Deposito delle Gemme
+Il Libro degli Incubi
+3 Desideri dal Futuro
+Organico
+Atrio Asiatico Antico
+Ciambelle Tricolore
+Microgalassia Mielata
+Il Tomo della Crescita Oscura
+Sangue e Miele
+La Musica è nell'Aria
+È Quasi Ora...
+...È Quasi Completo
+M
+Triangolo Rosa
+Cerchio Verde
+Spazzatura in Scatola
+Sono così confuso...
+Spirale verso il basso
+Razioni d'Emergenza
+Livello 1007 Completato
+Il Brutalismo Funky
+Salsa Floreale
+Sovraccarico Atomico
+La Crescita
+La Numero Uno
+Mangia le tue verdure!
+Astratto Esagonale
+La Zucca Stregata di Ottobre
+Rimangono Tre Fette
+Bacca Festosa
+Tagliato alla Perfezione
+60 Dollari per Questo?!
+Giocando nel Fango
 `

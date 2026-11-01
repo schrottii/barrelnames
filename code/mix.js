@@ -10,8 +10,9 @@ function getFile(num) {
     return "images/barrels/" + (num > 177 ? "B" : "b") + "arrel_" + Math.max(1, num) + ".png";
 }
 
-function randomBarrel(){
-    return Math.floor(Math.random() * (Names.length - 2)) + 1;
+function randomBarrel() {
+    let minBarrel = settings.onlynew ? BARRELS_FIRSTNEW : 1;
+    return Math.floor(Math.random() * (Names.length - 1 - minBarrel)) + minBarrel;
 }
 
 function getName(id) {
@@ -77,6 +78,7 @@ function generateCombination() {
 // AUTO GENERATE
 var autoGenID = -1;
 var autoGenChanged = false;
+
 function toggleAutoGenerate() {
     settings.autogenerate = !settings.autogenerate;
 
@@ -128,4 +130,11 @@ function autoGenerate() {
         autoGenID = -1;
         autoGenChanged = false;
     }
+}
+
+function toggleOnlyNew() {
+    settings.onlynew = !settings.onlynew;
+
+    saveSave();
+    updateUI();
 }
